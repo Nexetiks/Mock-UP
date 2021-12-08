@@ -351,6 +351,8 @@ GameObject:
   - component: {fileID: 393559794}
   - component: {fileID: 393559793}
   - component: {fileID: 393559792}
+  - component: {fileID: 393559796}
+  - component: {fileID: 393559797}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -439,44 +441,13 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &465906660
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 465906661}
-  - component: {fileID: 465906662}
-  m_Layer: 0
-  m_Name: gm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &465906661
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465906660}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 915.0436, y: 166.4635, z: -252.9538}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &465906662
+--- !u!114 &393559796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465906660}
+  m_GameObject: {fileID: 393559791}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92b3ad9a7c8ecc54ea9e071ec305ea86, type: 3}
@@ -494,8 +465,21 @@ MonoBehaviour:
   tax: 0.2
   round: 1
   gameplayActive: 0
+  endButton: {fileID: 0}
   Hl: {fileID: 0}
   Dl: {fileID: 0}
+--- !u!114 &393559797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393559791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721b66748726fd446b18fd6aca18b0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &914932015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,6 +1009,7 @@ MonoBehaviour:
   isHovered: 0
   textCard: {fileID: 0}
   textureCard: {fileID: 0}
+  size: {x: 0, y: 0}
   rawImage: {fileID: 2075475130}
   initialPosition: {x: 0, y: 0, z: 0}
   worldPosition: {x: 0, y: 0, z: 0}
