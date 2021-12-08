@@ -1,64 +1,74 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-abstract public class CardParent : MonoBehaviour
+abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHandler,IPointerExitHandler,IPointerEnterHandler,IDragHandler
 {
-    public float costAmount;
-   
+    public float costAmount=0;
 
     public int idCard;
 
-    public float populationAmount;
-    public float populationMultiplier;
+    public float populationAmount=0;
+    public float populationMultiplier=1;
 
-    public float moneyAmount;
-    public float moneyMultiplier;
+    public float moneyAmount=0;
+    public float moneyMultiplier=1;
 
-    public float happinessAmount;
-    public float happinessMultiplier;
+    public float happinessAmount = 0;
+    public float happinessMultiplier=1;
 
-    public float loyaltyAmount;
-    public float loyaltyMultiplier;
+    public float loyaltyAmount = 0;
+    public float loyaltyMultiplier=1;
 
-    public float fearAmount;
-    public float fearMultiplier;
+    public float fearAmount = 0;
+    public float fearMultiplier=1;
 
-    public float educationAmount;
-    public float educationMultiplier;
+    public float educationAmount = 0;
+    public float educationMultiplier=1;
 
-    public float crimeAmount;
-    public float crimeMultiplier;
+    public float crimeAmount = 0;
+    public float crimeMultiplier=1;
 
-    public float wealthAmount;
-    public float wealthMultiplier;
+    public float wealthAmount = 0;
+    public float wealthMultiplier=1;
 
-    public float taxAmount;
-    public float taxMultiplier;
+    public float taxAmount = 0;
+    public float taxMultiplier=1;
 
+    public Camera cam;
 
-
+    public bool isDragged = false, isHovered = false;
 
     public TextMesh textCard;
 
+    Canvas canvas;
 
     public Texture textureCard;
 
 
     public RawImage rawImage;
 
+    Vector3 viewPortCardPosition;
+
+    /// <summary>
+    /// mozliwe ze zostanie zmienione na przypisywanie i inspektorze
+    /// </summary>
+    public Vector3 initialPosition;
+
+    public Vector3 worldPosition;
+
+    private void Awake()
+    {
+        canvas = FindObjectOfType<Canvas>();
+        initialPosition = rawImage.rectTransform.position;
+        cam = Camera.main;
+
+    }
 
 
-    public bool isClicked = false, isInvaded = false;
-
-
-    public Vector3 clickedd = new Vector3(0f, -300f, 0f);
-    public Vector3 startPosition = new Vector3(0f, -440f, 0f);
-    public Vector3 centerConst = new Vector3(960f, 540f, 0f);
-
-
-    public Vector3 placeOfMouse, worldPosition;
+    
 
 
 
@@ -101,109 +111,51 @@ abstract public class CardParent : MonoBehaviour
 
 
    
-    
-    virtual public void OnMouseDrag()
+   
+    virtual public void BeginDRAG()
     {
-        mouseDRAG();
-
-    }
-    virtual public void mouseDRAG()
-    {
-        isClicked = true;
-        isInvaded = true;
+        isDragged = true;
+        isHovered = true;
     }
 
 
-    virtual public void OnMouseEnter()
-    {
-        mouseENTER();
-    }
     virtual public void mouseENTER()
     {
-        isInvaded = true;
+        isHovered = true;
     }
 
 
-    private void OnMouseExit()
-    {
-        MouseEXIT();
-    }
     virtual public void MouseEXIT()
     {
-        isClicked = false;
-        isInvaded = false;
+        isHovered = false;
     }
 
 
-    virtual public void OnMouseUp()
-    {
-        mouseUP();
-    }
     virtual public void mouseUP()
     {
-        isClicked = false;
-    }
-
-
-
-    virtual public void Update()
-    {
-        updateR();
-    }
-
-    virtual public void updateR()
-    {
-
-        if (GameManager.Instance.gameplayActive == true)
-        {
-
-
-            //Object is invaded but also is also clicked
-            //MOUSE DRAG
-            if (isInvaded == true && isClicked == true)
-            {
-                rawImage.rectTransform.sizeDelta = new Vector2(300, 300);
-                rawImage.rectTransform.position = new Vector3(mousePlace().x, mousePlace().y - (rawImage.rectTransform.sizeDelta.y / 3), mousePlace().z);
-            }
-
-            //Object is NOT invaded and it is NOT clicked
-            //MouseEXIT
-            if (isInvaded == false && isClicked == false)
-            {
-                rawImage.rectTransform.sizeDelta = new Vector2(100, 100);
-
-                rawImage.rectTransform.position = centerConst + startPosition;
-
-            }
-
-            //Object is invaded but it is not clicked
-            //MOUSE ENTER
-            if (isInvaded == true && isClicked == false)
-            {
-                if (isCardPlaced() == true) ;//end of the round
-                else
-                {
-                    rawImage.rectTransform.position = centerConst + clickedd;
-                    rawImage.rectTransform.sizeDelta = new Vector2(300, 300);
-                }
-            }
-
-        }
+        isDragged = false;
+        
     }
 
 
     //Cheking if the card is places in the center
     public bool isCardPlaced()
     {
-        if (rawImage.rectTransform.position.y > 350)
-        {
-            GameManager.Instance.Hl.UsedCard(idCard);
+        //if (GameManager.Instance.gameplayActive == true)
+        
+            viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
 
-            Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
-            //tutaj 
-            return true;
-        }
-        else return false;
+
+            if (viewPortCardPosition.y > 0.5f)
+            {
+                Debug.Log(viewPortCardPosition);
+                Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
+
+                GameManager.Instance.Hl.UsedCard(idCard);
+                return true;
+            }
+            else return false;
+        
     }
 
 
@@ -213,12 +165,50 @@ abstract public class CardParent : MonoBehaviour
     virtual public Vector3 mousePlace()
     {
         Vector3 placeOfMouse = Input.mousePosition;
-        placeOfMouse.z = Camera.main.nearClipPlane;
-        worldPosition = Camera.main.ScreenToWorldPoint(placeOfMouse);
+        placeOfMouse.z = canvas.planeDistance;
+        worldPosition = cam.ScreenToWorldPoint(placeOfMouse);
 
 
         return placeOfMouse;
     }
-    
 
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        if (isCardPlaced() == true) ;//end of the round
+        else
+        {
+            rawImage.rectTransform.position = initialPosition;
+            rawImage.rectTransform.sizeDelta = new Vector2(100, 100);
+            mouseUP();
+
+        }
+    }
+
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        rawImage.rectTransform.sizeDelta = new Vector2(300, 300);
+        BeginDRAG();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (isDragged == false)
+        {
+            rawImage.rectTransform.sizeDelta = new Vector2(100, 100);
+        }
+        MouseEXIT();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        rawImage.rectTransform.sizeDelta = new Vector2(300, 300);
+        mouseENTER();
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        rawImage.rectTransform.position = cam.ScreenToWorldPoint(mousePlace());
+    }
 }

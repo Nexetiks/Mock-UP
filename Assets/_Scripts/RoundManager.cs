@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
-    // on musi byc gdzies na start gry wywolywany, np w gameobject, gdyz inaczej sie start nie wywola !!!
+
     void Start()
     {
         GameManager.Instance.Dl.MixList();
         //show card in hands
+
+
+
         GameManager.Instance.gameplayActive = true;
     }
 
@@ -16,10 +19,15 @@ public class RoundManager : MonoBehaviour
 
 
 
-    public void endOfTheRound() 
+    public void endOfTheRound() // kiedy to sie wywolywuje XD
     {
+
         GameManager.Instance.gameplayActive = false;
         
+
+
+
+
         Wealth();
 
         SetMoney();
@@ -29,20 +37,16 @@ public class RoundManager : MonoBehaviour
         if (IsEndGame() == true)
         {
             GameManager.Instance.gameplayActive = false;
-           
-            GameManager.Instance.endButton.gameObject.SetActive(true);
+
             amountOfPoints();
-        }
-        else
-        {
-            GameManager.Instance.Hl.SendCardToHand(GameManager.Instance.Dl.cards);
-            // animacja wysuwania karty
-            GameManager.Instance.gameplayActive = true;
+            //funckja na koniec gry
+
         }
 
         GameManager.Instance.round++;
     }
-       
+
+
 
 
 

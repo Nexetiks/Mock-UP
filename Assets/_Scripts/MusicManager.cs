@@ -1,30 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class MusicManager : MonoBehaviour
 {
     [SerializeField]
-    public AudioSource backgroundMusic;
-    private AudioSource clipMusic;
+    private AudioSource backgroundMusic;
 
+    private AudioSource clipMusic;
     [SerializeField]
-    public List<string> soundName;
+    private Slider slider;
     [SerializeField]
-    public List<AudioSource> soundSource;
+    private List<string> soundName;
+    [SerializeField]
+    private List<AudioClip> soundSource;
 
     public void PlaySound(string audioName)
     {
         for (int i = 0; i < soundSource.Count; i++)
         {
-            if (soundName[i] == audioName) { clipMusic = soundSource[i]; clipMusic.Play(); return; }
+            if (soundName[i] == audioName) { clipMusic.clip = soundSource[i]; clipMusic.Play(); return; }
         }
 
     }
 
     public void StopBackgroundMusic()
     {
+        if(backgroundMusic.isPlaying) backgroundMusic.Stop();
+        else backgroundMusic.Play();
 
+    }
+
+    public void ChangeVolume()
+    {
+        backgroundMusic.volume= slider.value;
+       
 
     }
 
