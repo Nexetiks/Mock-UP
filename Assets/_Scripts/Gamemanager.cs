@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else Debug.Log("An instance error");
+
+      
     }
 
 
