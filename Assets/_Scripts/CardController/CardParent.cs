@@ -123,7 +123,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     }
 
 
-    virtual public void mouseENTER()
+    virtual public void MouseENTER()
     {
         isHovered = true;
     }
@@ -135,7 +135,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     }
 
 
-    virtual public void mouseUP()
+    virtual public void MouseUP()
     {
         isDragged = false;
         
@@ -168,7 +168,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
 
     //Returning mouse position to be able to move cards
-    virtual public Vector3 mousePlace()
+    virtual public Vector3 MousePlace()
     {
         Vector3 placeOfMouse = Input.mousePosition;
         placeOfMouse.z = canvas.planeDistance;
@@ -186,7 +186,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         {
             rawImage.rectTransform.position = initialPosition;
             rawImage.rectTransform.sizeDelta =  size;
-            mouseUP();
+            MouseUP();
         }
     }
 
@@ -211,12 +211,12 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     public void OnPointerEnter(PointerEventData eventData)
     {
         rawImage.rectTransform.sizeDelta = size * 2;
-        mouseENTER();
+        MouseENTER();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rawImage.rectTransform.position = cam.ScreenToWorldPoint(mousePlace());
+        rawImage.rectTransform.position = cam.ScreenToWorldPoint(MousePlace());
         rawImage.rectTransform.sizeDelta = 2 * size;
     }
 }
