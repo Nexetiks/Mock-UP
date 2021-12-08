@@ -42,28 +42,28 @@ abstract public class CardParent : MonoBehaviour
 
 
 
-    /*virtual  void CardInvocate() {
+    virtual public void CardInvocate() {
 
-        Gamemanager.Instance.cost = Gamemanager.cost * costCard;
+        //GameManager.Instance.cost = GameManager.cost * costCard;
 
-        Gamemanager.Instance.population = Gamemanager.population * populationCard;
+        GameManager.Instance.population = GameManager.Instance.population * populationCard;
 
-        Gamemanager.Instance.money; = Gamemanager.money; *moneyCard; ;
+        GameManager.Instance.money = GameManager.Instance.money *moneyCard;
 
-        Gamemanager.Instance.happiness; = Gamemanager.happiness; *happinessCard; ;
+        GameManager.Instance.happiness = GameManager.Instance.happiness *happinessCard; 
 
-        Gamemanager.Instance.loyalty; = Gamemanager.loyalty; *loyaltyCard;
+        GameManager.Instance.loyalty = GameManager.Instance.loyalty *loyaltyCard;
 
-        Gamemanager.Instance.fear; = Gamemanager.fear; *fearCard;
+        GameManager.Instance.fear = GameManager.Instance.fear *fearCard;
 
-        Gamemanager.Instance.education; = Gamemanager.education; *educationCard;
+        GameManager.Instance.education = GameManager.Instance.education *educationCard;
 
-        Gamemanager.Instance.crime; = Gamemanager.crime; *crimeCard;
+        GameManager.Instance.crime = GameManager.Instance.crime *crimeCard;
 
-        Gamemanager.Instance.wealth; = Gamemanager.wealth; *wealthCard;
+        GameManager.Instance.wealth = GameManager.Instance.wealth *wealthCard;
 
-        Gamemanager.Instance.tax; = Gamemanager.tax; *taxCard;
-    }*/
+        GameManager.Instance.tax = GameManager.Instance.tax *taxCard;
+    }
 
 
 
@@ -144,9 +144,11 @@ abstract public class CardParent : MonoBehaviour
     //Cheking if the card is places in the center
     public void isItPlaced()
     {
-        if (rawImage.rectTransform.position.y > 700)
+        if (rawImage.rectTransform.position.y > 500)
         {
-            Destroy(gameObject);
+            Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
+
+            //wywolac funkcje z round managera
         }
     }
 

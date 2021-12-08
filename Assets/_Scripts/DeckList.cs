@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardList : MonoBehaviour
+public class DeckList : MonoBehaviour
 {
 	public List<CardParent> cards;
-	
 
+	[SerializeField]
 	public void MixList() // to musi sie wywolac zaraz po tym jak dodamy wszystkie karty
 	{
 

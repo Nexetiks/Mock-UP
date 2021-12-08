@@ -24,8 +24,13 @@ public class GameManager : MonoBehaviour
     public float wealth = 0;
     [SerializeField]
     public float tax = 0.20f;
-    public int Etap = 1;
+    [SerializeField]
+    public int round = 1;
+    [SerializeField]
+    public bool gameplayActive = false;
 
+    public HandList Hl;
+    public DeckList Dl;
 
     public static GameManager Instance;
 
