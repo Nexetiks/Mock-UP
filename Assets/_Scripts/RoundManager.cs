@@ -7,7 +7,7 @@ public class RoundManager : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.Dl.MixList();
+        //GameManager.Instance.Dl.MixList();
         //show card in hands
 
 
