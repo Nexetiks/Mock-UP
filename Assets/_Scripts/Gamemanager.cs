@@ -6,7 +6,10 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    
+
+    [SerializeField]
+    public float Score;
+
     [SerializeField]
     public float population = 10;
     [SerializeField]

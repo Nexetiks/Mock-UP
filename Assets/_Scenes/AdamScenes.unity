@@ -220,7 +220,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 960, y: 40}
+  m_AnchoredPosition: {x: 960, y: 135}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &929326653
@@ -603,16 +603,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b9d32be7ab0f04c9bc5aae0ba225a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costCard: 0
-  populationCard: 0
-  moneyCard: 0
-  happinessCard: 0
-  loyaltyCard: 0
-  fearCard: 0
-  educationCard: 0
-  crimeCard: 0
-  wealthCard: 0
-  taxCard: 0
+  costAmount: 0
+  populationAmount: 0
+  populationMultiplier: 0
+  moneyAmount: 0
+  moneyMultiplier: 0
+  happinessAmount: 0
+  happinessMultiplier: 0
+  loyaltyAmount: 0
+  loyaltyMultiplier: 0
+  fearAmount: 0
+  fearMultiplier: 0
+  educationAmount: 0
+  educationMultiplier: 0
+  crimeAmount: 0
+  crimeMultiplier: 0
+  wealthAmount: 0
+  wealthMultiplier: 0
+  taxAmount: 0
+  taxMultiplier: 0
   textCard: {fileID: 0}
   textureCard: {fileID: 0}
   rawImage: {fileID: 2075475130}
@@ -620,9 +629,9 @@ MonoBehaviour:
   isInvaded: 0
   clickedd: {x: 0, y: -500, z: 0}
   startPosition: {x: 0, y: -440, z: 0}
+  centerConst: {x: 960, y: 540, z: 0}
   placeOfMouse: {x: 0, y: 0, z: 0}
   worldPosition: {x: 0, y: 0, z: 0}
-  centerConst: {x: 960, y: 540, z: 0}
 --- !u!114 &2075475130
 MonoBehaviour:
   m_ObjectHideFlags: 0

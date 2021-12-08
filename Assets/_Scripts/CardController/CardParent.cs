@@ -8,6 +8,8 @@ abstract public class CardParent : MonoBehaviour
     public float costAmount;
    
 
+    public int idCard;
+
     public float populationAmount;
     public float populationMultiplier;
 
@@ -44,7 +46,7 @@ abstract public class CardParent : MonoBehaviour
     public Texture textureCard;
 
 
-     public  RawImage rawImage;
+    public RawImage rawImage;
 
 
 
@@ -53,7 +55,7 @@ abstract public class CardParent : MonoBehaviour
 
     public Vector3 clickedd = new Vector3(0f, -300f, 0f);
     public Vector3 startPosition = new Vector3(0f, -440f, 0f);
-    public  Vector3 centerConst = new Vector3(960f, 540f, 0f);
+    public Vector3 centerConst = new Vector3(960f, 540f, 0f);
 
 
     public Vector3 placeOfMouse, worldPosition;
@@ -61,7 +63,7 @@ abstract public class CardParent : MonoBehaviour
 
 
     virtual public void CardInvocate() {
-        
+
 
         GameManager.Instance.money = GameManager.Instance.money - costAmount;
 
@@ -93,11 +95,13 @@ abstract public class CardParent : MonoBehaviour
         GameManager.Instance.tax = Mathf.Clamp01(GameManager.Instance.tax + taxAmount);
         GameManager.Instance.tax = Mathf.Clamp01(GameManager.Instance.tax * taxMultiplier);
 
+
     }
+    
 
 
-
-
+   
+    
     virtual public void OnMouseDrag()
     {
         mouseDRAG();
@@ -149,46 +153,54 @@ abstract public class CardParent : MonoBehaviour
 
     virtual public void updateR()
     {
-        //Object is invaded but it is not clicked
-        //MOUSE ENTER
-        if (isInvaded == true && isClicked == false)
+
+        if (GameManager.Instance.gameplayActive == true)
         {
-            if (isItPlaced() != true)
+
+
+            //Object is invaded but also is also clicked
+            //MOUSE DRAG
+            if (isInvaded == true && isClicked == true)
             {
-                rawImage.rectTransform.position = centerConst + clickedd;
                 rawImage.rectTransform.sizeDelta = new Vector2(300, 300);
+                rawImage.rectTransform.position = new Vector3(mousePlace().x, mousePlace().y - (rawImage.rectTransform.sizeDelta.y / 3), mousePlace().z);
             }
+
+            //Object is NOT invaded and it is NOT clicked
+            //MouseEXIT
+            if (isInvaded == false && isClicked == false)
+            {
+                rawImage.rectTransform.sizeDelta = new Vector2(100, 100);
+
+                rawImage.rectTransform.position = centerConst + startPosition;
+
+            }
+
+            //Object is invaded but it is not clicked
+            //MOUSE ENTER
+            if (isInvaded == true && isClicked == false)
+            {
+                if (isCardPlaced() == true) ;//end of the round
+                else
+                {
+                    rawImage.rectTransform.position = centerConst + clickedd;
+                    rawImage.rectTransform.sizeDelta = new Vector2(300, 300);
+                }
+            }
+
         }
-
-
-        //Object is invaded but also is also clicked
-        //MOUSE DRAG
-        if (isInvaded == true && isClicked == true)
-        {
-            rawImage.rectTransform.sizeDelta = new Vector2(300, 300);
-            rawImage.rectTransform.position = new Vector3(mousePlace().x, mousePlace().y - (rawImage.rectTransform.sizeDelta.y/3), mousePlace().z);   
-        }
-
-        //Object is NOT invaded and it is NOT clicked
-        //MouseEXIT
-        if (isInvaded == false && isClicked == false)
-        {
-            rawImage.rectTransform.sizeDelta = new Vector2(100, 100);
-
-            rawImage.rectTransform.position = centerConst+startPosition; 
-
-        }
-
-
     }
 
 
     //Cheking if the card is places in the center
-    public bool isItPlaced()
+    public bool isCardPlaced()
     {
         if (rawImage.rectTransform.position.y > 350)
         {
+            GameManager.Instance.Hl.UsedCard(idCard);
+
             Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
+            //tutaj 
             return true;
         }
         else return false;
@@ -207,5 +219,6 @@ abstract public class CardParent : MonoBehaviour
 
         return placeOfMouse;
     }
+    
 
 }

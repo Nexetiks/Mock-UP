@@ -23,7 +23,7 @@ public class RoundManager : MonoBehaviour
     {
 
         GameManager.Instance.gameplayActive = false;
-        GameManager.Instance.round++;
+        
 
         Wealth();
 
@@ -43,8 +43,10 @@ public class RoundManager : MonoBehaviour
             // animacja wysuwania karty
             GameManager.Instance.gameplayActive = true;
         }
-
+ amountOfPoints();
         }
+        GameManager.Instance.round++;
+
 
 
     public void Wealth()
@@ -85,6 +87,12 @@ public class RoundManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    void amountOfPoints()
+    {
+        GameManager.Instance.Score = ((GameManager.Instance.loyalty + GameManager.Instance.fear) / 2) * GameManager.Instance.population * 1000 + (GameManager.Instance.population * 1000 * GameManager.Instance.happiness)
+            + GameManager.Instance.money * 1000 + GameManager.Instance.wealth * 1000 * (GameManager.Instance.education - GameManager.Instance.crime);
     }
 
 }
