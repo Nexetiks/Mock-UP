@@ -47,6 +47,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     public Texture textureCard;
 
+    public Vector2 size;
 
     public RawImage rawImage;
 
@@ -62,8 +63,9 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     private void Awake()
     {
         canvas = FindObjectOfType<Canvas>();
-        initialPosition = rawImage.rectTransform.position;
+        initialPosition = rawImage.rectTransform.position;//mozliwa zmaina na wartosc edytowana w inpsektorze
         cam = Camera.main;
+        size= rawImage.rectTransform.sizeDelta;
 
     }
 
@@ -141,21 +143,24 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     //Cheking if the card is places in the center
     public bool isCardPlaced()
     {
-        //if (GameManager.Instance.gameplayActive == true)
-        
-            viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
+        if (GameManager.Instance.gameplayActive == true)
+        {
 
+
+            viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
+            Debug.Log(viewPortCardPosition.y);
 
             if (viewPortCardPosition.y > 0.5f)
             {
-                Debug.Log(viewPortCardPosition);
                 Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
 
                 GameManager.Instance.Hl.UsedCard(idCard);
+                
                 return true;
             }
             else return false;
-        
+        }
+        return false;
     }
 
 
@@ -179,16 +184,15 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         else
         {
             rawImage.rectTransform.position = initialPosition;
-            rawImage.rectTransform.sizeDelta = new Vector2(100, 100);
+            rawImage.rectTransform.sizeDelta =  size;
             mouseUP();
-
         }
     }
 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        rawImage.rectTransform.sizeDelta = new Vector2(300, 300);
+        rawImage.rectTransform.sizeDelta = 2 * size;
         BeginDRAG();
     }
 
@@ -196,19 +200,22 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     {
         if (isDragged == false)
         {
-            rawImage.rectTransform.sizeDelta = new Vector2(100, 100);
+            rawImage.rectTransform.position = initialPosition;
+            rawImage.rectTransform.sizeDelta = size;
         }
+        
         MouseEXIT();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        rawImage.rectTransform.sizeDelta = new Vector2(300, 300);
+        rawImage.rectTransform.sizeDelta = size * 2;
         mouseENTER();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         rawImage.rectTransform.position = cam.ScreenToWorldPoint(mousePlace());
+        rawImage.rectTransform.sizeDelta = 2 * size;
     }
 }
