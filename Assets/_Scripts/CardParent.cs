@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
- class CardParent : MonoBehaviour
+ public class CardParent : MonoBehaviour
 {
     public float costCard;
 
@@ -28,6 +28,8 @@ using UnityEngine;
 
     Texture textureCard;
 
+ 
+
     void CardInvocate() { 
     
 
@@ -35,6 +37,12 @@ using UnityEngine;
 
     
     }
+    /// <summary>
+    /// ///////  NIE PODOBAA MI SIEE  w sensie serio jest sens robic te funkcje tutaj skoro przy kazdej zmiennej musze sie odwolywac do zmiennej statycznej ???
+    /// </summary>
+   
+
+
 
 
 
