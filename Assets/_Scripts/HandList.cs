@@ -13,9 +13,13 @@ public class HandList : MonoBehaviour
         cards.RemoveAt(0);
     }
 
-    public void UsedCard(int index)
+    public void UsedCard(int idcard)
     {
-        cardsInHand.RemoveAt(index);
+        for (int i = 0; i < cardsInHand.Count; i++)
+        {
+            if (cardsInHand[i].idCard == idcard)
+                cardsInHand.RemoveAt(idcard);
+        }
     }
 
     public bool OutOfHandCards()

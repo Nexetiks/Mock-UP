@@ -6,7 +6,7 @@ using UnityEngine.UI;
 abstract public class CardParent : MonoBehaviour
 {
     public float costAmount;
-
+   
 
     public float populationAmount;
     public float populationMultiplier;

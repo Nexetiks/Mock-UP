@@ -19,16 +19,11 @@ public class RoundManager : MonoBehaviour
 
 
 
-    public void endOfTheRound() // kiedy to sie wywolywuje XD
+    public void endOfTheRound() 
     {
 
         GameManager.Instance.gameplayActive = false;
         GameManager.Instance.round++;
-
-       // GameManager.Instance.Hl.UsedCard();//poprawic to
-
-      //  GameManager.Instance.Hl.UsedCard();
-
 
         Wealth();
 
@@ -39,12 +34,17 @@ public class RoundManager : MonoBehaviour
         if (IsEndGame() == true)
         {
             GameManager.Instance.gameplayActive = false;
-            //funckja na koniec gry
-
+           
+            GameManager.Instance.endButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            GameManager.Instance.Hl.SendCardToHand(GameManager.Instance.Dl.cards);
+            // animacja wysuwania karty
+            GameManager.Instance.gameplayActive = true;
         }
 
-
-    }
+        }
 
 
     public void Wealth()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -28,6 +29,10 @@ public class GameManager : MonoBehaviour
     public int round = 1;
     [SerializeField]
     public bool gameplayActive = false;
+
+    [SerializeField]
+
+    public Button endButton;
 
     public HandList Hl;
     public DeckList Dl;
