@@ -15,12 +15,12 @@ public class RoundManager : MonoBehaviour
         GameManager.Instance.gameplayActive = true;
     }
 
-    public void endOfTheRound()
+    public void endOfTheRound() // kiedy to sie wywolywuje XD 
     {
 
         GameManager.Instance.gameplayActive = false;
         GameManager.Instance.round++;
-        GameManager.Instance.Hl.UsedCard();
+      //  GameManager.Instance.Hl.UsedCard();
 
         Wealth();
 
@@ -31,10 +31,16 @@ public class RoundManager : MonoBehaviour
         if (IsEndGame() == true)
         {
             GameManager.Instance.gameplayActive = false;
-
+            //funckja na koniec gry
         }
+    }
 
-        //funckja na koniec gry
+    public void StartNextRound() // TO DO:
+    {
+        // dodaj karte na reke 
+        // wyswietl
+        //animacja
+        //gameplay active true
     }
 
 
