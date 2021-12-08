@@ -15,12 +15,13 @@ public class RoundManager : MonoBehaviour
         GameManager.Instance.gameplayActive = true;
     }
 
-    public void endOfTheRound()
+    
+     public void endOfTheRound()
     {
 
         GameManager.Instance.gameplayActive = false;
         GameManager.Instance.round++;
-        GameManager.Instance.Hl.UsedCard();
+       // GameManager.Instance.Hl.UsedCard();//poprawic to
 
         Wealth();
 
@@ -67,7 +68,7 @@ public class RoundManager : MonoBehaviour
 
         for (int i = 0; i < GameManager.Instance.Hl.cardsInHand.Count; i++)
         {
-            if (GameManager.Instance.Hl.cardsInHand[i].costCard <= GameManager.Instance.money) return true;
+            if (GameManager.Instance.Hl.cardsInHand[i].costAmount <= GameManager.Instance.money) return true;
             else helper++;
         }
 

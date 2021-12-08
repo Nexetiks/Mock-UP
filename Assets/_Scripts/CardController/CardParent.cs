@@ -5,64 +5,94 @@ using UnityEngine.UI;
 
 abstract public class CardParent : MonoBehaviour
 {
-    public float costCard;
+    public float costAmount;
 
-    public float populationCard;
 
-    public float moneyCard;
+    public float populationAmount;
+    public float populationMultiplier;
 
-    public float happinessCard;
+    public float moneyAmount;
+    public float moneyMultiplier;
 
-    public float loyaltyCard;
+    public float happinessAmount;
+    public float happinessMultiplier;
 
-    public float fearCard;
+    public float loyaltyAmount;
+    public float loyaltyMultiplier;
 
-    public float educationCard;
+    public float fearAmount;
+    public float fearMultiplier;
 
-    public float crimeCard;
+    public float educationAmount;
+    public float educationMultiplier;
 
-    public float wealthCard;
+    public float crimeAmount;
+    public float crimeMultiplier;
 
-    public float taxCard;
+    public float wealthAmount;
+    public float wealthMultiplier;
+
+    public float taxAmount;
+    public float taxMultiplier;
+
+
+
 
     public TextMesh textCard;
 
+
     public Texture textureCard;
 
-   public  RawImage rawImage;
+
+     public  RawImage rawImage;
 
 
 
     public bool isClicked = false, isInvaded = false;
 
+
     public Vector3 clickedd = new Vector3(0f, -300f, 0f);
     public Vector3 startPosition = new Vector3(0f, -440f, 0f);
-    public Vector3 placeOfMouse, worldPosition;
     public  Vector3 centerConst = new Vector3(960f, 540f, 0f);
+
+
+    public Vector3 placeOfMouse, worldPosition;
 
 
 
     virtual public void CardInvocate() {
+        
 
-        //GameManager.Instance.cost = GameManager.cost * costCard;
+        GameManager.Instance.money = GameManager.Instance.money - costAmount;
 
-        GameManager.Instance.population = GameManager.Instance.population * populationCard;
 
-        GameManager.Instance.money = GameManager.Instance.money *moneyCard;
+        GameManager.Instance.population = GameManager.Instance.population + populationAmount;
+        GameManager.Instance.population = GameManager.Instance.population * populationMultiplier;
 
-        GameManager.Instance.happiness = GameManager.Instance.happiness *happinessCard; 
+        GameManager.Instance.money = GameManager.Instance.money + moneyAmount;
+        GameManager.Instance.money = GameManager.Instance.money * moneyMultiplier;
 
-        GameManager.Instance.loyalty = GameManager.Instance.loyalty *loyaltyCard;
+        GameManager.Instance.happiness = Mathf.Clamp01(GameManager.Instance.happiness + happinessAmount);
+        GameManager.Instance.happiness = Mathf.Clamp01(GameManager.Instance.happiness * happinessMultiplier);
 
-        GameManager.Instance.fear = GameManager.Instance.fear *fearCard;
+        GameManager.Instance.loyalty = Mathf.Clamp01(GameManager.Instance.loyalty + loyaltyAmount);
+        GameManager.Instance.loyalty = Mathf.Clamp01(GameManager.Instance.loyalty * loyaltyMultiplier);
 
-        GameManager.Instance.education = GameManager.Instance.education *educationCard;
+        GameManager.Instance.fear = Mathf.Clamp01(GameManager.Instance.fear + fearAmount);
+        GameManager.Instance.fear = Mathf.Clamp01(GameManager.Instance.fear * fearMultiplier);
 
-        GameManager.Instance.crime = GameManager.Instance.crime *crimeCard;
+        GameManager.Instance.education = Mathf.Clamp01(GameManager.Instance.education + educationAmount);
+        GameManager.Instance.education = Mathf.Clamp01(GameManager.Instance.education * educationMultiplier);
 
-        GameManager.Instance.wealth = GameManager.Instance.wealth *wealthCard;
+        GameManager.Instance.crime = Mathf.Clamp01(GameManager.Instance.crime + crimeAmount);
+        GameManager.Instance.crime = Mathf.Clamp01(GameManager.Instance.crime * crimeMultiplier);
 
-        GameManager.Instance.tax = GameManager.Instance.tax *taxCard;
+        GameManager.Instance.wealth = GameManager.Instance.wealth + wealthAmount;
+        GameManager.Instance.wealth = GameManager.Instance.wealth * wealthMultiplier;
+
+        GameManager.Instance.tax = Mathf.Clamp01(GameManager.Instance.tax + taxAmount);
+        GameManager.Instance.tax = Mathf.Clamp01(GameManager.Instance.tax * taxMultiplier);
+
     }
 
 
@@ -89,18 +119,26 @@ abstract public class CardParent : MonoBehaviour
         isInvaded = true;
     }
 
+
     private void OnMouseExit()
     {
         MouseEXIT();
     }
-
-
     virtual public void MouseEXIT()
     {
         isClicked = false;
         isInvaded = false;
     }
 
+
+    virtual public void OnMouseUp()
+    {
+        mouseUP();
+    }
+    virtual public void mouseUP()
+    {
+        isClicked = false;
+    }
 
 
 
@@ -115,9 +153,13 @@ abstract public class CardParent : MonoBehaviour
         //MOUSE ENTER
         if (isInvaded == true && isClicked == false)
         {
-            rawImage.rectTransform.position = centerConst+clickedd;
-            rawImage.rectTransform.sizeDelta = new Vector2(300, 300);
+            if (isItPlaced() != true)
+            {
+                rawImage.rectTransform.position = centerConst + clickedd;
+                rawImage.rectTransform.sizeDelta = new Vector2(300, 300);
+            }
         }
+
 
         //Object is invaded but also is also clicked
         //MOUSE DRAG
@@ -131,25 +173,25 @@ abstract public class CardParent : MonoBehaviour
         //MouseEXIT
         if (isInvaded == false && isClicked == false)
         {
-            isItPlaced();
-
             rawImage.rectTransform.sizeDelta = new Vector2(100, 100);
 
             rawImage.rectTransform.position = centerConst+startPosition; 
 
         }
+
+
     }
 
 
     //Cheking if the card is places in the center
-    public void isItPlaced()
+    public bool isItPlaced()
     {
-        if (rawImage.rectTransform.position.y > 500)
+        if (rawImage.rectTransform.position.y > 350)
         {
             Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
-
-            //wywolac funkcje z round managera
+            return true;
         }
+        else return false;
     }
 
 
