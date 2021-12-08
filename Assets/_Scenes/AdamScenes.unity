@@ -351,7 +351,6 @@ GameObject:
   - component: {fileID: 393559794}
   - component: {fileID: 393559793}
   - component: {fileID: 393559792}
-  - component: {fileID: 393559796}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -440,32 +439,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &393559796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393559791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92b3ad9a7c8ecc54ea9e071ec305ea86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Score: 0
-  population: 10
-  money: 125
-  happiness: 0
-  loyalty: 0
-  fear: 0
-  education: 0
-  crime: 0
-  wealth: 0
-  tax: 0.2
-  round: 1
-  gameplayActive: 0
-  Hl: {fileID: 0}
-  Dl: {fileID: 0}
 --- !u!1 &465906660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,16 +1021,12 @@ MonoBehaviour:
   taxAmount: 0
   taxMultiplier: 0
   cam: {fileID: 0}
+  isDragged: 0
+  isHovered: 0
   textCard: {fileID: 0}
   textureCard: {fileID: 0}
   rawImage: {fileID: 2075475130}
-  isDragged: 0
-  isHovered: 0
-  clickedd: {x: 0, y: -500, z: 0}
-  startPosition: {x: 0, y: -440, z: 0}
-  centerConst: {x: 960, y: 540, z: 0}
   initialPosition: {x: 0, y: 0, z: 0}
-  placeOfMouse: {x: 0, y: 0, z: 0}
   worldPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &2075475130
 MonoBehaviour:
