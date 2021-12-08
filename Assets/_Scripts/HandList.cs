@@ -7,9 +7,6 @@ public class HandList : MonoBehaviour
     public List<CardParent> cardsInHand;
     
   
-
-   
-
     public void SendCardToHand(List<CardParent> cards)
     {
         cardsInHand.Add(cards[0]);

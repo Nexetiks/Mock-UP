@@ -15,13 +15,21 @@ public class RoundManager : MonoBehaviour
         GameManager.Instance.gameplayActive = true;
     }
 
+<<<<<<< HEAD
     
      public void endOfTheRound()
+=======
+    public void endOfTheRound() // kiedy to sie wywolywuje XD 
+>>>>>>> 1f6c91c049c8a02ebe5c475270fef9d57e8f7260
     {
 
         GameManager.Instance.gameplayActive = false;
         GameManager.Instance.round++;
+<<<<<<< HEAD
        // GameManager.Instance.Hl.UsedCard();//poprawic to
+=======
+      //  GameManager.Instance.Hl.UsedCard();
+>>>>>>> 1f6c91c049c8a02ebe5c475270fef9d57e8f7260
 
         Wealth();
 
