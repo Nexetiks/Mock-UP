@@ -25,7 +25,7 @@ public class RoundManager : MonoBehaviour
         GameManager.Instance.gameplayActive = false;
         
 
-       //GameManager.Instance.Hl.UsedCard();
+
 
 
         Wealth();
