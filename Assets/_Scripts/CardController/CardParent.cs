@@ -103,6 +103,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnPointerEnter(PointerEventData eventData)
     {
+        GameManager.Instance.Mm.PlaySound("cardHover");
         rawImage.rectTransform.sizeDelta = size * 2;
         MouseENTER();
     }
@@ -169,10 +170,12 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     //Cheking if the card is places in the center
     public bool IsCardPlaced()
     {
+       
         Debug.Log(GameManager.Instance.gameplayActive);
         if (GameManager.Instance.gameplayActive == true)
         {
-            viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
+            GameManager.Instance.Mm.PlaySound("throw");
+           viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
             Debug.Log(viewPortCardPosition.y);
 
             if (viewPortCardPosition.y > 0.5f)

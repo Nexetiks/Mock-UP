@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-
+    [SerializeField]
+    public MusicManager Mm;
     [SerializeField]
     public float Score;
     [SerializeField]

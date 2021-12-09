@@ -37,7 +37,8 @@ public class RoundManager : MonoBehaviour
         if (IsEndGame() == true)
         {
             GameManager.Instance.gameplayActive = false;
-            
+            GameManager.Instance.Mm.PlaySound("endScreen");
+            GameManager.Instance.Mm.StopMusic();
             amountOfPoints();
             GameManager.Instance.Hl.RemoveAllCards();
             GameManager.Instance.buttonEnd.SetActive(true);

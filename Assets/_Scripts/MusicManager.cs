@@ -6,8 +6,8 @@ public class MusicManager : MonoBehaviour
 {
     [SerializeField]
     private AudioSource backgroundMusic;
-
-    private AudioSource clipMusic;
+    [SerializeField]
+    private AudioSource soundEffect;
     [SerializeField]
     private Slider slider;
     [SerializeField]
@@ -19,8 +19,27 @@ public class MusicManager : MonoBehaviour
     {
         for (int i = 0; i < soundSource.Count; i++)
         {
-            if (soundName[i] == audioName) { clipMusic.clip = soundSource[i]; clipMusic.Play(); return; }
+         
+            if (soundName[i] == audioName) {
+                soundEffect.clip = soundSource[i];
+                
+               soundEffect.Play();
+                
+                
+                return; 
+            }
         }
+
+    }
+
+    public void StopSoundEffect()
+    {
+        soundEffect.mute = true;
+
+    }
+    public void StopMusic()
+    {
+        backgroundMusic.Stop();
 
     }
 
