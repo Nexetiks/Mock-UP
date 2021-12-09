@@ -4985,13 +4985,13 @@ MonoBehaviour:
   Score: 0
   handParent: {fileID: 268346666}
   population: 10
-  money: 0
-  happiness: 0
-  loyalty: 0
-  fear: 0
-  education: 0
-  crime: 0
-  wealth: 0
+  money: 100
+  happiness: 0.5
+  loyalty: 0.5
+  fear: 0.4
+  education: 0.1
+  crime: 0.1
+  wealth: 30
   tax: 0.2
   round: 1
   gameplayActive: 0

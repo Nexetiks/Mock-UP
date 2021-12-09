@@ -33,7 +33,7 @@ public class RoundManager : MonoBehaviour
         SetMoney();
 
         SetPopulation();
-
+        Debug.Log(IsEndGame());
         if (IsEndGame() == true)
         {
             GameManager.Instance.gameplayActive = false;
@@ -75,21 +75,24 @@ public class RoundManager : MonoBehaviour
     public bool IsEndGame()
     {
         if (GameManager.Instance.loyalty == 0 && GameManager.Instance.fear < 0.8f)
-            return true;
+        { return true;
+            Debug.Log("d");
+                }
 
-        if (GameManager.Instance.population == 0) return true;
+        if (GameManager.Instance.population == 0) { return true; Debug.Log("aaa"); }
 
 
         int helper = 0;
 
         for (int i = 0; i < GameManager.Instance.HandList.cardsInHand.Count; i++)
         {
-            if (GameManager.Instance.HandList.cardsInHand[i].costAmount <= GameManager.Instance.money) return true;
+            if (GameManager.Instance.HandList.cardsInHand[i].costAmount <= GameManager.Instance.money) { return true; Debug.Log("lala"); }
             else helper++;
         }
 
         if (GameManager.Instance.HandList.cardsInHand.Count == helper)
         {
+            Debug.Log("bdbdbdb");
             return true;
         }
         return false;

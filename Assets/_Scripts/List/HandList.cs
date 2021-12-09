@@ -17,8 +17,12 @@ public class HandList : MonoBehaviour
     public CardParent card5;
     private CardParent go;
     public List<CardParent> cardsInHand;
-  
-   
+
+    private Vector3 position;
+    private Vector3 scale;
+    private Quaternion rotation;
+
+
 
     public void MakeList()
     {
@@ -52,18 +56,35 @@ public class HandList : MonoBehaviour
 
     public void SendCardToHand(List<CardParent> cards)
     {
-        cardsInHand.Add(cards[0]);
-        cards.RemoveAt(0);
+        Debug.Log(cards.Count);
+        if (cards.Count > 0)
+        {
+            cardsInHand.Add(cards[0]);
+            cardsInHand[cardsInHand.Count - 1].transform.localScale = scale;
+            cardsInHand[cardsInHand.Count - 1].transform.localPosition = position;
+            cardsInHand[cardsInHand.Count - 1].transform.localRotation = rotation;
+
+            cards.RemoveAt(0);
+        }
     }
 
 
     public void UsedCard( int idCard)
     {
-        Debug.Log("used card" + cardsInHand.Count);
+      
         for (int i = 0; i < cardsInHand.Count; i++)
         {
             if (cardsInHand[i].idCard == idCard)
-            { cardsInHand.RemoveAt(idCard); return; }
+            {
+                position =cardsInHand[i].transform.localPosition;
+                scale= cardsInHand[i].transform.localScale;
+                rotation = cardsInHand[i].transform.localRotation;
+                Debug.Log(position);
+                Debug.Log(scale);
+                Debug.Log(rotation);
+                cardsInHand.RemoveAt(idCard); 
+                return; 
+            }
         }
     }
 

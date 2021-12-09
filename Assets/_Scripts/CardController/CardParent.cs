@@ -39,6 +39,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     public float taxAmount = 20;
     public float taxMultiplier=1;
+   
 
     public Camera cam;
 
@@ -242,7 +243,9 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 GameManager.Instance.isDragged = false;
                 GameManager.Instance.HandList.UsedCard(idCard);
                 Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
+                
                 Rm.EndOfTheRound();
+                GameManager.Instance.HandList.SendCardToHand(GameManager.Instance.DeskList.cards);
                 return true;
             }
             else return false;
