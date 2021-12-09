@@ -57,13 +57,10 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     [SerializeField]
     public float taxAmount = 20;
-<<<<<<< HEAD
-    public float taxMultiplier=1;
-   
-=======
+
     [SerializeField]
     public float taxMultiplier = 1;
->>>>>>> fa5972c720531a3a19d11fb42f3203ef5101cee6
+
 
 
     [SerializeField]
@@ -87,9 +84,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     [SerializeField]
     public RectTransform rectTra;
 
-    /// <summary>
-    /// mozliwe ze zostanie zmienione na przypisywanie i inspektorze
-    /// </summary>
+ 
     [SerializeField]
     public Vector3 initialPosition, viewPortCardPosition;
 
