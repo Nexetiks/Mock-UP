@@ -7,8 +7,8 @@ public class RoundManager : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.Dl.MixList();
-      
+        GameManager.Instance.DeskList.MixList();
+       
         GameManager.Instance.gameplayActive = true;
        
         
@@ -16,8 +16,8 @@ public class RoundManager : MonoBehaviour
    
     public void ShowCards()
     {
-        GameManager.Instance.Hl.MakeList();
-        GameManager.Instance.Hl.ShowCards();
+        GameManager.Instance.HandList.MakeList();
+        GameManager.Instance.HandList.ShowCards();
 
     }
 
@@ -27,25 +27,28 @@ public class RoundManager : MonoBehaviour
     {
 
         GameManager.Instance.gameplayActive = false;
-        
+       
         Wealth();
 
         SetMoney();
 
         SetPopulation();
-
+       
         if (IsEndGame() == true)
         {
             GameManager.Instance.gameplayActive = false;
-            
+            GameManager.Instance.musicManager.PlaySound("endScreen");
+            GameManager.Instance.musicManager.StopMusic();
             amountOfPoints();
-            GameManager.Instance.Hl.RemoveAllCards();
+             GameManager.Instance.HandList.RemoveAllCards();
             GameManager.Instance.buttonEnd.SetActive(true);
-            GameManager.Instance.mainUi.SetActive(false);
+            GameManager.Instance.mainPanel.SetActive(false);
 
         }
 
         GameManager.Instance.round++;
+        GameManager.Instance.gameplayActive = true;
+       
     }
 
 
@@ -72,23 +75,22 @@ public class RoundManager : MonoBehaviour
     public bool IsEndGame()
     {
         if (GameManager.Instance.loyalty == 0 && GameManager.Instance.fear < 0.8f)
-            return true;
-
-        if (GameManager.Instance.population == 0) return true;
-
+        return true;
+           
+        if (GameManager.Instance.population == 0)  return true; 
 
         int helper = 0;
 
-        for (int i = 0; i < GameManager.Instance.Hl.cardsInHand.Count; i++)
+        for (int i = 0; i < GameManager.Instance.HandList.cardsInHand.Count; i++)
         {
-            if (GameManager.Instance.Hl.cardsInHand[i].costAmount <= GameManager.Instance.money) return true;
+          
+            if (GameManager.Instance.HandList.cardsInHand[i].costAmount <= GameManager.Instance.money)  return false; 
             else helper++;
         }
-
-        if (GameManager.Instance.Hl.cardsInHand.Count == helper)
-        {
-            return true;
-        }
+      
+        
+        if (GameManager.Instance.HandList.cardsInHand.Count == helper)   return true;
+        
         return false;
     }
 
