@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeCameraPosition()
     {
-        mainCamera.transform.position = new Vector3(0, 117,-35);
+        mainCamera.transform.position = new Vector3(0, 130,-35);
 
 
     }

@@ -15,6 +15,22 @@ public class MusicManager : MonoBehaviour
     [SerializeField]
     private List<AudioClip> soundSource;
 
+    [SerializeField]
+   private Sprite SoundOn;
+    [SerializeField]
+    private Sprite SoundOff;
+    [SerializeField]
+
+      private Sprite MusicOn;
+     [SerializeField]
+     private Sprite MusicOff;
+     [SerializeField]
+     private Image soundBtn;
+     [SerializeField]
+     private Image audioBtn;
+
+
+
     public void PlaySound(string audioName)
     {
         for (int i = 0; i < soundSource.Count; i++)
@@ -34,22 +50,31 @@ public class MusicManager : MonoBehaviour
 
     public void StopSoundEffect()
     {
-        if (soundEffect.mute == true) soundEffect.mute = false;
-        else soundEffect.mute = true;
+        if (soundEffect.mute == true)
+        {
+            soundBtn.sprite = SoundOff;
+            soundEffect.mute = false;
+        }
+        else
+        {
+            soundBtn.sprite = SoundOn;
+            soundEffect.mute = true;
+        }
 
     }
     public void StopMusic()
     {
+      
         backgroundMusic.Stop();
 
     }
 
     public void StopBackgroundMusic()
     {
-        if(backgroundMusic.isPlaying) backgroundMusic.Stop();
-        else backgroundMusic.Play();
+        if (backgroundMusic.isPlaying) { backgroundMusic.Stop(); audioBtn.sprite = MusicOn; }
+        else { backgroundMusic.Play(); audioBtn.sprite = MusicOff; }
 
-    }
+        }
 
     public void ChangeVolume()
     {
