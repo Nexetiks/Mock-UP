@@ -83,7 +83,7 @@ public class HandList : MonoBehaviour
                 
                 rotation = cardsInHand[i].transform.localRotation;
 
-                Debug.Log("position :  " + cardsInHand[i].gameObject.GetComponent<Transform>()) ;
+                Debug.Log("position :  " + cardsInHand[i].gameObject.GetComponent<Transform>().transform.position.x) ;
 
                 //Debug.Log("rotation:   "+rotation);
                 cardsInHand.RemoveAt(i); 
