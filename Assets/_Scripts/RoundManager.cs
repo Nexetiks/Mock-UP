@@ -8,9 +8,9 @@ public class RoundManager : MonoBehaviour
     void Start()
     {
         GameManager.Instance.Dl.MixList();
-      
-        GameManager.Instance.gameplayActive = true;
        
+        GameManager.Instance.gameplayActive = true;
+        Debug.Log(GameManager.Instance.gameplayActive);
         
     }
    
@@ -27,7 +27,7 @@ public class RoundManager : MonoBehaviour
     {
 
         GameManager.Instance.gameplayActive = false;
-        
+        Debug.Log(GameManager.Instance.gameplayActive);
         Wealth();
 
         SetMoney();
@@ -47,6 +47,8 @@ public class RoundManager : MonoBehaviour
         }
 
         GameManager.Instance.round++;
+        GameManager.Instance.gameplayActive = true;
+        Debug.Log(GameManager.Instance.gameplayActive);
     }
 
 

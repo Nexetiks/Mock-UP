@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 255206309}
   - component: {fileID: 255206308}
   m_Layer: 5
-  m_Name: srodek
+  m_Name: prawoprawo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,7 +154,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 411162994}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -4.2}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -331,9 +331,9 @@ RectTransform:
   m_Children:
   - {fileID: 1620597706}
   - {fileID: 1510824724}
-  - {fileID: 255206307}
-  - {fileID: 588815611}
   - {fileID: 961062955}
+  - {fileID: 588815611}
+  - {fileID: 255206307}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -367,6 +367,7 @@ MonoBehaviour:
   tax: 0.2
   round: 1
   gameplayActive: 0
+  isDragged: 0
   buttonEnd: {fileID: 0}
   mainUi: {fileID: 0}
   Hl: {fileID: 0}
@@ -498,7 +499,7 @@ GameObject:
   - component: {fileID: 961062957}
   - component: {fileID: 961062956}
   m_Layer: 5
-  m_Name: prawo prawo
+  m_Name: srodek
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -516,7 +517,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 411162994}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
