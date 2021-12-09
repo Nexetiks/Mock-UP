@@ -121,7 +121,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     virtual public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("Enter");
-
+        GameManager.Instance.Mm.PlaySound("cardHover");
         //trans.DOMove(startPostion, 0.5f);
         if (GameManager.Instance.isDragged == false) { 
         rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 15f, rawImage.transform.position.z - 20f), 0.7f);
@@ -158,7 +158,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnEndDrag(PointerEventData eventData)
     {
-        GameManager.Instance.Mm.PlaySound("cardHover");
+        
         if (IsCardPlaced() == true) ;//end of the round
         else
         {
