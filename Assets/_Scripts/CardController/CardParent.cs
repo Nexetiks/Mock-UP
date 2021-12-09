@@ -121,7 +121,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     virtual public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("Enter");
-
+        GameManager.Instance.Mm.PlaySound("cardHover");
         //trans.DOMove(startPostion, 0.5f);
         if (GameManager.Instance.isDragged == false) { 
         rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 15f, rawImage.transform.position.z - 20f), 0.7f);
@@ -158,7 +158,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
+        
         if (IsCardPlaced() == true) ;//end of the round
         else
         {
@@ -225,10 +225,17 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     //Cheking if the card is places in the center
     public bool IsCardPlaced()
     {
+<<<<<<< HEAD
         //Debug.Log(GameManager.Instance.gameplayActive);
        // if (GameManager.Instance.gameplayActive == true)
        // {
             viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
+=======
+        if (GameManager.Instance.gameplayActive == true)
+        {
+            GameManager.Instance.Mm.PlaySound("throw");
+           viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
+>>>>>>> ac4ba66d1abbe1d3a01be6aad78b4752b1fd2397
             Debug.Log(viewPortCardPosition.y);
 
             if (viewPortCardPosition.y > 0.5f)
