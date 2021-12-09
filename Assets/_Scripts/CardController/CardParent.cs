@@ -36,7 +36,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     public float wealthAmount = 0;
     public float wealthMultiplier=1;
 
-    public float taxAmount = 0;
+    public float taxAmount = 20;
     public float taxMultiplier=1;
 
     public Camera cam;
@@ -126,25 +126,25 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         GameManager.Instance.money = GameManager.Instance.money + moneyAmount;
         GameManager.Instance.money = GameManager.Instance.money * moneyMultiplier;
 
-        GameManager.Instance.happiness = Mathf.Clamp01(GameManager.Instance.happiness + happinessAmount);
+        GameManager.Instance.happiness = Mathf.Clamp01(GameManager.Instance.happiness + happinessAmount/100);
         GameManager.Instance.happiness = Mathf.Clamp01(GameManager.Instance.happiness * happinessMultiplier);
 
-        GameManager.Instance.loyalty = Mathf.Clamp01(GameManager.Instance.loyalty + loyaltyAmount);
+        GameManager.Instance.loyalty = Mathf.Clamp01(GameManager.Instance.loyalty + loyaltyAmount / 100);
         GameManager.Instance.loyalty = Mathf.Clamp01(GameManager.Instance.loyalty * loyaltyMultiplier);
 
-        GameManager.Instance.fear = Mathf.Clamp01(GameManager.Instance.fear + fearAmount);
+        GameManager.Instance.fear = Mathf.Clamp01(GameManager.Instance.fear + fearAmount / 100);
         GameManager.Instance.fear = Mathf.Clamp01(GameManager.Instance.fear * fearMultiplier);
 
-        GameManager.Instance.education = Mathf.Clamp01(GameManager.Instance.education + educationAmount);
+        GameManager.Instance.education = Mathf.Clamp01(GameManager.Instance.education + educationAmount / 100);
         GameManager.Instance.education = Mathf.Clamp01(GameManager.Instance.education * educationMultiplier);
 
-        GameManager.Instance.crime = Mathf.Clamp01(GameManager.Instance.crime + crimeAmount);
+        GameManager.Instance.crime = Mathf.Clamp01(GameManager.Instance.crime + crimeAmount / 100);
         GameManager.Instance.crime = Mathf.Clamp01(GameManager.Instance.crime * crimeMultiplier);
 
         GameManager.Instance.wealth = GameManager.Instance.wealth + wealthAmount;
         GameManager.Instance.wealth = GameManager.Instance.wealth * wealthMultiplier;
 
-        GameManager.Instance.tax = Mathf.Clamp01(GameManager.Instance.tax + taxAmount);
+        GameManager.Instance.tax = Mathf.Clamp01(GameManager.Instance.tax + taxAmount / 100);
         GameManager.Instance.tax = Mathf.Clamp01(GameManager.Instance.tax * taxMultiplier);
 
 
