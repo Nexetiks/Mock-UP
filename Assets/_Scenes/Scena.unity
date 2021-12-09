@@ -400,7 +400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &97662324
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1532,7 +1532,7 @@ RectTransform:
   m_GameObject: {fileID: 431702148}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.45833334, y: 0.45833334, z: 0.45833334}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 97662324}
   m_Father: {fileID: 843757356}
@@ -1540,8 +1540,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 263, y: 115}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 264.7, y: 114.9}
+  m_SizeDelta: {x: 1280, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &431702150
 MonoBehaviour:
@@ -1631,8 +1631,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 0fb333326733bef42a73eed5adee3784, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4617,7 +4617,7 @@ MonoBehaviour:
   - cardHover
   - endScreen
   soundSource:
-  - {fileID: 8300000, guid: 3309cbad324c48144a781a835f200806, type: 3}
+  - {fileID: 8300000, guid: 9c5c90a1de0fb5f46ac7a332c6734093, type: 3}
   - {fileID: 8300000, guid: 645b86ae3a847364ea63a9eceb5a09ef, type: 3}
   - {fileID: 8300000, guid: 63af0818724347a44a2b35ab9922f7be, type: 3}
   - {fileID: 8300000, guid: e524d228fd73cd446aee53734c114ce0, type: 3}
