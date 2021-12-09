@@ -13,17 +13,18 @@ public class RoundManager : MonoBehaviour
 
 
         GameManager.Instance.gameplayActive = true;
+        Debug.Log(GameManager.Instance.gameplayActive);
     }
 
 
 
 
 
-    public void endOfTheRound() // kiedy to sie wywolywuje XD
+    public void EndOfTheRound() // kiedy to sie wywolywuje XD
     {
 
         GameManager.Instance.gameplayActive = false;
-       
+        Debug.Log(GameManager.Instance.gameplayActive);
         Wealth();
 
         SetMoney();
@@ -33,7 +34,7 @@ public class RoundManager : MonoBehaviour
         if (IsEndGame() == true)
         {
             GameManager.Instance.gameplayActive = false;
-
+            Debug.Log(GameManager.Instance.gameplayActive);
             amountOfPoints();
             //funckja na koniec gry
 

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHandler,IPointerExitHandler,IPointerEnterHandler,IDragHandler
 {
+    
+    private RoundManager Rm;
     public float costAmount=0;
 
     public int idCard;
@@ -166,10 +168,9 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     //Cheking if the card is places in the center
     public bool IsCardPlaced()
     {
+        Debug.Log(GameManager.Instance.gameplayActive);
         if (GameManager.Instance.gameplayActive == true)
         {
-
-
             viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
             Debug.Log(viewPortCardPosition.y);
 
@@ -178,7 +179,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
 
                 GameManager.Instance.Hl.UsedCard(idCard);
-
+                Rm.EndOfTheRound();
                 return true;
             }
             else return false;

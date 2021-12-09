@@ -34,8 +34,6 @@ public class MusicManager : MonoBehaviour
     public void ChangeVolume()
     {
         backgroundMusic.volume= slider.value;
-       
-
     }
 
 
