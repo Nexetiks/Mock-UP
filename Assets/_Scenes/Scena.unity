@@ -4985,7 +4985,7 @@ MonoBehaviour:
   Score: 0
   handParent: {fileID: 268346666}
   population: 10
-  money: 125
+  money: 0
   happiness: 0
   loyalty: 0
   fear: 0

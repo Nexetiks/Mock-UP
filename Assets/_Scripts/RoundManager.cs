@@ -40,7 +40,7 @@ public class RoundManager : MonoBehaviour
             GameManager.Instance.musicManager.PlaySound("endScreen");
             GameManager.Instance.musicManager.StopMusic();
             amountOfPoints();
-            GameManager.Instance.HandList.RemoveAllCards();
+             GameManager.Instance.HandList.RemoveAllCards();
             GameManager.Instance.buttonEnd.SetActive(true);
             GameManager.Instance.mainPanel.SetActive(false);
 

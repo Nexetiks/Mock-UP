@@ -240,9 +240,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             if (viewPortCardPosition.y > 0.5f)
             {
                 GameManager.Instance.isDragged = false;
-                Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
-
                 GameManager.Instance.HandList.UsedCard(idCard);
+                Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
                 Rm.EndOfTheRound();
                 return true;
             }

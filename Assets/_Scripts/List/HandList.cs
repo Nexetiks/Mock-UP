@@ -15,7 +15,7 @@ public class HandList : MonoBehaviour
     public CardParent card4;
     [SerializeField]
     public CardParent card5;
-
+    private CardParent go;
     public List<CardParent> cardsInHand;
   
    
@@ -31,12 +31,22 @@ public class HandList : MonoBehaviour
     }
     public void ShowCards()
     {
-       
+        int temp= 0;
         for (int i=0; i < cardsInHand.Count; i++)
         {
-            Instantiate(cardsInHand[i], new Vector2(i * 3 - 8, 0), Quaternion.identity).transform.parent = GameManager.Instance.handParent.transform;
-            
+            go = Instantiate(cardsInHand[i], new Vector3(0,0,0), Quaternion.identity);
+            go.transform.parent = GameManager.Instance.handParent.transform;
+            go.transform.localScale = new Vector3(1, 1, 1);
+             if(temp==0) go.transform.localPosition = new Vector3(-270 + i*135 , -385 , 0);
+            else if (temp == 1) go.transform.localPosition = new Vector3(-270 + i * 135, -375, 0);
+            else if (temp == 2) go.transform.localPosition = new Vector3(-270 + i * 135, -370, 0);
+            else if (temp == 3) go.transform.localPosition = new Vector3(-270 + i * 135, -375, 0);
+            else if (temp == 4) go.transform.localPosition = new Vector3(-270 + i * 135, -385, 0);
+            temp++;
+            go.transform.localRotation = Quaternion.Euler(0, 0, -(-4.2f + 2.1f * i));
+
         }
+    
 
     }
 
@@ -70,7 +80,7 @@ public class HandList : MonoBehaviour
         {
 
             cardsInHand.RemoveAt(0);
-
+           
         }
         foreach (Transform child in GameManager.Instance.handParent.transform)
             GameObject.Destroy(child.gameObject);
