@@ -100,7 +100,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     private void LateUpdate()
     {
         //Debug.Log(GameManager.Instance.isDragged);
-        Debug.Log(GameManager.Instance.gameplayActive);
+       // Debug.Log(GameManager.Instance.gameplayActive);
     }
 
 
@@ -225,8 +225,9 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     //Cheking if the card is places in the center
     public bool IsCardPlaced()
     {
-        if (GameManager.Instance.gameplayActive == true)
-        {
+        //Debug.Log(GameManager.Instance.gameplayActive);
+       // if (GameManager.Instance.gameplayActive == true)
+       // {
             viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
             Debug.Log(viewPortCardPosition.y);
 
@@ -240,7 +241,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 return true;
             }
             else return false;
-        }
+        //}
         return false;
     }
 
