@@ -70,7 +70,45 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     }
 
 
-    
+    virtual public void OnEndDrag(PointerEventData eventData)
+    {
+        if (IsCardPlaced() == true) ;//end of the round
+        else
+        {
+            rawImage.rectTransform.position = initialPosition;
+            rawImage.rectTransform.sizeDelta = size;
+            MouseUP();
+        }
+    }
+
+    virtual public void OnBeginDrag(PointerEventData eventData)
+    {
+        rawImage.rectTransform.sizeDelta = 2 * size;
+        BeginDRAG();
+    }
+
+    virtual public void OnPointerExit(PointerEventData eventData)
+    {
+        if (isDragged == false)
+        {
+            rawImage.rectTransform.position = initialPosition;
+            rawImage.rectTransform.sizeDelta = size;
+        }
+
+        MouseEXIT();
+    }
+
+    virtual public void OnPointerEnter(PointerEventData eventData)
+    {
+        rawImage.rectTransform.sizeDelta = size * 2;
+        MouseENTER();
+    }
+
+    virtual public void OnDrag(PointerEventData eventData)
+    {
+        rawImage.rectTransform.position = cam.ScreenToWorldPoint(MousePlace());
+        rawImage.rectTransform.sizeDelta = 2 * size;
+    }
 
 
 
@@ -109,35 +147,20 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
 
     }
-    
 
 
-   
-   
-    virtual public void BeginDRAG()
+    //Returning mouse position to be able to move cards
+    virtual public Vector3 MousePlace()
     {
-        isDragged = true;
-        isHovered = true;
+        Vector3 placeOfMouse = Input.mousePosition;
+        placeOfMouse.z = canvas.planeDistance;
+        worldPosition = cam.ScreenToWorldPoint(placeOfMouse);
+
+
+        return placeOfMouse;
     }
 
 
-    virtual public void MouseENTER()
-    {
-        isHovered = true;
-    }
-
-
-    virtual public void MouseEXIT()
-    {
-        isHovered = false;
-    }
-
-
-    virtual public void MouseUP()
-    {
-        isDragged = false;
-        
-    }
 
 
     //Cheking if the card is places in the center
@@ -155,7 +178,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
 
                 GameManager.Instance.Hl.UsedCard(idCard);
-                
+
                 return true;
             }
             else return false;
@@ -164,58 +187,25 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     }
 
 
-
-
-    //Returning mouse position to be able to move cards
-    virtual public Vector3 MousePlace()
+    virtual public void BeginDRAG()
     {
-        Vector3 placeOfMouse = Input.mousePosition;
-        placeOfMouse.z = canvas.planeDistance;
-        worldPosition = cam.ScreenToWorldPoint(placeOfMouse);
-
-
-        return placeOfMouse;
+        isDragged = true;
+        isHovered = true;
     }
 
-
-    public void OnEndDrag(PointerEventData eventData)
+    virtual public void MouseENTER()
     {
-        if (IsCardPlaced() == true) ;//end of the round
-        else
-        {
-            rawImage.rectTransform.position = initialPosition;
-            rawImage.rectTransform.sizeDelta =  size;
-            MouseUP();
-        }
+        isHovered = true;
     }
 
-
-    public void OnBeginDrag(PointerEventData eventData)
+    virtual public void MouseEXIT()
     {
-        rawImage.rectTransform.sizeDelta = 2 * size;
-        BeginDRAG();
+        isHovered = false;
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    virtual public void MouseUP()
     {
-        if (isDragged == false)
-        {
-            rawImage.rectTransform.position = initialPosition;
-            rawImage.rectTransform.sizeDelta = size;
-        }
+        isDragged = false;
         
-        MouseEXIT();
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        rawImage.rectTransform.sizeDelta = size * 2;
-        MouseENTER();
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        rawImage.rectTransform.position = cam.ScreenToWorldPoint(MousePlace());
-        rawImage.rectTransform.sizeDelta = 2 * size;
     }
 }
