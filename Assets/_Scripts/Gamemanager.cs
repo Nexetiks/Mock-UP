@@ -80,7 +80,6 @@ public class GameManager : MonoBehaviour
     public List<Vector3> position = new List<Vector3>();
     public List<Quaternion> rotation = new List<Quaternion>();
     
-    [SerializeField]
     public CardService cardService;
 
 
