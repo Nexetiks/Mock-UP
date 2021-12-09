@@ -43,7 +43,13 @@ public class GameManager : MonoBehaviour
     public GameObject buttonEnd;
     [SerializeField]
     public GameObject mainPanel;
-
+    [SerializeField]
+    public Vector3 positionToPutIn;
+    [SerializeField]
+    public Quaternion rotationToPutIn;
+    [SerializeField]
+    public RawImage cardToPutIn;
+    
 
     public HandList HandList;
     public DeckList DeskList;
@@ -70,7 +76,9 @@ public class GameManager : MonoBehaviour
     private GameObject moneyStat;
     [SerializeField]
     private GameObject wealthStat;
-    
+
+    [SerializeField]
+    public CardService cardService;
 
 
     public void ChangeFillAmount()

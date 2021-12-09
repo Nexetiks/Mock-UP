@@ -17,7 +17,7 @@ public class HandList : MonoBehaviour
     public CardParent card5;
     private CardParent go;
     public List<CardParent> cardsInHand;
-
+    
     private Vector3 position;
     private Quaternion rotation;
 
@@ -59,12 +59,14 @@ public class HandList : MonoBehaviour
         if (cards.Count > 0)
         {
             cardsInHand.Add(cards[0]);
-            go = Instantiate(cardsInHand[cardsInHand.Count - 1], new Vector3(0, 0, 0), Quaternion.identity);
+            go =Instantiate(cardsInHand[cardsInHand.Count - 1], new Vector3(0, 0, 0), Quaternion.identity);
+           // go.gameObject.AddComponent<GameManager.Instance.cardService>();
             go.transform.parent = GameManager.Instance.handParent.transform;
             go.transform.localScale = new Vector3(1, 1, 1);
             go.transform.localPosition = new Vector3(0, -1000, 1);
             go.transform.localRotation = rotation;
-
+            
+            
             cards.RemoveAt(0);
         }
     }
