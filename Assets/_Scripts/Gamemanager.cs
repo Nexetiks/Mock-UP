@@ -48,8 +48,19 @@ public class GameManager : MonoBehaviour
     
     public static GameManager Instance;
 
+    [SerializeField]
+    private Camera mainCamera;
+    public void ChangeCameraPosition()
+    {
+        mainCamera.transform.position = new Vector3(0, 117,-35);
 
 
+    }
+
+    public void GoToMainPosition()
+    {
+        mainCamera.transform.position = new Vector3(0, 0,-35);
+    }
     private void Awake()
     {
         if (Instance == null) Instance = this;
