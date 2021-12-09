@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 393559792}
   - component: {fileID: 393559796}
   - component: {fileID: 393559797}
+  - component: {fileID: 393559798}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -238,6 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Score: 0
+  myParent: {fileID: 0}
   population: 10
   money: 125
   happiness: 0
@@ -249,7 +251,8 @@ MonoBehaviour:
   tax: 0.2
   round: 1
   gameplayActive: 0
-  endButton: {fileID: 0}
+  buttonEnd: {fileID: 0}
+  mainUi: {fileID: 0}
   Hl: {fileID: 0}
   Dl: {fileID: 0}
 --- !u!114 &393559797
@@ -264,6 +267,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721b66748726fd446b18fd6aca18b0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &393559798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393559791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b3ad9a7c8ecc54ea9e071ec305ea86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Score: 0
+  myParent: {fileID: 0}
+  population: 10
+  money: 125
+  happiness: 0
+  loyalty: 0
+  fear: 0
+  education: 0
+  crime: 0
+  wealth: 0
+  tax: 0.2
+  round: 1
+  gameplayActive: 0
+  buttonEnd: {fileID: 0}
+  mainUi: {fileID: 0}
+  Hl: {fileID: 0}
+  Dl: {fileID: 0}
 --- !u!1 &929326653
 GameObject:
   m_ObjectHideFlags: 0

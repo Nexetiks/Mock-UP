@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     public int round = 1;
     [SerializeField]
     public bool gameplayActive = false;
+    [SerializeField]
+    public bool isDragged = false;
 
     [SerializeField]
     public GameObject buttonEnd;

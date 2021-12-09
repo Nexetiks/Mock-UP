@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DG.Tweening;
 
 abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHandler,IPointerExitHandler,IPointerEnterHandler,IDragHandler
 {
@@ -55,6 +56,9 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     Vector3 viewPortCardPosition;
 
+    RectTransform rectTra;
+    float zRotation;
+
     /// <summary>
     /// mozliwe ze zostanie zmienione na przypisywanie i inspektorze
     /// </summary>
@@ -62,58 +66,109 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     public Vector3 worldPosition;
 
+
+    Vector3 startPostion;
+    Quaternion startRotation;
+
     private void Awake()
     {
         canvas = FindObjectOfType<Canvas>();
+
+        rectTra = this.GetComponent<RectTransform>();
+
+        rawImage = this.GetComponent<RawImage>();
+
         initialPosition = rawImage.rectTransform.position;//mozliwa zmaina na wartosc edytowana w inpsektorze
+        
+
         cam = Camera.main;
         size= rawImage.rectTransform.sizeDelta;
         Rm = new RoundManager();
 
+        zRotation = rectTra.rotation.z;
+
+        
     }
 
-
-    virtual public void OnEndDrag(PointerEventData eventData)
+    private void Start()
     {
-        if (IsCardPlaced() == true) ;//end of the round
-        else
-        {
-            rawImage.rectTransform.position = initialPosition;
-            rawImage.rectTransform.sizeDelta = size;
-            MouseUP();
-        }
+        startPostion = rawImage.transform.position;
+        startRotation = rawImage.transform.rotation;
+        Debug.Log(startPostion.z);
     }
+
+    private void LateUpdate()
+    {
+        //Debug.Log(GameManager.Instance.isDragged);
+        Debug.Log(GameManager.Instance.gameplayActive);
+    }
+
+
+
 
     virtual public void OnBeginDrag(PointerEventData eventData)
     {
-        rawImage.rectTransform.sizeDelta = 2 * size;
         BeginDRAG();
-    }
-
-    virtual public void OnPointerExit(PointerEventData eventData)
-    {
-        if (isDragged == false)
-        {
-            rawImage.rectTransform.position = initialPosition;
-            rawImage.rectTransform.sizeDelta = size;
-        }
-
-        MouseEXIT();
-    }
-
-    virtual public void OnPointerEnter(PointerEventData eventData)
-    {
-        GameManager.Instance.Mm.PlaySound("cardHover");
-        rawImage.rectTransform.sizeDelta = size * 2;
-        MouseENTER();
     }
 
     virtual public void OnDrag(PointerEventData eventData)
     {
-        rawImage.rectTransform.position = cam.ScreenToWorldPoint(MousePlace());
-        rawImage.rectTransform.sizeDelta = 2 * size;
+        rawImage.transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.2f);
+        rawImage.transform.DOMove(new Vector3((cam.ScreenToWorldPoint(MousePlace())).x, (cam.ScreenToWorldPoint(MousePlace())).y, (cam.ScreenToWorldPoint(MousePlace())).z-20f), 0.2f);
+        Debug.Log("OnDrag");
     }
 
+    virtual public void OnPointerEnter(PointerEventData eventData)
+    {
+        Debug.Log("Enter");
+
+        //trans.DOMove(startPostion, 0.5f);
+        if (GameManager.Instance.isDragged == false) { 
+        rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 15f, rawImage.transform.position.z - 20f), 0.7f);
+        rawImage.transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.7f);
+        }
+        /*
+        rawImage.rectTransform.sizeDelta = 2 * size;
+        rawImage.rectTransform.position = new Vector3(initialPosition.x, initialPosition.y * 0.5f, initialPosition.z);
+        rectTra.rotation = Quaternion.Euler(0, 0, 0);
+        //rawImage.rectTransform.sizeDelta = size * 2;
+        MouseENTER();*/
+    }
+
+    virtual public void OnPointerExit(PointerEventData eventData)
+    {
+        if (GameManager.Instance.isDragged == false)
+        {
+            Debug.Log("EXIT");
+            rawImage.transform.DOMove(startPostion, 0.71f);
+            Debug.Log(startPostion);
+            rawImage.transform.DORotateQuaternion(startRotation, 0.71f);
+        }
+        /*
+        Debug.Log("OnPointerExit");
+        if (isDragged == false)
+        {
+            //rawImage.rectTransform.position = initialPosition;
+            //rawImage.rectTransform.sizeDelta = size;
+        }
+
+        MouseEXIT();
+        */
+    }
+
+    virtual public void OnEndDrag(PointerEventData eventData)
+    {
+        GameManager.Instance.Mm.PlaySound("cardHover");
+        if (IsCardPlaced() == true) ;//end of the round
+        else
+        {
+            GameManager.Instance.isDragged = false;
+            rawImage.transform.DOMove(startPostion, 0.71f);
+            rawImage.transform.DORotateQuaternion(startRotation, 0.71f);
+            MouseUP();
+        }
+        
+    }
 
 
     virtual public void CardInvocate() {
@@ -170,8 +225,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     //Cheking if the card is places in the center
     public bool IsCardPlaced()
     {
-       
-        Debug.Log(GameManager.Instance.gameplayActive);
         if (GameManager.Instance.gameplayActive == true)
         {
             GameManager.Instance.Mm.PlaySound("throw");
@@ -180,6 +233,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
             if (viewPortCardPosition.y > 0.5f)
             {
+                GameManager.Instance.isDragged = false;
                 Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
 
                 GameManager.Instance.Hl.UsedCard(idCard);
@@ -194,7 +248,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void BeginDRAG()
     {
-        isDragged = true;
+        GameManager.Instance.isDragged = true;
         isHovered = true;
     }
 
@@ -210,7 +264,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void MouseUP()
     {
-        isDragged = false;
+        GameManager.Instance.isDragged = false;
         
     }
 }
