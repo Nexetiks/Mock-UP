@@ -602,7 +602,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1698666408}
         m_TargetAssemblyTypeName: MusicManager, Assembly-CSharp
-        m_MethodName: StopBackgroundMusic
+        m_MethodName: StopSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1540,7 +1540,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 218.084, y: 88.262}
+  m_AnchoredPosition: {x: 891, y: 485}
   m_SizeDelta: {x: 1373.233, y: 773.276}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &431702150
@@ -4797,6 +4797,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1731867466}
   - component: {fileID: 1731867467}
+  - component: {fileID: 1731867468}
   m_Layer: 5
   m_Name: Fear
   m_TagString: Untagged
@@ -4876,6 +4877,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1731867468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731867465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48923eb50ad088d4aa6b5f768d769a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1773346339
 GameObject:
   m_ObjectHideFlags: 0
@@ -4981,9 +4994,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b3ad9a7c8ecc54ea9e071ec305ea86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicManager: {fileID: 0}
+  musicManager: {fileID: 1698666408}
   Score: 0
-  handParent: {fileID: 0}
+  handParent: {fileID: 268346666}
   population: 10
   money: 125
   happiness: 0
@@ -4997,9 +5010,9 @@ MonoBehaviour:
   gameplayActive: 0
   isDragged: 0
   buttonEnd: {fileID: 1621099819}
-  mainPanel: {fileID: 0}
-  HandList: {fileID: 0}
-  DeskList: {fileID: 0}
+  mainPanel: {fileID: 613164084}
+  HandList: {fileID: 3902317354310889265, guid: 0ffdab41dcccab24e97e69b004389e04, type: 3}
+  DeskList: {fileID: -5594225784292877996, guid: f1b5accbc73c8344da920f5eedebd8e7, type: 3}
   mainCamera: {fileID: 760658881}
 --- !u!4 &1795336713
 Transform:

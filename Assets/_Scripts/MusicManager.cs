@@ -34,7 +34,8 @@ public class MusicManager : MonoBehaviour
 
     public void StopSoundEffect()
     {
-        soundEffect.mute = true;
+        if (soundEffect.mute == true) soundEffect.mute = false;
+        else soundEffect.mute = true;
 
     }
     public void StopMusic()
