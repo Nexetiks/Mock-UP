@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    public MusicManager Mm;
+    public MusicManager musicManager;
     [SerializeField]
     public float Score;
     [SerializeField]
-    public GameObject myParent;
+    public GameObject handParent;
     [SerializeField]
     public float population = 10;
     [SerializeField]
@@ -40,11 +40,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public GameObject buttonEnd;
     [SerializeField]
-    public GameObject mainUi;
+    public GameObject mainPanel;
 
 
-    public HandList Hl;
-    public DeckList Dl;
+    public HandList HandList;
+    public DeckList DeskList;
     
     public static GameManager Instance;
 

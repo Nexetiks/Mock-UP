@@ -7,7 +7,7 @@ public class RoundManager : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.Dl.MixList();
+        GameManager.Instance.DeskList.MixList();
        
         GameManager.Instance.gameplayActive = true;
         Debug.Log(GameManager.Instance.gameplayActive);
@@ -16,8 +16,8 @@ public class RoundManager : MonoBehaviour
    
     public void ShowCards()
     {
-        GameManager.Instance.Hl.MakeList();
-        GameManager.Instance.Hl.ShowCards();
+        GameManager.Instance.HandList.MakeList();
+        GameManager.Instance.HandList.ShowCards();
 
     }
 
@@ -37,12 +37,12 @@ public class RoundManager : MonoBehaviour
         if (IsEndGame() == true)
         {
             GameManager.Instance.gameplayActive = false;
-            GameManager.Instance.Mm.PlaySound("endScreen");
-            GameManager.Instance.Mm.StopMusic();
+            GameManager.Instance.musicManager.PlaySound("endScreen");
+            GameManager.Instance.musicManager.StopMusic();
             amountOfPoints();
-            GameManager.Instance.Hl.RemoveAllCards();
+            GameManager.Instance.HandList.RemoveAllCards();
             GameManager.Instance.buttonEnd.SetActive(true);
-            GameManager.Instance.mainUi.SetActive(false);
+            GameManager.Instance.mainPanel.SetActive(false);
 
         }
 
@@ -82,13 +82,13 @@ public class RoundManager : MonoBehaviour
 
         int helper = 0;
 
-        for (int i = 0; i < GameManager.Instance.Hl.cardsInHand.Count; i++)
+        for (int i = 0; i < GameManager.Instance.HandList.cardsInHand.Count; i++)
         {
-            if (GameManager.Instance.Hl.cardsInHand[i].costAmount <= GameManager.Instance.money) return true;
+            if (GameManager.Instance.HandList.cardsInHand[i].costAmount <= GameManager.Instance.money) return true;
             else helper++;
         }
 
-        if (GameManager.Instance.Hl.cardsInHand.Count == helper)
+        if (GameManager.Instance.HandList.cardsInHand.Count == helper)
         {
             return true;
         }

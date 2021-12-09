@@ -121,7 +121,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     virtual public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("Enter");
-        GameManager.Instance.Mm.PlaySound("cardHover");
+        GameManager.Instance.musicManager.PlaySound("cardHover");
         //trans.DOMove(startPostion, 0.5f);
         if (GameManager.Instance.isDragged == false) { 
         rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 15f, rawImage.transform.position.z - 20f), 0.7f);
@@ -230,7 +230,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
         if (GameManager.Instance.gameplayActive == true)
         {
-            GameManager.Instance.Mm.PlaySound("throw");
+            GameManager.Instance.musicManager.PlaySound("throw");
            viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
 
             Debug.Log(viewPortCardPosition.y);
@@ -240,7 +240,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 GameManager.Instance.isDragged = false;
                 Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
 
-                GameManager.Instance.Hl.UsedCard(idCard);
+                GameManager.Instance.HandList.UsedCard(idCard);
                 Rm.EndOfTheRound();
                 return true;
             }
