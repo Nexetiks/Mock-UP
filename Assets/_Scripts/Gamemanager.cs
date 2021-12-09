@@ -35,12 +35,14 @@ public class GameManager : MonoBehaviour
     public bool gameplayActive = false;
 
     [SerializeField]
+    public GameObject buttonEnd;
+    [SerializeField]
+    public GameObject mainUi;
 
-    public Button endButton;
 
     public HandList Hl;
     public DeckList Dl;
-
+    
     public static GameManager Instance;
 
 

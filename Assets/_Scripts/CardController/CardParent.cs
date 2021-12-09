@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHandler,IPointerExitHandler,IPointerEnterHandler,IDragHandler
 {
-    
     private RoundManager Rm;
+
     public float costAmount=0;
 
     public int idCard;
@@ -68,6 +68,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         initialPosition = rawImage.rectTransform.position;//mozliwa zmaina na wartosc edytowana w inpsektorze
         cam = Camera.main;
         size= rawImage.rectTransform.sizeDelta;
+        Rm = new RoundManager();
 
     }
 
