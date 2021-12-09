@@ -134,6 +134,9 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
         if (GameManager.Instance.isDragged == false &&GameManager.Instance.isBacking == false)
         {
+            GameManager.Instance.positionToPutIn = rawImage.rectTransform.position;
+            GameManager.Instance.rotationToPutIn = rawImage.rectTransform.rotation;
+
             GameManager.Instance.musicManager.PlaySound("cardHover");
             rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 10f, rawImage.transform.position.z - 15f), 0.7f);
             rawImage.transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.7f);
@@ -225,6 +228,10 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
             if (viewPortCardPosition.y > 0.5f)
             {
+                
+                GameManager.Instance.positionToPutIn = initialPosition;
+
+
                 GameManager.Instance.musicManager.PlaySound("throw");
                 CardInvocate();
                 GameManager.Instance.isDragged = false;
