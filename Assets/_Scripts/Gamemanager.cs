@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     public bool gameplayActive = false;
     [SerializeField]
     public bool isDragged = false;
+    [SerializeField]
+    public bool isBacking=false;
 
     [SerializeField]
     public GameObject buttonEnd;
