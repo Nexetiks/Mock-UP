@@ -34,7 +34,7 @@ public class HandList : MonoBehaviour
        
         for (int i=0; i < cardsInHand.Count; i++)
         {
-            Instantiate(cardsInHand[i], new Vector2(i * 3 - 8, 0), Quaternion.identity).transform.parent = GameManager.Instance.myParent.transform;
+            Instantiate(cardsInHand[i], new Vector2(i * 3 - 8, 0), Quaternion.identity).transform.parent = GameManager.Instance.handParent.transform;
             
         }
 
@@ -72,7 +72,7 @@ public class HandList : MonoBehaviour
             cardsInHand.RemoveAt(0);
 
         }
-        foreach (Transform child in GameManager.Instance.myParent.transform)
+        foreach (Transform child in GameManager.Instance.handParent.transform)
             GameObject.Destroy(child.gameObject);
 
        

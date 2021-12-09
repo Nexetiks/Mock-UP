@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 92699812}
   - component: {fileID: 92699811}
   m_Layer: 5
-  m_Name: Image
+  m_Name: happinessState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -400,7 +400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &97662324
 RectTransform:
   m_ObjectHideFlags: 0
@@ -602,7 +602,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1698666408}
         m_TargetAssemblyTypeName: MusicManager, Assembly-CSharp
-        m_MethodName: StopBackgroundMusic
+        m_MethodName: StopSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 195398523}
   - component: {fileID: 195398522}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: loyaltyState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1017,7 +1017,7 @@ GameObject:
   - component: {fileID: 251910219}
   - component: {fileID: 251910218}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1127,7 +1127,7 @@ GameObject:
   - component: {fileID: 286509349}
   - component: {fileID: 286509348}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: crimeState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1532,7 +1532,7 @@ RectTransform:
   m_GameObject: {fileID: 431702148}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.45833334, y: 0.45833334, z: 0.45833334}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 97662324}
   m_Father: {fileID: 843757356}
@@ -1540,8 +1540,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 263, y: 115}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 891, y: 485}
+  m_SizeDelta: {x: 1373.233, y: 773.276}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &431702150
 MonoBehaviour:
@@ -1631,8 +1631,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 3285b668249f03f41b501aa8536a771a, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1661,7 +1661,7 @@ GameObject:
   - component: {fileID: 456982854}
   - component: {fileID: 456982853}
   m_Layer: 5
-  m_Name: Image
+  m_Name: backGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1736,7 +1736,7 @@ GameObject:
   - component: {fileID: 463690469}
   - component: {fileID: 463690468}
   m_Layer: 5
-  m_Name: Image
+  m_Name: backGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1810,7 +1810,7 @@ GameObject:
   - component: {fileID: 613164085}
   - component: {fileID: 613164086}
   m_Layer: 0
-  m_Name: Stats
+  m_Name: MainPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3430,7 +3430,7 @@ GameObject:
   - component: {fileID: 1218943450}
   - component: {fileID: 1218943449}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: fearState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3480,7 +3480,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.89
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -4441,7 +4441,7 @@ GameObject:
   - component: {fileID: 1625671810}
   - component: {fileID: 1625671809}
   m_Layer: 5
-  m_Name: Image
+  m_Name: backGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4617,7 +4617,7 @@ MonoBehaviour:
   - cardHover
   - endScreen
   soundSource:
-  - {fileID: 8300000, guid: 3309cbad324c48144a781a835f200806, type: 3}
+  - {fileID: 8300000, guid: 9c5c90a1de0fb5f46ac7a332c6734093, type: 3}
   - {fileID: 8300000, guid: 645b86ae3a847364ea63a9eceb5a09ef, type: 3}
   - {fileID: 8300000, guid: 63af0818724347a44a2b35ab9922f7be, type: 3}
   - {fileID: 8300000, guid: e524d228fd73cd446aee53734c114ce0, type: 3}
@@ -4888,7 +4888,7 @@ GameObject:
   - component: {fileID: 1773346342}
   - component: {fileID: 1773346341}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: educationState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4981,9 +4981,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b3ad9a7c8ecc54ea9e071ec305ea86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mm: {fileID: 1698666408}
+  musicManager: {fileID: 1698666408}
   Score: 0
-  myParent: {fileID: 268346666}
+  handParent: {fileID: 268346666}
   population: 10
   money: 125
   happiness: 0
@@ -4997,10 +4997,18 @@ MonoBehaviour:
   gameplayActive: 0
   isDragged: 0
   buttonEnd: {fileID: 1621099819}
-  mainUi: {fileID: 613164084}
-  Hl: {fileID: 3902317354310889265, guid: 0ffdab41dcccab24e97e69b004389e04, type: 3}
-  Dl: {fileID: -5594225784292877996, guid: f1b5accbc73c8344da920f5eedebd8e7, type: 3}
+  mainPanel: {fileID: 613164084}
+  HandList: {fileID: 3902317354310889265, guid: 0ffdab41dcccab24e97e69b004389e04, type: 3}
+  DeskList: {fileID: -5594225784292877996, guid: f1b5accbc73c8344da920f5eedebd8e7, type: 3}
   mainCamera: {fileID: 760658881}
+  fearStat: {fileID: 1218943449}
+  happinessStat: {fileID: 92699811}
+  loyaltyStat: {fileID: 195398522}
+  educationStat: {fileID: 1773346341}
+  crimeStat: {fileID: 286509348}
+  populationStat: {fileID: 1038965036}
+  moneyStat: {fileID: 1103756325}
+  wealthStat: {fileID: 165600072}
 --- !u!4 &1795336713
 Transform:
   m_ObjectHideFlags: 0
@@ -5039,7 +5047,7 @@ GameObject:
   - component: {fileID: 1806206995}
   - component: {fileID: 1806206994}
   m_Layer: 5
-  m_Name: Image
+  m_Name: backGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

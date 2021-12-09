@@ -101,11 +101,12 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     virtual public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("Enter");
-        //GameManager.Instance.Mm.PlaySound("cardHover");
+        
 
         if (GameManager.Instance.isDragged == false) 
-        { 
-        rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 10f, rawImage.transform.position.z - 15f), 0.7f);
+        {
+            GameManager.Instance.Mm.PlaySound("cardHover");
+            rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 10f, rawImage.transform.position.z - 15f), 0.7f);
         rawImage.transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.7f);
         }
     }
@@ -198,7 +199,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 GameManager.Instance.isDragged = false;
                 Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
 
-                GameManager.Instance.Hl.UsedCard(idCard);
+                GameManager.Instance.HandList.UsedCard(idCard);
                 Rm.EndOfTheRound();
                 return true;
             }
