@@ -50,14 +50,11 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     public Texture textureCard;
 
-    public Vector2 size;
-
     public RawImage rawImage;
 
     Vector3 viewPortCardPosition;
 
     RectTransform rectTra;
-    float zRotation;
 
     /// <summary>
     /// mozliwe ze zostanie zmienione na przypisywanie i inspektorze
@@ -65,7 +62,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     public Vector3 initialPosition;
 
     public Vector3 worldPosition;
-
 
     Vector3 startPostion;
     Quaternion startRotation;
@@ -75,36 +71,20 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         canvas = FindObjectOfType<Canvas>();
 
         rectTra = this.GetComponent<RectTransform>();
-
         rawImage = this.GetComponent<RawImage>();
 
         initialPosition = rawImage.rectTransform.position;//mozliwa zmaina na wartosc edytowana w inpsektorze
-        
 
         cam = Camera.main;
-        size= rawImage.rectTransform.sizeDelta;
-        Rm = new RoundManager();
-
-        zRotation = rectTra.rotation.z;
-
-        
+        Rm = new RoundManager();   
     }
+    
 
     private void Start()
     {
         startPostion = rawImage.transform.position;
         startRotation = rawImage.transform.rotation;
-        Debug.Log(startPostion.z);
     }
-
-    private void LateUpdate()
-    {
-        //Debug.Log(GameManager.Instance.isDragged);
-       // Debug.Log(GameManager.Instance.gameplayActive);
-    }
-
-
-
 
     virtual public void OnBeginDrag(PointerEventData eventData)
     {
@@ -121,18 +101,13 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     virtual public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("Enter");
-        GameManager.Instance.Mm.PlaySound("cardHover");
-        //trans.DOMove(startPostion, 0.5f);
-        if (GameManager.Instance.isDragged == false) { 
-        rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 15f, rawImage.transform.position.z - 20f), 0.7f);
+        //GameManager.Instance.Mm.PlaySound("cardHover");
+
+        if (GameManager.Instance.isDragged == false) 
+        { 
+        rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 10f, rawImage.transform.position.z - 15f), 0.7f);
         rawImage.transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.7f);
         }
-        /*
-        rawImage.rectTransform.sizeDelta = 2 * size;
-        rawImage.rectTransform.position = new Vector3(initialPosition.x, initialPosition.y * 0.5f, initialPosition.z);
-        rectTra.rotation = Quaternion.Euler(0, 0, 0);
-        //rawImage.rectTransform.sizeDelta = size * 2;
-        MouseENTER();*/
     }
 
     virtual public void OnPointerExit(PointerEventData eventData)
@@ -144,21 +119,13 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             Debug.Log(startPostion);
             rawImage.transform.DORotateQuaternion(startRotation, 0.71f);
         }
-        /*
-        Debug.Log("OnPointerExit");
-        if (isDragged == false)
-        {
-            //rawImage.rectTransform.position = initialPosition;
-            //rawImage.rectTransform.sizeDelta = size;
-        }
 
         MouseEXIT();
-        */
+        
     }
 
     virtual public void OnEndDrag(PointerEventData eventData)
     {
-        
         if (IsCardPlaced() == true) ;//end of the round
         else
         {
@@ -167,12 +134,10 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             rawImage.transform.DORotateQuaternion(startRotation, 0.71f);
             MouseUP();
         }
-        
     }
 
 
     virtual public void CardInvocate() {
-
 
         GameManager.Instance.money = GameManager.Instance.money - costAmount;
 
@@ -203,8 +168,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
         GameManager.Instance.tax = Mathf.Clamp01(GameManager.Instance.tax + taxAmount / 100);
         GameManager.Instance.tax = Mathf.Clamp01(GameManager.Instance.tax * taxMultiplier);
-
-
     }
 
 
@@ -215,28 +178,23 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         placeOfMouse.z = canvas.planeDistance;
         worldPosition = cam.ScreenToWorldPoint(placeOfMouse);
 
-
         return placeOfMouse;
     }
-
 
 
 
     //Cheking if the card is places in the center
     public bool IsCardPlaced()
     {
-
-        
-
         if (GameManager.Instance.gameplayActive == true)
         {
-            GameManager.Instance.Mm.PlaySound("throw");
-           viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
+            viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
 
-            Debug.Log(viewPortCardPosition.y);
 
             if (viewPortCardPosition.y > 0.5f)
             {
+                GameManager.Instance.Mm.PlaySound("throw");
+                CardInvocate();
                 GameManager.Instance.isDragged = false;
                 Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
 
@@ -248,7 +206,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         }
         return false;
     }
-
+    
 
     virtual public void BeginDRAG()
     {
@@ -269,6 +227,5 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     virtual public void MouseUP()
     {
         GameManager.Instance.isDragged = false;
-        
     }
 }
