@@ -3986,7 +3986,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -4996,6 +4996,7 @@ MonoBehaviour:
   round: 1
   gameplayActive: 0
   isDragged: 0
+  isBacking: 0
   buttonEnd: {fileID: 1621099819}
   mainPanel: {fileID: 613164084}
   HandList: {fileID: 3902317354310889265, guid: 0ffdab41dcccab24e97e69b004389e04, type: 3}
@@ -5556,6 +5557,14 @@ PrefabInstance:
     - target: {fileID: 4793609202232450078, guid: 7478c04e5bd3f2d4a9abcf54c74b44be, type: 3}
       propertyPath: m_Name
       value: SoundEffects
+      objectReference: {fileID: 0}
+    - target: {fileID: 4793609202232450079, guid: 7478c04e5bd3f2d4a9abcf54c74b44be, type: 3}
+      propertyPath: Mute
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4793609202232450079, guid: 7478c04e5bd3f2d4a9abcf54c74b44be, type: 3}
+      propertyPath: BypassEffects
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7478c04e5bd3f2d4a9abcf54c74b44be, type: 3}

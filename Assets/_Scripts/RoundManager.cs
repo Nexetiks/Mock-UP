@@ -27,13 +27,13 @@ public class RoundManager : MonoBehaviour
     {
 
         GameManager.Instance.gameplayActive = false;
-        Debug.Log(GameManager.Instance.gameplayActive);
+       
         Wealth();
 
         SetMoney();
 
         SetPopulation();
-        Debug.Log(IsEndGame());
+       
         if (IsEndGame() == true)
         {
             GameManager.Instance.gameplayActive = false;
@@ -48,7 +48,7 @@ public class RoundManager : MonoBehaviour
 
         GameManager.Instance.round++;
         GameManager.Instance.gameplayActive = true;
-        Debug.Log(GameManager.Instance.gameplayActive);
+       
     }
 
 
@@ -75,26 +75,22 @@ public class RoundManager : MonoBehaviour
     public bool IsEndGame()
     {
         if (GameManager.Instance.loyalty == 0 && GameManager.Instance.fear < 0.8f)
-        { return true;
-            Debug.Log("d");
-                }
-
-        if (GameManager.Instance.population == 0) { return true; Debug.Log("aaa"); }
-
+        return true;
+           
+        if (GameManager.Instance.population == 0)  return true; 
 
         int helper = 0;
 
         for (int i = 0; i < GameManager.Instance.HandList.cardsInHand.Count; i++)
         {
-            if (GameManager.Instance.HandList.cardsInHand[i].costAmount <= GameManager.Instance.money) { return true; Debug.Log("lala"); }
+          
+            if (GameManager.Instance.HandList.cardsInHand[i].costAmount <= GameManager.Instance.money)  return false; 
             else helper++;
         }
-
-        if (GameManager.Instance.HandList.cardsInHand.Count == helper)
-        {
-            Debug.Log("bdbdbdb");
-            return true;
-        }
+      
+        
+        if (GameManager.Instance.HandList.cardsInHand.Count == helper)   return true;
+        
         return false;
     }
 

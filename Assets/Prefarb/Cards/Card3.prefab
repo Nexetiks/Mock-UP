@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   costAmount: 1
-  idCard: 2
+  idCard: 3
   populationAmount: 1
   populationMultiplier: 1
   moneyAmount: 1
@@ -106,15 +106,19 @@ MonoBehaviour:
   wealthMultiplier: 1
   taxAmount: 1
   taxMultiplier: 1
-  cam: {fileID: 0}
   isDragged: 0
   isHovered: 0
   textCard: {fileID: 0}
+  cam: {fileID: 0}
+  canvas: {fileID: 0}
   textureCard: {fileID: 0}
-  size: {x: 0, y: 0}
   rawImage: {fileID: 140183452921524278}
+  rectTra: {fileID: 0}
   initialPosition: {x: 0, y: 0, z: 0}
+  viewPortCardPosition: {x: 0, y: 0, z: 0}
   worldPosition: {x: 0, y: 0, z: 0}
+  startPostion: {x: 0, y: 0, z: 0}
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &140183452921524276
 BoxCollider:
   m_ObjectHideFlags: 0
