@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public GameObject mainPanel;
     [SerializeField]
+
     public Vector3 positionToPutIn;
     [SerializeField]
     public Quaternion rotationToPutIn;

@@ -8,7 +8,8 @@ public class CardService : MonoBehaviour
 {
     private void Awake()
     {
-            GameManager.Instance.cardToPutIn.transform.DOMove(GameManager.Instance.positionToPutIn, 2f);
-        GameManager.Instance.cardToPutIn.transform.DORotateQuaternion(GameManager.Instance.rotationToPutIn, 2f); 
+            transform.DOMove(GameManager.Instance.positionToPutIn, 2f);
+        transform.DORotateQuaternion(GameManager.Instance.rotationToPutIn, 2f);
+        Debug.Log("jestem tu");
     }
 }

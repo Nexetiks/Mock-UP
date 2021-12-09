@@ -60,13 +60,13 @@ public class HandList : MonoBehaviour
         {
             cardsInHand.Add(cards[0]);
             go =Instantiate(cardsInHand[cardsInHand.Count - 1], new Vector3(0, 0, 0), Quaternion.identity);
-           // go.gameObject.AddComponent<GameManager.Instance.cardService>();
             go.transform.parent = GameManager.Instance.handParent.transform;
             go.transform.localScale = new Vector3(1, 1, 1);
             go.transform.localPosition = new Vector3(0, -1000, 1);
-           
-            
-            
+
+            go.gameObject.AddComponent<CardService>();
+
+
             cards.RemoveAt(0);
         }
     }
