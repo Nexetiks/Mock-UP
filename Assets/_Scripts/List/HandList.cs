@@ -5,8 +5,22 @@ using UnityEngine;
 public class HandList : MonoBehaviour
 {   [SerializeField]
     public List<CardParent> cardsInHand;
+
+    private CardParent go;
     
-  
+  public void ShowCards()
+    {
+        for(int i=0; i < cardsInHand.Count; i++)
+        {
+            Debug.Log(cardsInHand.Count);
+
+            go = Instantiate(cardsInHand[i], new Vector2(i*3-8, 0), Quaternion.identity);
+           
+            go.transform.parent = GameManager.Instance.myParent.transform;
+        }
+
+    }
+
     public void SendCardToHand(List<CardParent> cards)
     {
         cardsInHand.Add(cards[0]);

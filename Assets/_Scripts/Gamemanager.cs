@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     public float Score;
-
+    [SerializeField]
+    public GameObject myParent;
     [SerializeField]
     public float population = 10;
     [SerializeField]

@@ -7,9 +7,8 @@ public class RoundManager : MonoBehaviour
 
     void Start()
     {
-        //GameManager.Instance.Dl.MixList();
-        //show card in hands
-
+        GameManager.Instance.Dl.MixList();
+        GameManager.Instance.Hl.ShowCards();
 
 
         GameManager.Instance.gameplayActive = true;
