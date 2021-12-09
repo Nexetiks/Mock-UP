@@ -10,6 +10,5 @@ public class CardService : MonoBehaviour
     {
             transform.DOMove(GameManager.Instance.positionToPutIn, 2f);
         transform.DORotateQuaternion(GameManager.Instance.rotationToPutIn, 2f);
-        Debug.Log("jestem tu");
     }
 }
