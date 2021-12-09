@@ -228,7 +228,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
             if (viewPortCardPosition.y > 0.5f)
             {
-                
+                CardInvocate();
+                GameManager.Instance.ChangeFillAmount();
                 GameManager.Instance.positionToPutIn = initialPosition;
 
 
