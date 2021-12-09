@@ -17,10 +17,6 @@ public class HandList : MonoBehaviour
     public CardParent card5;
     private CardParent go;
     public List<CardParent> cardsInHand;
-    
-    private Vector3 position;
-    private Quaternion rotation;
-
 
 
     public void MakeList()
@@ -47,9 +43,17 @@ public class HandList : MonoBehaviour
             else if (temp == 4) go.transform.localPosition = new Vector3(-270 + i * 135, -385, 0);
             temp++;
             go.transform.localRotation = Quaternion.Euler(0, 0, -(-4.2f + 2.1f * i));
+            GameManager.Instance.position.Add(go.transform.localPosition);
+           
+          
+  
 
         }
-    
+        GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, 4.2f )));
+        GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, 2.1f)));
+        GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, 0)));
+        GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, 2.1f)));
+        GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, 4.2f)));
 
     }
 
@@ -60,7 +64,7 @@ public class HandList : MonoBehaviour
         {
             cardsInHand.Add(cards[0]);
             go =Instantiate(cardsInHand[cardsInHand.Count - 1], new Vector3(0, 0, 0), Quaternion.identity);
-           // go.gameObject.AddComponent<GameManager.Instance.cardService>();
+           
             go.transform.parent = GameManager.Instance.handParent.transform;
             go.transform.localScale = new Vector3(1, 1, 1);
             go.transform.localPosition = new Vector3(0, -1000, 1);
@@ -71,7 +75,19 @@ public class HandList : MonoBehaviour
         }
     }
 
+    public int GetIndex(int idCard)
+    {
+        for (int i = 0; i < cardsInHand.Count; i++)
+        {
+            if (cardsInHand[i].idCard == idCard)
+            {
+                return i;
+            }
+          
+        }
+        return -1;
 
+    }
     public void UsedCard( int idCard)
     {
       
@@ -79,13 +95,6 @@ public class HandList : MonoBehaviour
         {
             if (cardsInHand[i].idCard == idCard)
             {
-                position =cardsInHand[i].transform.localPosition;
-                
-                rotation = cardsInHand[i].transform.localRotation;
-
-                Debug.Log("position :  " + cardsInHand[i].gameObject.GetComponent<Transform>().transform.position.x) ;
-
-                //Debug.Log("rotation:   "+rotation);
                 cardsInHand.RemoveAt(i); 
                 return; 
             }

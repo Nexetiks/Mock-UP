@@ -228,6 +228,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 GameManager.Instance.musicManager.PlaySound("throw");
                 CardInvocate();
                 GameManager.Instance.isDragged = false;
+                
                 GameManager.Instance.HandList.UsedCard(idCard);
                 Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
                 

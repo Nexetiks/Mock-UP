@@ -76,7 +76,9 @@ public class GameManager : MonoBehaviour
     private GameObject moneyStat;
     [SerializeField]
     private GameObject wealthStat;
-
+    public List<Vector3> position = new List<Vector3>();
+    public List<Quaternion> rotation = new List<Quaternion>();
+    
     [SerializeField]
     public CardService cardService;
 
