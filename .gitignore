@@ -115,3 +115,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 /Logs/*
+/Assets/_Scripts/ValueManager.cs
+/Assets/_Scripts/ValueManager.cs
+/Assets/_Scripts/ValueManager.cs.meta
+/.gitignore

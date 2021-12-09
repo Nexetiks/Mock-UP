@@ -29,15 +29,15 @@ RectTransform:
   m_GameObject: {fileID: 7747468633304797190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5841184, y: 2.5841184, z: 2.5841184}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 183.87, y: -377.92}
-  m_SizeDelta: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 120, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8138964040152636339
 CanvasRenderer:
@@ -86,35 +86,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b9d32be7ab0f04c9bc5aae0ba225a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costAmount: 0
+  costAmount: 1
   idCard: 8
-  populationAmount: 0
-  populationMultiplier: 0
-  moneyAmount: 0
-  moneyMultiplier: 0
-  happinessAmount: 0
-  happinessMultiplier: 0
-  loyaltyAmount: 0
-  loyaltyMultiplier: 0
-  fearAmount: 0
-  fearMultiplier: 0
-  educationAmount: 0
-  educationMultiplier: 0
-  crimeAmount: 0
-  crimeMultiplier: 0
-  wealthAmount: 0
-  wealthMultiplier: 0
-  taxAmount: 0
-  taxMultiplier: 0
-  cam: {fileID: 0}
+  populationAmount: 1
+  populationMultiplier: 1
+  moneyAmount: 1
+  moneyMultiplier: 1
+  happinessAmount: 1
+  happinessMultiplier: 1
+  loyaltyAmount: 1
+  loyaltyMultiplier: 1
+  fearAmount: 1
+  fearMultiplier: 1
+  educationAmount: 1
+  educationMultiplier: 1
+  crimeAmount: 1
+  crimeMultiplier: 1
+  wealthAmount: 1
+  wealthMultiplier: 1
+  taxAmount: 1
+  taxMultiplier: 1
   isDragged: 0
   isHovered: 0
   textCard: {fileID: 0}
+  cam: {fileID: 0}
+  canvas: {fileID: 0}
   textureCard: {fileID: 0}
-  size: {x: 0, y: 0}
   rawImage: {fileID: 8138964040152636236}
+  rectTra: {fileID: 0}
   initialPosition: {x: 0, y: 0, z: 0}
+  viewPortCardPosition: {x: 0, y: 0, z: 0}
   worldPosition: {x: 0, y: 0, z: 0}
+  startPostion: {x: 0, y: 0, z: 0}
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &8138964040152636238
 BoxCollider:
   m_ObjectHideFlags: 0
