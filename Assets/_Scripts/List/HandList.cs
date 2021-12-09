@@ -64,7 +64,7 @@ public class HandList : MonoBehaviour
             go.transform.parent = GameManager.Instance.handParent.transform;
             go.transform.localScale = new Vector3(1, 1, 1);
             go.transform.localPosition = new Vector3(0, -1000, 1);
-            go.transform.localRotation = rotation;
+           
             
             
             cards.RemoveAt(0);
@@ -82,9 +82,10 @@ public class HandList : MonoBehaviour
                 position =cardsInHand[i].transform.localPosition;
                 
                 rotation = cardsInHand[i].transform.localRotation;
-                Debug.Log("position :  "+ cardsInHand[i].transform.localPosition);
-           
-                Debug.Log("rotation:   "+rotation);
+
+                Debug.Log("position :  " + cardsInHand[i].gameObject.GetComponent<Transform>().transform.position) ;
+
+                //Debug.Log("rotation:   "+rotation);
                 cardsInHand.RemoveAt(i); 
                 return; 
             }
