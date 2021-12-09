@@ -127,6 +127,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnPointerEnter(PointerEventData eventData)
     {
+        Debug.Log(transform.position);
         if (rawImage.transform.position == startPostion)
         {
             GameManager.Instance.isBacking = false;
@@ -134,8 +135,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
         if (GameManager.Instance.isDragged == false &&GameManager.Instance.isBacking == false)
         {
-            GameManager.Instance.positionToPutIn = rawImage.rectTransform.position;
-            GameManager.Instance.rotationToPutIn = rawImage.rectTransform.rotation;
 
             GameManager.Instance.musicManager.PlaySound("cardHover");
             rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 10f, rawImage.transform.position.z - 15f), 0.7f);
@@ -225,12 +224,12 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         if (GameManager.Instance.gameplayActive == true)
         {
             viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
-
             if (viewPortCardPosition.y > 0.5f)
             {
+                GameManager.Instance.positionNumber = GameManager.Instance.HandList.GetIndex(idCard);
+
                 CardInvocate();
                 GameManager.Instance.ChangeFillAmount();
-                GameManager.Instance.positionToPutIn = initialPosition;
 
 
                 GameManager.Instance.musicManager.PlaySound("throw");
