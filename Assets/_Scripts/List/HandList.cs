@@ -51,11 +51,11 @@ public class HandList : MonoBehaviour
 
         }
         ///////////////pozycje
-        GameManager.Instance.position.Add(new Vector3(-28.9f,-41.2f,0f));
-        GameManager.Instance.position.Add(new Vector3(-14.4f, -40.1f, 0f));
-        GameManager.Instance.position.Add(new Vector3(0f, -39.6f, 0f));
-        GameManager.Instance.position.Add(new Vector3(14.4f, -40.1f, 0f));
-        GameManager.Instance.position.Add(new Vector3(28.9f, -41.2f, 0f));
+        GameManager.Instance.position.Add(new Vector3(-28.9f,-41.2f,65f));
+        GameManager.Instance.position.Add(new Vector3(-14.4f, -40.1f, 65f));
+        GameManager.Instance.position.Add(new Vector3(0f, -39.6f, 65f));
+        GameManager.Instance.position.Add(new Vector3(14.4f, -40.1f, 65f));
+        GameManager.Instance.position.Add(new Vector3(28.9f, -41.2f, 65f));
 
 
 
