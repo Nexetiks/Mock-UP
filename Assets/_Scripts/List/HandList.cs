@@ -17,7 +17,8 @@ public class HandList : MonoBehaviour
     public CardParent card5;
     private CardParent go;
     public List<CardParent> cardsInHand;
-
+    private Vector3 helperPosition;
+    private Quaternion helperRotation;
 
     public void MakeList()
     {
@@ -43,12 +44,22 @@ public class HandList : MonoBehaviour
             else if (temp == 4) go.transform.localPosition = new Vector3(-270 + i * 135, -385, 0);
             temp++;
             go.transform.localRotation = Quaternion.Euler(0, 0, -(-4.2f + 2.1f * i));
-            GameManager.Instance.position.Add(go.transform.localPosition);
+          
            
           
   
 
         }
+        ///////////////pozycje
+        GameManager.Instance.position.Add(new Vector3(-28.9f,-41.2f,0f));
+        GameManager.Instance.position.Add(new Vector3(-14.4f, -40.1f, 0f));
+        GameManager.Instance.position.Add(new Vector3(0f, -39.6f, 0f));
+        GameManager.Instance.position.Add(new Vector3(14.4f, -40.1f, 0f));
+        GameManager.Instance.position.Add(new Vector3(28.9f, -41.2f, 0f));
+
+
+
+        ////////////////rotacje
         GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, 4.2f )));
         GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, 2.1f)));
         GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, 0)));
@@ -69,7 +80,10 @@ public class HandList : MonoBehaviour
             go.transform.localPosition = new Vector3(0, -1000, 1);
 
             go.gameObject.AddComponent<CardService>();
-
+            GameManager.Instance.position.Add(helperPosition);
+            GameManager.Instance.rotation.Add(helperRotation);
+            helperPosition = new Vector3(0,0,0);
+            helperRotation = Quaternion.Euler(0, 0, 0);
 
             cards.RemoveAt(0);
         }
@@ -95,7 +109,9 @@ public class HandList : MonoBehaviour
         {
             if (cardsInHand[i].idCard == idCard)
             {
-                cardsInHand.RemoveAt(i); 
+                cardsInHand.RemoveAt(i);
+                helperPosition = GameManager.Instance.position[i];
+                helperRotation = GameManager.Instance.rotation[i];
                 return; 
             }
         }
