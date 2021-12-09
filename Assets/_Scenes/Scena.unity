@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 92699812}
   - component: {fileID: 92699811}
   m_Layer: 5
-  m_Name: Image
+  m_Name: happinessState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 195398523}
   - component: {fileID: 195398522}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: loyaltyState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1017,7 +1017,7 @@ GameObject:
   - component: {fileID: 251910219}
   - component: {fileID: 251910218}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1127,7 +1127,7 @@ GameObject:
   - component: {fileID: 286509349}
   - component: {fileID: 286509348}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: crimeState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1661,7 +1661,7 @@ GameObject:
   - component: {fileID: 456982854}
   - component: {fileID: 456982853}
   m_Layer: 5
-  m_Name: Image
+  m_Name: backGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1736,7 +1736,7 @@ GameObject:
   - component: {fileID: 463690469}
   - component: {fileID: 463690468}
   m_Layer: 5
-  m_Name: Image
+  m_Name: backGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3430,7 +3430,7 @@ GameObject:
   - component: {fileID: 1218943450}
   - component: {fileID: 1218943449}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: fearState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3480,7 +3480,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.89
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -4441,7 +4441,7 @@ GameObject:
   - component: {fileID: 1625671810}
   - component: {fileID: 1625671809}
   m_Layer: 5
-  m_Name: Image
+  m_Name: backGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4797,7 +4797,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1731867466}
   - component: {fileID: 1731867467}
-  - component: {fileID: 1731867468}
   m_Layer: 5
   m_Name: Fear
   m_TagString: Untagged
@@ -4877,18 +4876,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1731867468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731867465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48923eb50ad088d4aa6b5f768d769a51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1773346339
 GameObject:
   m_ObjectHideFlags: 0
@@ -4901,7 +4888,7 @@ GameObject:
   - component: {fileID: 1773346342}
   - component: {fileID: 1773346341}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: educationState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5014,6 +5001,14 @@ MonoBehaviour:
   HandList: {fileID: 3902317354310889265, guid: 0ffdab41dcccab24e97e69b004389e04, type: 3}
   DeskList: {fileID: -5594225784292877996, guid: f1b5accbc73c8344da920f5eedebd8e7, type: 3}
   mainCamera: {fileID: 760658881}
+  fearStat: {fileID: 1218943449}
+  happinessStat: {fileID: 92699811}
+  loyaltyStat: {fileID: 195398522}
+  educationStat: {fileID: 1773346341}
+  crimeStat: {fileID: 286509348}
+  populationStat: {fileID: 1038965036}
+  moneyStat: {fileID: 1103756325}
+  wealthStat: {fileID: 165600072}
 --- !u!4 &1795336713
 Transform:
   m_ObjectHideFlags: 0
@@ -5052,7 +5047,7 @@ GameObject:
   - component: {fileID: 1806206995}
   - component: {fileID: 1806206994}
   m_Layer: 5
-  m_Name: Image
+  m_Name: backGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

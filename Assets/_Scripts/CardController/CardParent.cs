@@ -230,6 +230,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
         if (GameManager.Instance.gameplayActive == true)
         {
+            CardInvocate();
+            GameManager.Instance.ChangeFillAmount();
             GameManager.Instance.musicManager.PlaySound("throw");
            viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
 

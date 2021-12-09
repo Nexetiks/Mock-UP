@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -50,6 +50,41 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private Camera mainCamera;
+
+
+    [SerializeField]
+    private Image fearStat;
+    [SerializeField]
+    private Image happinessStat;
+    [SerializeField]
+    private Image loyaltyStat;
+    [SerializeField]
+    private Image educationStat;
+    [SerializeField]
+    private Image crimeStat;
+    [SerializeField]
+    private GameObject populationStat;
+    [SerializeField]
+    private GameObject moneyStat;
+    [SerializeField]
+    private GameObject wealthStat;
+    
+
+
+    public void ChangeFillAmount()
+    {
+        fearStat.GetComponent<Image>().fillAmount = fear;
+        happinessStat.GetComponent<Image>().fillAmount = happiness;
+        loyaltyStat.GetComponent<Image>().fillAmount = loyalty;
+        educationStat.GetComponent<Image>().fillAmount = education;
+        crimeStat.GetComponent<Image>().fillAmount = crime;
+       
+        populationStat.gameObject.GetComponent<TextMeshProUGUI>().text = population.ToString();
+        moneyStat.gameObject.GetComponent<TextMeshProUGUI>().text = money.ToString();
+        wealthStat.gameObject.GetComponent<TextMeshProUGUI>().text = wealth.ToString();
+
+
+    }
     public void ChangeCameraPosition()
     {
         mainCamera.transform.position = new Vector3(0, 117,-35);

@@ -10,7 +10,7 @@ public class RoundManager : MonoBehaviour
         GameManager.Instance.DeskList.MixList();
        
         GameManager.Instance.gameplayActive = true;
-        Debug.Log(GameManager.Instance.gameplayActive);
+       
         
     }
    
