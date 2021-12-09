@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHandler,IPointerExitHandler,IPointerEnterHandler,IDragHandler
 {
+    private RoundManager Rm;
+
     public float costAmount=0;
 
     public int idCard;
@@ -34,7 +36,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     public float wealthAmount = 0;
     public float wealthMultiplier=1;
 
-    public float taxAmount = 0;
+    public float taxAmount = 20;
     public float taxMultiplier=1;
 
     public Camera cam;
@@ -66,11 +68,50 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         initialPosition = rawImage.rectTransform.position;//mozliwa zmaina na wartosc edytowana w inpsektorze
         cam = Camera.main;
         size= rawImage.rectTransform.sizeDelta;
+        Rm = new RoundManager();
 
     }
 
 
-    
+    virtual public void OnEndDrag(PointerEventData eventData)
+    {
+        if (IsCardPlaced() == true) ;//end of the round
+        else
+        {
+            rawImage.rectTransform.position = initialPosition;
+            rawImage.rectTransform.sizeDelta = size;
+            MouseUP();
+        }
+    }
+
+    virtual public void OnBeginDrag(PointerEventData eventData)
+    {
+        rawImage.rectTransform.sizeDelta = 2 * size;
+        BeginDRAG();
+    }
+
+    virtual public void OnPointerExit(PointerEventData eventData)
+    {
+        if (isDragged == false)
+        {
+            rawImage.rectTransform.position = initialPosition;
+            rawImage.rectTransform.sizeDelta = size;
+        }
+
+        MouseEXIT();
+    }
+
+    virtual public void OnPointerEnter(PointerEventData eventData)
+    {
+        rawImage.rectTransform.sizeDelta = size * 2;
+        MouseENTER();
+    }
+
+    virtual public void OnDrag(PointerEventData eventData)
+    {
+        rawImage.rectTransform.position = cam.ScreenToWorldPoint(MousePlace());
+        rawImage.rectTransform.sizeDelta = 2 * size;
+    }
 
 
 
@@ -86,88 +127,33 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         GameManager.Instance.money = GameManager.Instance.money + moneyAmount;
         GameManager.Instance.money = GameManager.Instance.money * moneyMultiplier;
 
-        GameManager.Instance.happiness = Mathf.Clamp01(GameManager.Instance.happiness + happinessAmount);
+        GameManager.Instance.happiness = Mathf.Clamp01(GameManager.Instance.happiness + happinessAmount/100);
         GameManager.Instance.happiness = Mathf.Clamp01(GameManager.Instance.happiness * happinessMultiplier);
 
-        GameManager.Instance.loyalty = Mathf.Clamp01(GameManager.Instance.loyalty + loyaltyAmount);
+        GameManager.Instance.loyalty = Mathf.Clamp01(GameManager.Instance.loyalty + loyaltyAmount / 100);
         GameManager.Instance.loyalty = Mathf.Clamp01(GameManager.Instance.loyalty * loyaltyMultiplier);
 
-        GameManager.Instance.fear = Mathf.Clamp01(GameManager.Instance.fear + fearAmount);
+        GameManager.Instance.fear = Mathf.Clamp01(GameManager.Instance.fear + fearAmount / 100);
         GameManager.Instance.fear = Mathf.Clamp01(GameManager.Instance.fear * fearMultiplier);
 
-        GameManager.Instance.education = Mathf.Clamp01(GameManager.Instance.education + educationAmount);
+        GameManager.Instance.education = Mathf.Clamp01(GameManager.Instance.education + educationAmount / 100);
         GameManager.Instance.education = Mathf.Clamp01(GameManager.Instance.education * educationMultiplier);
 
-        GameManager.Instance.crime = Mathf.Clamp01(GameManager.Instance.crime + crimeAmount);
+        GameManager.Instance.crime = Mathf.Clamp01(GameManager.Instance.crime + crimeAmount / 100);
         GameManager.Instance.crime = Mathf.Clamp01(GameManager.Instance.crime * crimeMultiplier);
 
         GameManager.Instance.wealth = GameManager.Instance.wealth + wealthAmount;
         GameManager.Instance.wealth = GameManager.Instance.wealth * wealthMultiplier;
 
-        GameManager.Instance.tax = Mathf.Clamp01(GameManager.Instance.tax + taxAmount);
+        GameManager.Instance.tax = Mathf.Clamp01(GameManager.Instance.tax + taxAmount / 100);
         GameManager.Instance.tax = Mathf.Clamp01(GameManager.Instance.tax * taxMultiplier);
 
 
     }
-    
-
-
-   
-   
-    virtual public void BeginDRAG()
-    {
-        isDragged = true;
-        isHovered = true;
-    }
-
-
-    virtual public void mouseENTER()
-    {
-        isHovered = true;
-    }
-
-
-    virtual public void MouseEXIT()
-    {
-        isHovered = false;
-    }
-
-
-    virtual public void mouseUP()
-    {
-        isDragged = false;
-        
-    }
-
-
-    //Cheking if the card is places in the center
-    public bool isCardPlaced()
-    {
-        if (GameManager.Instance.gameplayActive == true)
-        {
-
-
-            viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
-            Debug.Log(viewPortCardPosition.y);
-
-            if (viewPortCardPosition.y > 0.5f)
-            {
-                Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
-
-                GameManager.Instance.Hl.UsedCard(idCard);
-                
-                return true;
-            }
-            else return false;
-        }
-        return false;
-    }
-
-
 
 
     //Returning mouse position to be able to move cards
-    virtual public Vector3 mousePlace()
+    virtual public Vector3 MousePlace()
     {
         Vector3 placeOfMouse = Input.mousePosition;
         placeOfMouse.z = canvas.planeDistance;
@@ -178,44 +164,50 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     }
 
 
-    public void OnEndDrag(PointerEventData eventData)
+
+
+    //Cheking if the card is places in the center
+    public bool IsCardPlaced()
     {
-        if (isCardPlaced() == true) ;//end of the round
-        else
+        Debug.Log(GameManager.Instance.gameplayActive);
+        if (GameManager.Instance.gameplayActive == true)
         {
-            rawImage.rectTransform.position = initialPosition;
-            rawImage.rectTransform.sizeDelta =  size;
-            mouseUP();
+            viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
+            Debug.Log(viewPortCardPosition.y);
+
+            if (viewPortCardPosition.y > 0.5f)
+            {
+                Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
+
+                GameManager.Instance.Hl.UsedCard(idCard);
+                Rm.EndOfTheRound();
+                return true;
+            }
+            else return false;
         }
+        return false;
     }
 
 
-    public void OnBeginDrag(PointerEventData eventData)
+    virtual public void BeginDRAG()
     {
-        rawImage.rectTransform.sizeDelta = 2 * size;
-        BeginDRAG();
+        isDragged = true;
+        isHovered = true;
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    virtual public void MouseENTER()
     {
-        if (isDragged == false)
-        {
-            rawImage.rectTransform.position = initialPosition;
-            rawImage.rectTransform.sizeDelta = size;
-        }
+        isHovered = true;
+    }
+
+    virtual public void MouseEXIT()
+    {
+        isHovered = false;
+    }
+
+    virtual public void MouseUP()
+    {
+        isDragged = false;
         
-        MouseEXIT();
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        rawImage.rectTransform.sizeDelta = size * 2;
-        mouseENTER();
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        rawImage.rectTransform.position = cam.ScreenToWorldPoint(mousePlace());
-        rawImage.rectTransform.sizeDelta = 2 * size;
     }
 }

@@ -7,23 +7,27 @@ public class RoundManager : MonoBehaviour
 
     void Start()
     {
-        //GameManager.Instance.Dl.MixList();
-        //show card in hands
-
-
-
+        GameManager.Instance.Dl.MixList();
+      
         GameManager.Instance.gameplayActive = true;
+       
+        
+    }
+   
+    public void ShowCards()
+    {
+        GameManager.Instance.Hl.MakeList();
+        GameManager.Instance.Hl.ShowCards();
+
     }
 
 
 
-
-
-    public void endOfTheRound() // kiedy to sie wywolywuje XD
+    public void EndOfTheRound() 
     {
 
         GameManager.Instance.gameplayActive = false;
-       
+        
         Wealth();
 
         SetMoney();
@@ -33,9 +37,11 @@ public class RoundManager : MonoBehaviour
         if (IsEndGame() == true)
         {
             GameManager.Instance.gameplayActive = false;
-
+            
             amountOfPoints();
-            //funckja na koniec gry
+            GameManager.Instance.Hl.RemoveAllCards();
+            GameManager.Instance.buttonEnd.SetActive(true);
+            GameManager.Instance.mainUi.SetActive(false);
 
         }
 

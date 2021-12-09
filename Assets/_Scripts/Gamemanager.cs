@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     public float Score;
-
+    [SerializeField]
+    public GameObject myParent;
     [SerializeField]
     public float population = 10;
     [SerializeField]
@@ -34,12 +35,14 @@ public class GameManager : MonoBehaviour
     public bool gameplayActive = false;
 
     [SerializeField]
+    public GameObject buttonEnd;
+    [SerializeField]
+    public GameObject mainUi;
 
-    public Button endButton;
 
     public HandList Hl;
     public DeckList Dl;
-
+    
     public static GameManager Instance;
 
 
@@ -48,6 +51,8 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else Debug.Log("An instance error");
+
+      
     }
 
 
