@@ -225,17 +225,14 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     //Cheking if the card is places in the center
     public bool IsCardPlaced()
     {
-<<<<<<< HEAD
-        //Debug.Log(GameManager.Instance.gameplayActive);
-       // if (GameManager.Instance.gameplayActive == true)
-       // {
-            viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
-=======
+
+        
+
         if (GameManager.Instance.gameplayActive == true)
         {
             GameManager.Instance.Mm.PlaySound("throw");
            viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
->>>>>>> ac4ba66d1abbe1d3a01be6aad78b4752b1fd2397
+
             Debug.Log(viewPortCardPosition.y);
 
             if (viewPortCardPosition.y > 0.5f)
@@ -248,7 +245,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 return true;
             }
             else return false;
-        //}
+        }
         return false;
     }
 
