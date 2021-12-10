@@ -2649,7 +2649,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4232698534921732264, guid: 577b70e023f041844856d3f88f5131d2, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4232698534921732264, guid: 577b70e023f041844856d3f88f5131d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4830,9 +4830,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Directional Light (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9152010192200992443, guid: 7a367e60681ccb941839accd5cb7b506, type: 3}
+      propertyPath: m_Intensity
+      value: 1.18
+      objectReference: {fileID: 0}
     - target: {fileID: 9152010192200992444, guid: 7a367e60681ccb941839accd5cb7b506, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9152010192200992444, guid: 7a367e60681ccb941839accd5cb7b506, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6897,7 +6901,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1453572663
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6937,7 +6941,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 202f8dfc3022f814c9e41731e5040217, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -9465,7 +9469,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4793609202232450072, guid: 7478c04e5bd3f2d4a9abcf54c74b44be, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4793609202232450072, guid: 7478c04e5bd3f2d4a9abcf54c74b44be, type: 3}
       propertyPath: m_LocalPosition.x
