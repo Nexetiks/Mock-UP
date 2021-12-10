@@ -18,17 +18,17 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public float money = 125;
     [SerializeField]
-    public float happiness = 0;
+    public float happiness = 0.5f;
     [SerializeField]
-    public float loyalty = 0;
+    public float loyalty = 0.5f;
     [SerializeField]
-    public float fear = 0;
+    public float fear = 0.5f;
     [SerializeField]
-    public float education = 0;
+    public float education = 0.5f;
     [SerializeField]
-    public float crime = 0;
+    public float crime = 0.5f;
     [SerializeField]
-    public float wealth = 0;
+    public float wealth = 0.5f;
     [SerializeField]
     public float tax = 0.20f;
     [SerializeField]

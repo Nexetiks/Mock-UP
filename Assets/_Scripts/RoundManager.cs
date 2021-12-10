@@ -79,22 +79,32 @@ public class RoundManager : MonoBehaviour
     {
         
         if (GameManager.Instance.loyalty == 0 && GameManager.Instance.fear < 0.8f)
-        return true;
-           
-        if (GameManager.Instance.population == 0)  return true; 
+        {
+            Debug.Log("(GameManager.Instance.loyalty == 0 && GameManager.Instance.fear < 0.8f)" + " " + GameManager.Instance.loyalty + " " + GameManager.Instance.fear);
+            return true;    
+        }
+
+
+        if (GameManager.Instance.population == 0)
+        {
+            Debug.Log("GameManager.Instance.population == 0 " + GameManager.Instance.population);
+            return true;
+        }
 
         int helper = 0;
 
         for (int i = 0; i < GameManager.Instance.HandList.cardsInHand.Count; i++)
-        {
-          
+        {     
             if (GameManager.Instance.HandList.cardsInHand[i].costAmount <= GameManager.Instance.money)  return false; 
             else helper++;
         }
-      
-        
-        if (GameManager.Instance.HandList.cardsInHand.Count == helper)   return true;
-        
+
+
+        if (GameManager.Instance.HandList.cardsInHand.Count == helper)
+        {
+            Debug.Log(" GameManager.Instance.HandList.cardsInHand.Count == helper " + GameManager.Instance.HandList.cardsInHand.Count );
+            return true;
+        }
         return false;
     }
 
