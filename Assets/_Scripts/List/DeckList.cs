@@ -14,10 +14,6 @@ public class DeckList : MonoBehaviour
 
 	public void MixList() // to musi sie wywolac zaraz po tym jak dodamy wszystkie karty
 	{
-		cards.Clear();
-		cards.Add(card1);
-		cards.Add(card2);
-		cards.Add(card3);
 
 		for (int i = 0; i < cards.Count; i += 1)
 		{
