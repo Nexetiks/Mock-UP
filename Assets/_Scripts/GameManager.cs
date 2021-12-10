@@ -45,11 +45,7 @@ public class GameManager : MonoBehaviour
     public GameObject mainPanel;
     [SerializeField]
 
-    public Vector3 positionToPutIn;
-    [SerializeField]
-    public Quaternion rotationToPutIn;
-    [SerializeField]
-    public RawImage cardToPutIn;
+    public int positionNumber;
     
 
     public HandList HandList;
@@ -77,7 +73,9 @@ public class GameManager : MonoBehaviour
     private GameObject moneyStat;
     [SerializeField]
     private GameObject wealthStat;
+    [SerializeField]
     public List<Vector3> position = new List<Vector3>();
+    [SerializeField]
     public List<Quaternion> rotation = new List<Quaternion>();
     
     public CardService cardService;
@@ -99,7 +97,7 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeCameraPosition()
     {
-        mainCamera.transform.position = new Vector3(0, 117,-35);
+        mainCamera.transform.position = new Vector3(0, 130,-35);
 
 
     }
