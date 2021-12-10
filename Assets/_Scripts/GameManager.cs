@@ -125,14 +125,14 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeCameraPosition()
     {
-        mainCamera.transform.position = new Vector3(0, 130,-35);
+        mainCamera.transform.position = new Vector3(0, 130, -814);
 
 
     }
 
     public void GoToMainPosition()
     {
-        mainCamera.transform.position = new Vector3(0, 0,-35);
+        mainCamera.transform.position = new Vector3(0, 0, -814);
     }
     private void Awake()
     {

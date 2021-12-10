@@ -69,7 +69,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 7b40313b36651c540bcc541d6b212a5b, type: 3}
+  m_Texture: {fileID: 2800000, guid: 4c59676750d207745978c10bd0f3decf, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -126,6 +126,8 @@ MonoBehaviour:
   x: 0
   xCount: 0
   cardDestroyer: {fileID: 0}
+  isThereCardToDestroy: 0
+  amountCardToDiscard: 0
 --- !u!114 &6399892110092105781
 MonoBehaviour:
   m_ObjectHideFlags: 0

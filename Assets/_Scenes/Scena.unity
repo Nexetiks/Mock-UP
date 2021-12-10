@@ -6901,7 +6901,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1453572663
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6918,7 +6918,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.378, y: 8.07}
+  m_AnchoredPosition: {x: 4.378, y: 140}
   m_SizeDelta: {x: 291.257, y: 164.939}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1453572664
@@ -8754,11 +8754,11 @@ MonoBehaviour:
   population: 10
   money: 125
   happiness: 0.5
-  loyalty: 0
-  fear: 0
-  education: 0
-  crime: 0
-  wealth: 0
+  loyalty: 0.5
+  fear: 0.5
+  education: 0.5
+  crime: 0.5
+  wealth: 30
   tax: 0.2
   round: 1
   gameplayActive: 0
@@ -8786,6 +8786,9 @@ MonoBehaviour:
   Name: {fileID: 1430066549}
   nameList: []
   willBeDestroyed: 0
+  discardAmount: 0
+  chosenToDiscard: 3
+  waitForDiscard: 0
 --- !u!4 &1795336713
 Transform:
   m_ObjectHideFlags: 0
