@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2832159399412950179}
   - component: {fileID: 2832159399412950108}
   - component: {fileID: 2832159399412950109}
-  - component: {fileID: 2832159399412950110}
   - component: {fileID: -8058577656006653332}
   - component: {fileID: 3931022790575541902}
+  - component: {fileID: 8372916264453287714}
   m_Layer: 5
   m_Name: Card1
   m_TagString: Untagged
@@ -126,19 +126,6 @@ MonoBehaviour:
   x: 0
   xCount: 0
   cardDestroyer: {fileID: -8058577656006653332}
---- !u!65 &2832159399412950110
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4897602259468869007}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 16.658308, y: 21.617256, z: 0.9999999}
-  m_Center: {x: -0.000056095916, y: -0.27556306, z: 0}
 --- !u!114 &-8058577656006653332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,8 +153,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Location: 0
-  m_Width: 0.466
-  m_Softness: 0.48
+  m_Width: 0.5
+  m_Softness: 0.5
   m_Color: {r: 1, g: 0.597088, b: 0, a: 1}
   m_ColorMode: 1
   m_EffectMaterial: {fileID: 21237785833609848, guid: 2ac9a8033337c4b908c54c087abd31e8, type: 2}
+--- !u!23 &8372916264453287714
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4897602259468869007}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a5ecc67b2388a7c41af070bdc3c5b7ff, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
