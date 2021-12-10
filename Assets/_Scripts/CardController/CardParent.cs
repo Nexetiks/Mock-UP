@@ -103,6 +103,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     public int xCount;
     [SerializeField] private CardDestroyer cardDestroyer;
 
+
+
     virtual public void Awake()
     {
         canvas = FindObjectOfType<Canvas>();
@@ -121,7 +123,11 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
       //  startPostion = GameManager.Instance.indexHelper;
         startPostion = GameManager.Instance.position[GameManager.Instance.indexHelper];
         startRotation = GameManager.Instance.rotation[GameManager.Instance.indexHelper];
-        
+
+        temporaryPosition = GameManager.Instance.position[GameManager.Instance.indexHelper];
+        temporaryRotation= GameManager.Instance.rotation[GameManager.Instance.indexHelper];
+
+
     }
 
     virtual public void OnBeginDrag(PointerEventData eventData)
@@ -158,8 +164,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 10f, rawImage.transform.position.z - 15f), 0.7f);
             rawImage.transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.7f);
 
-            MouseENTER();
-            
+            MouseENTER();  
         }
     }
 
@@ -242,13 +247,20 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         if (GameManager.Instance.gameplayActive == true)
         {
             viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
-            if (viewPortCardPosition.y > 0.5f)
+            if (viewPortCardPosition.y > 0.4f)
             {
+                temporaryPosition = rawImage.rectTransform.position;
+                startPostion = temporaryPosition;
 
-                
+                temporaryRotation = rawImage.rectTransform.rotation;
+                startRotation = temporaryRotation;
+
+                GameManager.Instance.willBeDestroyed = true;
+
                 GameManager.Instance.positionNumber = GameManager.Instance.HandList.GetIndex(idCard);
 
                 CardInvocate();
+
                 GameManager.Instance.ChangeFillAmount();
 
 
@@ -256,15 +268,23 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
                 GameManager.Instance.isDragged = false;
 
+                
 
                 GameManager.Instance.HandList.UsedCard(idCard);
 
-				GameManager.Instance.HandList.SendCardToHand(GameManager.Instance.DeskList.cards);                
+				GameManager.Instance.HandList.SendCardToHand(GameManager.Instance.DeskList.cards);
+
+
+                
+
 
                 cardDestroyer.DestroyCard();
+
+
                 /// end tutaj!!!
                 Rm.EndOfTheRound();
 
+                
                 return true;
             }
             else return false;
@@ -293,10 +313,11 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     {
         GameManager.Instance.isDragged = false;
     }
+
     virtual public void cardReplacement()
     {
 
-        if (GameManager.Instance.DeskList.cards.Count == 0)
+        if (GameManager.Instance.DeskList.cards.Count == 0&& GameManager.Instance.willBeDestroyed ==false)
         {
             xCount = GameManager.Instance.HandList.cardsInHand.Count;
 
@@ -305,7 +326,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             {
                 if (startPostion == GameManager.Instance.position[i])
                 {
-
+                    Debug.Log(this.name + " " + i);
                     x = i;
                 }
             }
@@ -313,37 +334,67 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
             if (xCount == 1)
             {
-                this.startPostion = GameManager.Instance.position[2];
-                this.temporaryPosition = GameManager.Instance.position[2];
-                this.rawImage.rectTransform.position = GameManager.Instance.position[2];
-                this.rawImage.transform.position = GameManager.Instance.position[2];
+                startPostion = GameManager.Instance.position[2];
+                temporaryPosition = GameManager.Instance.position[2];
 
-                this.gameObject.transform.localPosition = GameManager.Instance.position[2];
-                this.gameObject.transform.position = GameManager.Instance.position[2];
+                startRotation = GameManager.Instance.rotation[2];
+                temporaryRotation = GameManager.Instance.rotation[2];
 
-                Debug.Log(GameManager.Instance.position[2]);
-                Debug.Log(this.gameObject);
-                Debug.Log(this.gameObject.transform.position);
-                Debug.Log("1");
+                rawImage.transform.DORotateQuaternion(temporaryRotation, 0.2f);
+                rawImage.transform.DOMove(temporaryPosition, 0.2f);
             }
-            /*
+
             if (xCount == 3)
             {
-                startPostion = GameManager.Instance.position[x + 1];
-                temporaryPosition = GameManager.Instance.position[x + 1];
-                Debug.Log("3");
+                if (x == 0)
+                {
+                    startPostion = GameManager.Instance.position[1];
+                    temporaryPosition = GameManager.Instance.position[1];
+
+                    startRotation = GameManager.Instance.rotation[1];
+                    temporaryRotation = GameManager.Instance.rotation[1];
+
+                    rawImage.transform.DORotateQuaternion(temporaryRotation, 0.2f);
+                    rawImage.transform.DOMove(temporaryPosition, 0.2f);
+                }
+                if (x == 1)
+                {
+                    startPostion = GameManager.Instance.position[2];
+                    temporaryPosition = GameManager.Instance.position[2];
+
+                    startRotation = GameManager.Instance.rotation[2];
+                    temporaryRotation = GameManager.Instance.rotation[2];
+
+                    rawImage.transform.DORotateQuaternion(temporaryRotation, 0.2f);
+                    rawImage.transform.DOMove(temporaryPosition, 0.2f);
+                }
+                if (x == 3)
+                {
+                    startPostion = GameManager.Instance.position[3];
+                    temporaryPosition = GameManager.Instance.position[3];
+
+                    startRotation = GameManager.Instance.rotation[3];
+                    temporaryRotation = GameManager.Instance.rotation[3];
+
+                    rawImage.transform.DORotateQuaternion(temporaryRotation, 0.2f);
+                    rawImage.transform.DOMove(temporaryPosition, 0.2f);
+                }
             }
 
 
-            if (xCount == 5)
-            {
-                startPostion = GameManager.Instance.position[x];
-                temporaryPosition = GameManager.Instance.position[x];
-                Debug.Log("5");
-            }
-            */
+            /*  if (xCount == 5)
+              {
+                  startPostion = GameManager.Instance.position[x];
+                  temporaryPosition = GameManager.Instance.position[x];
+                  Debug.Log("5");
+              }
+              */
+
+
         }
-
-
+    }
+    public virtual void Update()
+    {
+        cardReplacement();
     }
 }

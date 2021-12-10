@@ -86,7 +86,9 @@ public class GameManager : MonoBehaviour
     public Ranking ranking;
     public TextMeshProUGUI Name;
     public List<string> nameList;
-    
+    [SerializeField]
+    public bool willBeDestroyed = false;
+
 
 
 

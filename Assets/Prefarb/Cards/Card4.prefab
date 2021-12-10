@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5231867659292532176}
   - component: {fileID: 5231867659292532015}
   - component: {fileID: 5231867659292532014}
-  - component: {fileID: 5231867659292532013}
   - component: {fileID: 6345036626179507386}
   - component: {fileID: 5742970283884347387}
   m_Layer: 5
@@ -124,21 +123,8 @@ MonoBehaviour:
   startRotation: {x: 0, y: 0, z: 0, w: 0}
   temporaryRotation: {x: 0, y: 0, z: 0, w: 0}
   x: 0
-  xCount: 5
+  xCount: 4
   cardDestroyer: {fileID: 6345036626179507386}
---- !u!65 &5231867659292532013
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 21308879757497135}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 150, y: 150, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6345036626179507386
 MonoBehaviour:
   m_ObjectHideFlags: 0

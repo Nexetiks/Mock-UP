@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 28705587557082316}
   - component: {fileID: 28705587557082163}
   - component: {fileID: 28705587557082162}
-  - component: {fileID: 28705587557082161}
   - component: {fileID: 3380633959932449222}
   - component: {fileID: 4321544446723316557}
   m_Layer: 5
@@ -29,8 +28,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8810729103651651823}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.036643706, w: 0.9993284}
+  m_LocalPosition: {x: 0, y: 0, z: 65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -38,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 28.9, y: -41.2}
   m_SizeDelta: {x: 120, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &28705587557082316
@@ -119,26 +118,13 @@ MonoBehaviour:
   helpe: 0
   viewPortCardPosition: {x: 0, y: 0, z: 0}
   worldPosition: {x: 0, y: 0, z: 0}
-  startPostion: {x: 0, y: 0, z: 0}
-  temporaryPosition: {x: 0, y: 0, z: 0}
-  startRotation: {x: 0, y: 0, z: 0, w: 0}
-  temporaryRotation: {x: 0, y: 0, z: 0, w: 0}
-  x: 0
-  xCount: 5
+  startPostion: {x: 525.6, y: -40.1, z: 65}
+  temporaryPosition: {x: 525.6, y: -40.1, z: 65}
+  startRotation: {x: 0, y: 0, z: -0.036643706, w: 0.9993284}
+  temporaryRotation: {x: 0, y: 0, z: -0.036643706, w: 0.9993284}
+  x: 4
+  xCount: 4
   cardDestroyer: {fileID: 3380633959932449222}
---- !u!65 &28705587557082161
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8810729103651651823}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 150, y: 150, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3380633959932449222
 MonoBehaviour:
   m_ObjectHideFlags: 0
