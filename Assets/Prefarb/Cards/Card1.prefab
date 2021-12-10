@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2832159399412950179}
   - component: {fileID: 2832159399412950108}
   - component: {fileID: 2832159399412950109}
-  - component: {fileID: 2832159399412950110}
   - component: {fileID: -8058577656006653332}
   m_Layer: 5
   m_Name: Card1
@@ -28,8 +27,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4897602259468869007}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -37,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -39.6}
   m_SizeDelta: {x: 120, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2832159399412950179
@@ -118,24 +117,13 @@ MonoBehaviour:
   helpe: 0
   viewPortCardPosition: {x: 0, y: 0, z: 0}
   worldPosition: {x: 0, y: 0, z: 0}
-  startPostion: {x: 0, y: 0, z: 0}
-  temporaryPosition: {x: 0, y: 0, z: 0}
-  startRotation: {x: 0, y: 0, z: 0, w: 0}
-  temporaryRotation: {x: 0, y: 0, z: 0, w: 0}
+  startPostion: {x: 0, y: -39.6, z: 65}
+  temporaryPosition: {x: 0, y: -39.6, z: 65}
+  startRotation: {x: 0, y: 0, z: 0, w: 1}
+  temporaryRotation: {x: 0, y: 0, z: 0, w: 1}
+  x: 1
+  xCount: 3
   cardDestroyer: {fileID: -8058577656006653332}
---- !u!65 &2832159399412950110
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4897602259468869007}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 16.658308, y: 21.617256, z: 0.9999999}
-  m_Center: {x: -0.000056095916, y: -0.27556306, z: 0}
 --- !u!114 &-8058577656006653332
 MonoBehaviour:
   m_ObjectHideFlags: 0

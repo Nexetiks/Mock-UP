@@ -34,11 +34,12 @@ public class CardDestroyer : MonoBehaviour
         {
             timeToDestroy -= Time.deltaTime;
             image.material.SetFloat("DissolveValue", (cardChangeSpeed - timeToDestroy) / cardChangeSpeed);
-            Debug.Log(image.material.GetFloat("DissolveValue"));
+           // Debug.Log(image.material.GetFloat("DissolveValue"));
         }
         if(timeToDestroy < 0)
         {
             Destroy(gameObject);
+            GameManager.Instance.willBeDestroyed = false;
         }
             
     }

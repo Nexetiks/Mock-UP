@@ -22,7 +22,6 @@ public class AdamTestAnimation : MonoBehaviour
         startpos = transform.position;
         // startRotation = Quaternion.ToEulerAngles(transform.rotation);
         startRotation = trans.rotation;
-        Debug.Log(startRotation);
     }
 
 
@@ -50,7 +49,6 @@ public class AdamTestAnimation : MonoBehaviour
         trans.DOMove(offset, 0.5f);
         trans.DORotate(new Vector3(0,0,0),0.5f);
 
-        Debug.Log("y");
         //sequence = DOTween.Sequence();
         //sequence.Append(transform.DOMove(startpos + offset, .37f).SetEase(ease));
        // sequence.SetUpdate(true);
@@ -63,7 +61,6 @@ public class AdamTestAnimation : MonoBehaviour
         trans.DOMove(startpos, 0.5f);
         trans.DORotateQuaternion(startRotation, 0.5f);
 
-        Debug.Log("z");
 
         sequence.onComplete += OnComplete;
     }
