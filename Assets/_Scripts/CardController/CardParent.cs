@@ -131,6 +131,14 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnBeginDrag(PointerEventData eventData)
     {
+        if (helpe == 0 && GameManager.Instance.gameplayActive == true && GameManager.Instance.isDragged == false && GameManager.Instance.isBacking == false)
+        {
+
+            temporaryPosition = transform.position;
+            temporaryRotation = transform.rotation;
+            helpe = 1;
+        }
+
         Debug.Log("begindrag");
         if (GameManager.Instance.gameplayActive == true)
             BeginDRAG();
@@ -177,7 +185,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnPointerExit(PointerEventData eventData)
     {
-        
+        //nadpisywanei pierwotjnej pozycji
         if (helpe == 0 && GameManager.Instance.gameplayActive == true && GameManager.Instance.isDragged == false && GameManager.Instance.isBacking == false)
         {
  
@@ -185,6 +193,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             temporaryRotation = transform.rotation;
             helpe = 1;
         }
+
         if (GameManager.Instance.isDragged == false && GameManager.Instance.gameplayActive == true && GameManager.Instance.isDragged == false)
         {
             Debug.Log("exit");
@@ -364,8 +373,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
             if (xCount == 1)
             {
-                startPostion = GameManager.Instance.position[2];
-                temporaryPosition = GameManager.Instance.position[2];
+               // startPostion = GameManager.Instance.position[2];
+               // temporaryPosition = GameManager.Instance.position[2];
 
                 startRotation = GameManager.Instance.rotation[2];
                 temporaryRotation = GameManager.Instance.rotation[2];
@@ -379,8 +388,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 if (x == 0)
                 {
                     Debug.Log(0);
-                    startPostion = GameManager.Instance.position[1];
-                    temporaryPosition = GameManager.Instance.position[1];
+                   // startPostion = GameManager.Instance.position[1];
+                    //temporaryPosition = GameManager.Instance.position[1];
 
                     startRotation = GameManager.Instance.rotation[1];
                     temporaryRotation = GameManager.Instance.rotation[1];
@@ -391,8 +400,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 if (x == 1)
                 {
                     Debug.Log(1);
-                    startPostion = GameManager.Instance.position[2];
-                    temporaryPosition = GameManager.Instance.position[2];
+                   // startPostion = GameManager.Instance.position[2];
+                   // temporaryPosition = GameManager.Instance.position[2];
 
                     startRotation = GameManager.Instance.rotation[2];
                     temporaryRotation = GameManager.Instance.rotation[2];
@@ -402,9 +411,9 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 }
                 if (x == 2)
                 {
-                    startPostion = GameManager.Instance.position[3];
-                    temporaryPosition = GameManager.Instance.position[3];
-
+                    // startPostion = GameManager.Instance.position[3];
+                    // temporaryPosition = GameManager.Instance.position[3];
+                    Debug.Log(2);
                     startRotation = GameManager.Instance.rotation[3];
                     temporaryRotation = GameManager.Instance.rotation[3];
 
