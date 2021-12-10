@@ -2,24 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Coffee.UIExtensions;
 
 public class CardDestroyer : MonoBehaviour
 {
     [SerializeField] private float cardChangeSpeed;
 
-    private Material mat;
-    private RawImage image;
+    [SerializeField] private UIDissolve dissolve;
+
     private bool destroyCard = false;
     private float timeToDestroy;
     
 
     private void Start()
     {
-        image = GetComponent<RawImage>();
-        mat = new Material(image.material);
-        mat.SetFloat("Random1", Random.value);
-        mat.SetFloat("Random2", Random.value);
-        image.material = mat;
+        
         timeToDestroy = cardChangeSpeed;
     }
 
@@ -33,8 +30,7 @@ public class CardDestroyer : MonoBehaviour
         if (destroyCard)
         {
             timeToDestroy -= Time.deltaTime;
-            image.material.SetFloat("DissolveValue", (cardChangeSpeed - timeToDestroy) / cardChangeSpeed);
-            Debug.Log(image.material.GetFloat("DissolveValue"));
+            dissolve.location = (cardChangeSpeed - timeToDestroy) / cardChangeSpeed;
         }
         if(timeToDestroy < 0)
         {
