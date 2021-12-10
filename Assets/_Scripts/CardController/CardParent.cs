@@ -97,6 +97,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     [SerializeField]
     public Quaternion startRotation,temporaryRotation;
 
+    [SerializeField] private CardDestroyer cardDestroyer;
 
 
     virtual public void Awake()
@@ -257,11 +258,11 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 GameManager.Instance.isDragged = false;
 
                 Debug.Log("przed funckja " + GameManager.Instance.indexHelper);
-
+                /// tutaj!!!
+                /// 
                 GameManager.Instance.HandList.UsedCard(idCard);
-
-                Destroy(gameObject);
-                
+                cardDestroyer.DestroyCard();
+                /// end tutaj!!!
                 Rm.EndOfTheRound();
 
                 GameManager.Instance.HandList.SendCardToHand(GameManager.Instance.DeskList.cards);
