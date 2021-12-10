@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 28705587557082163}
   - component: {fileID: 28705587557082162}
   - component: {fileID: 3380633959932449222}
+  - component: {fileID: 4321544446723316557}
   m_Layer: 5
   m_Name: Card6
   m_TagString: Untagged
@@ -59,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: b13102ece19dd1140894eae95839671f, type: 2}
+  m_Material: {fileID: 21068288719974348, guid: 2ac9a8033337c4b908c54c087abd31e8, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -137,3 +138,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardChangeSpeed: 1.96
+  dissolve: {fileID: 4321544446723316557}
+--- !u!114 &4321544446723316557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810729103651651823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9a4349581d64dcabe67c494ee1d531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Location: 0
+  m_Width: 0.5
+  m_Softness: 0.5
+  m_Color: {r: 0, g: 0.25, b: 1, a: 1}
+  m_ColorMode: 2
+  m_EffectMaterial: {fileID: 21068288719974348, guid: 2ac9a8033337c4b908c54c087abd31e8, type: 2}
