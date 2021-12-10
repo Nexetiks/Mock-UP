@@ -17,9 +17,7 @@ public class HandList : MonoBehaviour
     public CardParent card5;
     private CardParent go;
     public List<CardParent> cardsInHand;
-    private Vector3 helperPosition;
-    private Quaternion helperRotation;
-    private int helperIndex;
+    private int help;
 
     public void MakeList()
     {
@@ -90,33 +88,38 @@ public class HandList : MonoBehaviour
 
         if (cards.Count > 0)
         {
-            cardsInHand.Insert(helperIndex, cards[0]);
-           
+            cardsInHand.Insert(GameManager.Instance.indexHelper, cards[0]);
+            //  cardsInHand.Insert(2, cards[0]);
+            Debug.Log("send card to hend po czyms tam " + GameManager.Instance.indexHelper);
             go = Instantiate(cardsInHand[cardsInHand.Count - 1], new Vector3(0, 0, 0), Quaternion.identity);
             go.transform.parent = GameManager.Instance.handParent.transform;
             go.transform.localScale = new Vector3(1, 1, 1);
             go.transform.localPosition = new Vector3(0, -1000, 1);
 
             go.gameObject.AddComponent<CardService>();
-          
 
+           
             cards.RemoveAt(0);
         }
     }
     public void UsedCard( int idCard)
     {
-      
+       // Debug.Log("na samym wejsciu do funkcji " + GameManager.Instance.indexHelper);
+        
         for (int i = 0; i < cardsInHand.Count; i++)
         {
+            
             if (cardsInHand[i].idCard == idCard)
             {
+               // Debug.Log("i " + i);
                 cardsInHand.RemoveAt(i);
                 GameManager.Instance.indexHelper = i;
+                Debug.Log(GameManager.Instance.indexHelper);
 
-                  helperIndex = i;
                 return; 
             }
         }
+       // Debug.Log(GameManager.Instance.indexHelper);
     }
 
     public bool OutOfHandCards()
