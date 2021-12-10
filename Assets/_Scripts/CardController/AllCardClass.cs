@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-class AllCardClass : CardParent
+public class AllCardClass : CardParent
 {
 
 }

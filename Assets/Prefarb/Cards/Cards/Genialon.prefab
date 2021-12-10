@@ -41,15 +41,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2832159399412950109, guid: 9377f938f398c3a40a01ddaf1ae32eec, type: 3}
       propertyPath: taxMultiplier
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2832159399412950109, guid: 9377f938f398c3a40a01ddaf1ae32eec, type: 3}
       propertyPath: fearMultiplier
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2832159399412950109, guid: 9377f938f398c3a40a01ddaf1ae32eec, type: 3}
       propertyPath: crimeMultiplier
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2832159399412950109, guid: 9377f938f398c3a40a01ddaf1ae32eec, type: 3}
       propertyPath: educationAmount
@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2832159399412950109, guid: 9377f938f398c3a40a01ddaf1ae32eec, type: 3}
       propertyPath: moneyMultiplier
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2832159399412950109, guid: 9377f938f398c3a40a01ddaf1ae32eec, type: 3}
       propertyPath: populationAmount
@@ -69,23 +69,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2832159399412950109, guid: 9377f938f398c3a40a01ddaf1ae32eec, type: 3}
       propertyPath: wealthMultiplier
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2832159399412950109, guid: 9377f938f398c3a40a01ddaf1ae32eec, type: 3}
       propertyPath: loyaltyMultiplier
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2832159399412950109, guid: 9377f938f398c3a40a01ddaf1ae32eec, type: 3}
       propertyPath: educationMultiplier
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2832159399412950109, guid: 9377f938f398c3a40a01ddaf1ae32eec, type: 3}
       propertyPath: happinessMultiplier
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2832159399412950109, guid: 9377f938f398c3a40a01ddaf1ae32eec, type: 3}
       propertyPath: populationMultiplier
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2832159399412950111, guid: 9377f938f398c3a40a01ddaf1ae32eec, type: 3}
       propertyPath: m_Pivot.x
