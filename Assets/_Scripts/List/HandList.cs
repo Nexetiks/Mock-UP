@@ -91,7 +91,9 @@ public class HandList : MonoBehaviour
             cardsInHand.Insert(GameManager.Instance.indexHelper, cards[0]);
             //  cardsInHand.Insert(2, cards[0]);
             Debug.Log("send card to hend po czyms tam " + GameManager.Instance.indexHelper);
-            go = Instantiate(cardsInHand[cardsInHand.Count - 1], new Vector3(0, 0, 0), Quaternion.identity);
+
+            go = Instantiate(cardsInHand[GameManager.Instance.indexHelper], new Vector3(0, 0, 0), Quaternion.identity);
+
             go.transform.parent = GameManager.Instance.handParent.transform;
             go.transform.localScale = new Vector3(1, 1, 1);
             go.transform.localPosition = new Vector3(0, -1000, 1);
