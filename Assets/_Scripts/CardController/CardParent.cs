@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
 
-abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IPointerExitHandler, IPointerEnterHandler, IDragHandler
+abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IPointerExitHandler, IPointerEnterHandler, IDragHandler, IPointerClickHandler
 {
     private RoundManager Rm;
 
@@ -104,6 +104,13 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     [SerializeField] private CardDestroyer cardDestroyer;
 
 
+    [SerializeField]
+    public bool isThereCardToDestroy =false;
+    [SerializeField]
+    public int amountCardToDiscard;
+
+
+    
 
     virtual public void Awake()
     {
@@ -114,19 +121,16 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
         cam = Camera.main;
         Rm = new RoundManager();
-       
-
     }
 
     private void Start()
     {
-      //  startPostion = GameManager.Instance.indexHelper;
+        //  startPostion = GameManager.Instance.indexHelper;
         startPostion = GameManager.Instance.position[GameManager.Instance.indexHelper];
         startRotation = GameManager.Instance.rotation[GameManager.Instance.indexHelper];
 
-
-
-
+        if(isThereCardToDestroy ==true) 
+        amountCardToDiscard = ((GameManager.Instance.round) % 5);
     }
 
     virtual public void OnBeginDrag(PointerEventData eventData)
@@ -146,7 +150,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("ondrag");
         if (GameManager.Instance.gameplayActive == true)
         {
             GameManager.Instance.isDragged = true;
@@ -281,7 +284,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         if (GameManager.Instance.gameplayActive == true)
         {
             viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
-            if (viewPortCardPosition.y > 0.4f)
+
+            if (viewPortCardPosition.y > 0.4f )
             {
                 GameManager.Instance.gameplayActive = false;
 
@@ -295,32 +299,58 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
                 GameManager.Instance.positionNumber = GameManager.Instance.HandList.GetIndex(idCard);
 
+
+                GameManager.Instance.discardAmount = amountCardToDiscard;
+
                 CardInvocate();
 
-                GameManager.Instance.ChangeFillAmount();
+                Debug.Log("przed wejscie ");
+
+                if (GameManager.Instance.discardAmount > 0)
+                {
+                    Debug.Log("if ");
+                    cardDestroyer.DestroyCard();
+
+                    GameManager.Instance.HandList.UsedCard(idCard);
+                    GameManager.Instance.HandList.SendCardToHand(GameManager.Instance.DeskList.cards);
+
+                    cardToDiscard();
+
+                    
+                }
 
 
-                GameManager.Instance.musicManager.PlaySound("throw");
+                else
+                {
+                    Debug.Log("else ");
+                    Debug.Log("nie wszedlem");
 
-                GameManager.Instance.isDragged = false;
-
-                
-
-                GameManager.Instance.HandList.UsedCard(idCard);
-
-				GameManager.Instance.HandList.SendCardToHand(GameManager.Instance.DeskList.cards);
+                   GameManager.Instance.ChangeFillAmount();
 
 
-                
+                    GameManager.Instance.musicManager.PlaySound("throw");
+
+                    GameManager.Instance.isDragged = false;
 
 
-                cardDestroyer.DestroyCard();
+
+                    GameManager.Instance.HandList.UsedCard(idCard);
+
+                    GameManager.Instance.HandList.SendCardToHand(GameManager.Instance.DeskList.cards);
 
 
-                /// end tutaj!!!
-                Rm.EndOfTheRound();
 
-                
+
+
+                    cardDestroyer.DestroyCard();
+
+
+                    /// end tutaj!!!
+                    Rm.EndOfTheRound();
+
+
+                }
+
                 return true;
             }
             else return false;
@@ -387,7 +417,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             {
                 if (x == 0)
                 {
-                    Debug.Log(0);
                    // startPostion = GameManager.Instance.position[1];
                     //temporaryPosition = GameManager.Instance.position[1];
 
@@ -399,7 +428,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 }
                 if (x == 1)
                 {
-                    Debug.Log(1);
                    // startPostion = GameManager.Instance.position[2];
                    // temporaryPosition = GameManager.Instance.position[2];
 
@@ -413,7 +441,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 {
                     // startPostion = GameManager.Instance.position[3];
                     // temporaryPosition = GameManager.Instance.position[3];
-                    Debug.Log(2);
                     startRotation = GameManager.Instance.rotation[3];
                     temporaryRotation = GameManager.Instance.rotation[3];
 
@@ -437,5 +464,44 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     public virtual void Update()
     {
         cardReplacement();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (GameManager.Instance.waitForDiscard == true)
+        {
+
+
+            GameManager.Instance.HandList.UsedCard(this.idCard);
+
+            GameManager.Instance.HandList.SendCardToHand(GameManager.Instance.DeskList.cards);
+
+            cardDestroyer.DestroyCard();
+
+            Debug.Log(this.idCard);
+
+            GameManager.Instance.waitForDiscard = false;
+
+
+
+        }
+    }
+
+    public virtual void cardToDiscard()
+    {
+
+        if (GameManager.Instance.chosenToDiscard != -1)
+        {
+            GameManager.Instance.waitForDiscard = true;
+            
+
+        }
+
+        else
+        {
+            GameManager.Instance.waitForDiscard = false;
+            Debug.Log("else  z funkcji");
+        }
+       GameManager.Instance.isDragged = false;
     }
 }
