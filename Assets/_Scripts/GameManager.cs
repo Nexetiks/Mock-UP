@@ -79,6 +79,9 @@ public class GameManager : MonoBehaviour
     public List<Quaternion> rotation = new List<Quaternion>();
     
     public CardService cardService;
+    [SerializeField]
+    public int indexHelper=2;
+
 
 
     public void ChangeFillAmount()
