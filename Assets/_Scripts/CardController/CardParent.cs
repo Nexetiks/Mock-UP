@@ -124,22 +124,24 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         startPostion = GameManager.Instance.position[GameManager.Instance.indexHelper];
         startRotation = GameManager.Instance.rotation[GameManager.Instance.indexHelper];
 
-        temporaryPosition = GameManager.Instance.position[GameManager.Instance.indexHelper];
-        temporaryRotation= GameManager.Instance.rotation[GameManager.Instance.indexHelper];
+
 
 
     }
 
     virtual public void OnBeginDrag(PointerEventData eventData)
     {
+        Debug.Log("begindrag");
         if (GameManager.Instance.gameplayActive == true)
             BeginDRAG();
     }
 
     virtual public void OnDrag(PointerEventData eventData)
     {
+        Debug.Log("ondrag");
         if (GameManager.Instance.gameplayActive == true)
         {
+            GameManager.Instance.isDragged = true;
             rawImage.transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.2f);
             rawImage.transform.DOMove(new Vector3((cam.ScreenToWorldPoint(MousePlace())).x, (cam.ScreenToWorldPoint(MousePlace())).y, (cam.ScreenToWorldPoint(MousePlace())).z - 20f), 0.2f);
 
@@ -148,9 +150,10 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnPointerEnter(PointerEventData eventData)
     {
-
-        if (helpe == 0&& GameManager.Instance.gameplayActive == true)
+        
+        if (helpe == 0 && GameManager.Instance.gameplayActive == true && GameManager.Instance.isDragged == false)
         {
+            Debug.Log("enter");
             temporaryPosition = transform.position;
             temporaryRotation = transform.rotation;
             helpe = 1;
@@ -174,20 +177,38 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnPointerExit(PointerEventData eventData)
     {
-       
-        if (GameManager.Instance.isDragged == false)
+        
+        if (helpe == 0 && GameManager.Instance.gameplayActive == true && GameManager.Instance.isDragged == false && GameManager.Instance.isBacking == false)
         {
+ 
+            temporaryPosition = transform.position;
+            temporaryRotation = transform.rotation;
+            helpe = 1;
+        }
+        if (GameManager.Instance.isDragged == false && GameManager.Instance.gameplayActive == true && GameManager.Instance.isDragged == false)
+        {
+            Debug.Log("exit");
             rawImage.transform.DOMove(temporaryPosition, 0.71f);
             rawImage.transform.DORotateQuaternion(temporaryRotation, 0.71f);
+            MouseEXIT();
         }
-        MouseEXIT();
+
     }
 
     virtual public void OnEndDrag(PointerEventData eventData)
     {
-       
-        if (IsCardPlaced() != true)
+      /*  Debug.Log("enddrag + nadpisanie");
+        if (helpe == 0 && GameManager.Instance.gameplayActive == true && GameManager.Instance.isDragged == false)
         {
+            temporaryPosition = transform.position;
+            temporaryRotation = transform.rotation;
+            helpe = 1;
+        }*/
+
+        Debug.Log("enddrag");
+        if (IsCardPlaced() != true&& GameManager.Instance.isBacking == false)
+        {
+
             GameManager.Instance.isDragged = false;
             GameManager.Instance.isBacking = true;
 
