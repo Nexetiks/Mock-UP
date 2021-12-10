@@ -82,6 +82,11 @@ public class GameManager : MonoBehaviour
     public CardService cardService;
     [SerializeField]
     public int indexHelper=2;
+    [SerializeField]
+    public Ranking ranking;
+    public TextMeshProUGUI Name;
+    public List<string> nameList;
+    
 
 
 
@@ -107,6 +112,8 @@ public class GameManager : MonoBehaviour
     {
         GMData data = SaveSystem.LoadGame();
         this.scoreList = data.points;
+        this.nameList = data.names;
+   
         
     }
     public void ChangeCameraPosition()
@@ -125,8 +132,13 @@ public class GameManager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Debug.Log("An instance error");
         ChangeFillAmount();
+       
         LoadGame();
       
+    }
+    public void AppQuit()
+    {
+        Application.Quit(1);
     }
 
 
