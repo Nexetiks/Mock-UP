@@ -29,13 +29,21 @@ public class CardDestroyer : MonoBehaviour
     {
         if (destroyCard)
         {
+            GameManager.Instance.willBeDestroyed = true;
+            GameManager.Instance.gameplayActive = false;
             timeToDestroy -= Time.deltaTime;
             dissolve.location = (cardChangeSpeed - timeToDestroy) / cardChangeSpeed;
         }
         if(timeToDestroy < 0)
         {
             Destroy(gameObject);
+<<<<<<< HEAD
+            GameManager.Instance.willBeDestroyed = false;
+            GameManager.Instance.gameplayActive = true;
+=======
+>>>>>>> d134f87908d0468ba2e590c9bdfbe142127c2f1e
         }
+
             
     }
 }

@@ -132,20 +132,24 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnBeginDrag(PointerEventData eventData)
     {
-        BeginDRAG();
+        if (GameManager.Instance.gameplayActive == true)
+            BeginDRAG();
     }
 
     virtual public void OnDrag(PointerEventData eventData)
     {
-       
-        rawImage.transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.2f);
-        rawImage.transform.DOMove(new Vector3((cam.ScreenToWorldPoint(MousePlace())).x, (cam.ScreenToWorldPoint(MousePlace())).y, (cam.ScreenToWorldPoint(MousePlace())).z - 20f), 0.2f);
+        if (GameManager.Instance.gameplayActive == true)
+        {
+            rawImage.transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.2f);
+            rawImage.transform.DOMove(new Vector3((cam.ScreenToWorldPoint(MousePlace())).x, (cam.ScreenToWorldPoint(MousePlace())).y, (cam.ScreenToWorldPoint(MousePlace())).z - 20f), 0.2f);
+
+        }
     }
 
     virtual public void OnPointerEnter(PointerEventData eventData)
     {
 
-        if (helpe == 0)
+        if (helpe == 0&& GameManager.Instance.gameplayActive == true)
         {
             temporaryPosition = transform.position;
             temporaryRotation = transform.rotation;
@@ -153,7 +157,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         }
 
 
-        if (GameManager.Instance.isDragged == false && rawImage.transform.position == temporaryPosition)
+        if (GameManager.Instance.isDragged == false && rawImage.transform.position == temporaryPosition && GameManager.Instance.gameplayActive == true)
         {
             
 
@@ -249,6 +253,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
             if (viewPortCardPosition.y > 0.4f)
             {
+                GameManager.Instance.gameplayActive = false;
+
                 temporaryPosition = rawImage.rectTransform.position;
                 startPostion = temporaryPosition;
 
@@ -321,7 +327,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         {
             xCount = GameManager.Instance.HandList.cardsInHand.Count;
 
-
+            /*
             for (int i = 0; i < xCount; i++)
             {
                 if (startPostion == GameManager.Instance.position[i])
@@ -330,7 +336,10 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                     x = i;
                 }
             }
+            */
 
+
+            x = GameManager.Instance.HandList.GetIndex(idCard);
 
             if (xCount == 1)
             {
@@ -348,6 +357,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             {
                 if (x == 0)
                 {
+                    Debug.Log(0);
                     startPostion = GameManager.Instance.position[1];
                     temporaryPosition = GameManager.Instance.position[1];
 
@@ -359,6 +369,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 }
                 if (x == 1)
                 {
+                    Debug.Log(1);
                     startPostion = GameManager.Instance.position[2];
                     temporaryPosition = GameManager.Instance.position[2];
 
@@ -368,7 +379,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                     rawImage.transform.DORotateQuaternion(temporaryRotation, 0.2f);
                     rawImage.transform.DOMove(temporaryPosition, 0.2f);
                 }
-                if (x == 3)
+                if (x == 2)
                 {
                     startPostion = GameManager.Instance.position[3];
                     temporaryPosition = GameManager.Instance.position[3];
