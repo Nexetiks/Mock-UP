@@ -48,6 +48,12 @@ public class RoundManager : MonoBehaviour
             GameManager.Instance.mainPanel.SetActive(false);
 
         }
+        //usunac to to tylko dlla testu to pod tym
+        GameManager.Instance.gameplayActive = true;
+        for (int i = 0; i < GameManager.Instance.HandList.cardsInHand.Count; i++)
+        {
+            GameManager.Instance.HandList.cardsInHand[i].cardReplacement();
+        }
 
         GameManager.Instance.round++;
         GameManager.Instance.gameplayActive = true;

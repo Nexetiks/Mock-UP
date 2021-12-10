@@ -97,6 +97,10 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     [SerializeField]
     public Quaternion startRotation,temporaryRotation;
 
+    [SerializeField]
+    public int x;
+    [SerializeField]
+    public int xCount;
 
 
     virtual public void Awake()
@@ -116,13 +120,9 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     {
       //  startPostion = GameManager.Instance.indexHelper;
         startPostion = GameManager.Instance.position[GameManager.Instance.indexHelper];
-        Debug.Log(GameManager.Instance.indexHelper);
         startRotation = GameManager.Instance.rotation[GameManager.Instance.indexHelper];
         
     }
-
-
-
 
     virtual public void OnBeginDrag(PointerEventData eventData)
     {
@@ -256,22 +256,14 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
                 GameManager.Instance.isDragged = false;
 
-                ///////////////////////////////////////////////////////////////////usuwanie
-                GameManager.Instance.HandList.UsedCard(idCard);
-                Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
-                ////////////////////////////////////////////////////////////////////
-
-
-                Debug.Log("przed funckja " + GameManager.Instance.indexHelper);
 
                 GameManager.Instance.HandList.UsedCard(idCard);
 
                 Destroy(gameObject);
-                
-
-                Rm.EndOfTheRound();
 
                 GameManager.Instance.HandList.SendCardToHand(GameManager.Instance.DeskList.cards);
+                Rm.EndOfTheRound();
+
                 return true;
             }
             else return false;
@@ -299,5 +291,58 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     virtual public void MouseUP()
     {
         GameManager.Instance.isDragged = false;
+    }
+    virtual public void cardReplacement()
+    {
+
+        if (GameManager.Instance.DeskList.cards.Count == 0)
+        {
+            xCount = GameManager.Instance.HandList.cardsInHand.Count;
+
+
+            for (int i = 0; i < xCount; i++)
+            {
+                if (startPostion == GameManager.Instance.position[i])
+                {
+
+                    x = i;
+                }
+            }
+
+
+            if (xCount == 1)
+            {
+                this.startPostion = GameManager.Instance.position[2];
+                this.temporaryPosition = GameManager.Instance.position[2];
+                this.rawImage.rectTransform.position = GameManager.Instance.position[2];
+                this.rawImage.transform.position = GameManager.Instance.position[2];
+
+                this.gameObject.transform.localPosition = GameManager.Instance.position[2];
+                this.gameObject.transform.position = GameManager.Instance.position[2];
+
+                Debug.Log(GameManager.Instance.position[2]);
+                Debug.Log(this.gameObject);
+                Debug.Log(this.gameObject.transform.position);
+                Debug.Log("1");
+            }
+            /*
+            if (xCount == 3)
+            {
+                startPostion = GameManager.Instance.position[x + 1];
+                temporaryPosition = GameManager.Instance.position[x + 1];
+                Debug.Log("3");
+            }
+
+
+            if (xCount == 5)
+            {
+                startPostion = GameManager.Instance.position[x];
+                temporaryPosition = GameManager.Instance.position[x];
+                Debug.Log("5");
+            }
+            */
+        }
+
+
     }
 }
