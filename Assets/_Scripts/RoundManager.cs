@@ -33,17 +33,26 @@ public class RoundManager : MonoBehaviour
         SetMoney();
 
         SetPopulation();
-       
+        
         if (IsEndGame() == true)
         {
             GameManager.Instance.gameplayActive = false;
-            GameManager.Instance.musicManager.PlaySound("endScreen");
+            
+            
             GameManager.Instance.musicManager.StopMusic();
             amountOfPoints();
-             GameManager.Instance.HandList.RemoveAllCards();
+            GameManager.Instance.ranking.CheckRanking();
+            GameManager.Instance.HandList.RemoveAllCards();
+            GameManager.Instance.musicManager.PlaySound("endScreen");
             GameManager.Instance.buttonEnd.SetActive(true);
             GameManager.Instance.mainPanel.SetActive(false);
 
+        }
+        //usunac to to tylko dlla testu to pod tym
+        GameManager.Instance.gameplayActive = true;
+        for (int i = 0; i < GameManager.Instance.HandList.cardsInHand.Count; i++)
+        {
+            GameManager.Instance.HandList.cardsInHand[i].cardReplacement();
         }
 
         GameManager.Instance.round++;
@@ -74,6 +83,7 @@ public class RoundManager : MonoBehaviour
 
     public bool IsEndGame()
     {
+        
         if (GameManager.Instance.loyalty == 0 && GameManager.Instance.fear < 0.8f)
         return true;
            
