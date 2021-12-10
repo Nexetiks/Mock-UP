@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public MusicManager musicManager;
     [SerializeField]
     public float Score;
+    public List <float> scoreList;
     [SerializeField]
     public GameObject handParent;
     [SerializeField]
@@ -98,6 +99,16 @@ public class GameManager : MonoBehaviour
 
 
     }
+    public void SaveGame()
+    {
+        SaveSystem.SaveGame(this);
+    }
+    public void LoadGame()
+    {
+        GMData data = SaveSystem.LoadGame();
+        this.scoreList = data.points;
+        
+    }
     public void ChangeCameraPosition()
     {
         mainCamera.transform.position = new Vector3(0, 130,-35);
@@ -114,6 +125,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Debug.Log("An instance error");
         ChangeFillAmount();
+        LoadGame();
       
     }
 
