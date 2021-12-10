@@ -19,6 +19,7 @@ public class HandList : MonoBehaviour
     public List<CardParent> cardsInHand;
     private Vector3 helperPosition;
     private Quaternion helperRotation;
+    private int helperIndex;
 
     public void MakeList()
     {
@@ -63,31 +64,12 @@ public class HandList : MonoBehaviour
         GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, 4.2f )));
         GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, 2.1f)));
         GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, 0)));
-        GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, 2.1f)));
-        GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, 4.2f)));
+        GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, -2.1f)));
+        GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, -4.2f)));
 
     }
 
-    public void SendCardToHand(List<CardParent> cards)
-    {
-       
-        if (cards.Count > 0)
-        {
-            cardsInHand.Add(cards[0]);
-            go =Instantiate(cardsInHand[cardsInHand.Count - 1], new Vector3(0, 0, 0), Quaternion.identity);
-            go.transform.parent = GameManager.Instance.handParent.transform;
-            go.transform.localScale = new Vector3(1, 1, 1);
-            go.transform.localPosition = new Vector3(0, -1000, 1);
-
-            go.gameObject.AddComponent<CardService>();
-            GameManager.Instance.position.Add(helperPosition);
-            GameManager.Instance.rotation.Add(helperRotation);
-            helperPosition = new Vector3(0,0,0);
-            helperRotation = Quaternion.Euler(0, 0, 0);
-
-            cards.RemoveAt(0);
-        }
-    }
+   
 
     public int GetIndex(int idCard)
     {
@@ -95,12 +77,31 @@ public class HandList : MonoBehaviour
         {
             if (cardsInHand[i].idCard == idCard)
             {
+               
                 return i;
             }
           
         }
         return -1;
 
+    }
+    public void SendCardToHand(List<CardParent> cards)
+    {
+
+        if (cards.Count > 0)
+        {
+            cardsInHand.Insert(helperIndex, cards[0]);
+           
+            go = Instantiate(cardsInHand[cardsInHand.Count - 1], new Vector3(0, 0, 0), Quaternion.identity);
+            go.transform.parent = GameManager.Instance.handParent.transform;
+            go.transform.localScale = new Vector3(1, 1, 1);
+            go.transform.localPosition = new Vector3(0, -1000, 1);
+
+            go.gameObject.AddComponent<CardService>();
+          
+
+            cards.RemoveAt(0);
+        }
     }
     public void UsedCard( int idCard)
     {
@@ -110,8 +111,9 @@ public class HandList : MonoBehaviour
             if (cardsInHand[i].idCard == idCard)
             {
                 cardsInHand.RemoveAt(i);
-                helperPosition = GameManager.Instance.position[i];
-                helperRotation = GameManager.Instance.rotation[i];
+                GameManager.Instance.indexHelper = i;
+
+                  helperIndex = i;
                 return; 
             }
         }
