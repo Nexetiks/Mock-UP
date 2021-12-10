@@ -101,7 +101,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     public int x;
     [SerializeField]
     public int xCount;
-
+    [SerializeField] private CardDestroyer cardDestroyer;
 
     virtual public void Awake()
     {
@@ -259,13 +259,10 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
                 GameManager.Instance.HandList.UsedCard(idCard);
 
-                Destroy(gameObject);
-                
-                
+				GameManager.Instance.HandList.SendCardToHand(GameManager.Instance.DeskList.cards);                
 
-                GameManager.Instance.HandList.SendCardToHand(GameManager.Instance.DeskList.cards);
-
-                ///prosze pamietac byc to zmienic
+                cardDestroyer.DestroyCard();
+                /// end tutaj!!!
                 Rm.EndOfTheRound();
 
                 return true;

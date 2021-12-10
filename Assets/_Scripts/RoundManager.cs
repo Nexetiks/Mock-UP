@@ -33,14 +33,17 @@ public class RoundManager : MonoBehaviour
         SetMoney();
 
         SetPopulation();
-       
+        
         if (IsEndGame() == true)
         {
             GameManager.Instance.gameplayActive = false;
-            GameManager.Instance.musicManager.PlaySound("endScreen");
+            
+            
             GameManager.Instance.musicManager.StopMusic();
             amountOfPoints();
-             GameManager.Instance.HandList.RemoveAllCards();
+            GameManager.Instance.ranking.CheckRanking();
+            GameManager.Instance.HandList.RemoveAllCards();
+            GameManager.Instance.musicManager.PlaySound("endScreen");
             GameManager.Instance.buttonEnd.SetActive(true);
             GameManager.Instance.mainPanel.SetActive(false);
 
@@ -80,6 +83,7 @@ public class RoundManager : MonoBehaviour
 
     public bool IsEndGame()
     {
+        
         if (GameManager.Instance.loyalty == 0 && GameManager.Instance.fear < 0.8f)
         return true;
            
