@@ -33,7 +33,7 @@ public class RoundManager : MonoBehaviour
         SetMoney();
 
         SetPopulation();
-       
+        
         if (IsEndGame() == true)
         {
             GameManager.Instance.gameplayActive = false;
@@ -74,6 +74,7 @@ public class RoundManager : MonoBehaviour
 
     public bool IsEndGame()
     {
+        
         if (GameManager.Instance.loyalty == 0 && GameManager.Instance.fear < 0.8f)
         return true;
            

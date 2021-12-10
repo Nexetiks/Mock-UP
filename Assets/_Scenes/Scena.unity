@@ -4716,7 +4716,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicManager: {fileID: 1698666408}
-  Score: 0
+  Score: 1
+  scoreList: []
   handParent: {fileID: 268346666}
   population: 10
   money: 125
@@ -4748,6 +4749,7 @@ MonoBehaviour:
   position: []
   rotation: []
   cardService: {fileID: 0}
+  indexHelper: 2
 --- !u!4 &1795336713
 Transform:
   m_ObjectHideFlags: 0

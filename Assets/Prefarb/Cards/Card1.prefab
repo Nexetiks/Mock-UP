@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   costAmount: 1
-  idCard: 1
+  idCard: 0
   populationAmount: 1
   populationMultiplier: 1
   moneyAmount: 1
@@ -114,11 +114,13 @@ MonoBehaviour:
   textureCard: {fileID: 0}
   rawImage: {fileID: 2832159399412950108}
   rectTra: {fileID: 0}
-  initialPosition: {x: 0, y: 0, z: 0}
+  helpe: 0
   viewPortCardPosition: {x: 0, y: 0, z: 0}
   worldPosition: {x: 0, y: 0, z: 0}
   startPostion: {x: 0, y: 0, z: 0}
+  temporaryPosition: {x: 0, y: 0, z: 0}
   startRotation: {x: 0, y: 0, z: 0, w: 0}
+  temporaryRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &2832159399412950110
 BoxCollider:
   m_ObjectHideFlags: 0

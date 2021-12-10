@@ -253,13 +253,24 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
 
                 GameManager.Instance.musicManager.PlaySound("throw");
-                CardInvocate();
+
                 GameManager.Instance.isDragged = false;
+<<<<<<< HEAD
                 ///////////////////////////////////////////////////////////////////usuwanie
                 GameManager.Instance.HandList.UsedCard(idCard);
                 Destroy(gameObject);//w dalszym etapie zamiana/dodanie na animacje
                 ////////////////////////////////////////////////////////////////////
+=======
+
+                Debug.Log("przed funckja " + GameManager.Instance.indexHelper);
+
+                GameManager.Instance.HandList.UsedCard(idCard);
+
+                Destroy(gameObject);
+                
+>>>>>>> 155fd491576118fe4be5056563161e21ab2e6680
                 Rm.EndOfTheRound();
+
                 GameManager.Instance.HandList.SendCardToHand(GameManager.Instance.DeskList.cards);
                 return true;
             }
