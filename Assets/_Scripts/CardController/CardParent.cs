@@ -129,8 +129,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         startPostion = GameManager.Instance.position[GameManager.Instance.indexHelper];
         startRotation = GameManager.Instance.rotation[GameManager.Instance.indexHelper];
 
-        if(isThereCardToDestroy ==true) 
-        amountCardToDiscard = ((GameManager.Instance.round) % 5);
+        //if(isThereCardToDestroy ==true) 
+        //amountCardToDiscard = ((GameManager.Instance.round) % 5);
     }
 
     virtual public void OnBeginDrag(PointerEventData eventData)
@@ -329,6 +329,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
 
                     GameManager.Instance.musicManager.PlaySound("throw");
+
+                    Debug.Log(GameManager.Instance.HandList.GetIndex(idCard));
 
                     GameManager.Instance.isDragged = false;
 
