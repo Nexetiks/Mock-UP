@@ -318,16 +318,18 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             {
                 this.startPostion = GameManager.Instance.position[2];
                 this.temporaryPosition = GameManager.Instance.position[2];
-                this.rawImage.rectTransform.position = GameManager.Instance.position[2];
-                this.rawImage.transform.position = GameManager.Instance.position[2];
+                rawImage.rectTransform.position = GameManager.Instance.position[2];
+                rawImage.transform.position = GameManager.Instance.position[2];
 
                 this.gameObject.transform.localPosition = GameManager.Instance.position[2];
                 this.gameObject.transform.position = GameManager.Instance.position[2];
 
                 Debug.Log(GameManager.Instance.position[2]);
-                Debug.Log(this.gameObject);
+               // Debug.Log(this.gameObject);
                 Debug.Log(this.gameObject.transform.position);
-                Debug.Log("1");
+
+                Debug.Log(this.name);
+                //Debug.Log("1");
             }
             /*
             if (xCount == 3)
@@ -348,5 +350,15 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         }
 
 
+    }
+    public void Update()
+    {
+        if(xCount == 1)
+        {
+
+            Debug.Log(GameManager.Instance.position[2]);
+            Debug.Log(this.gameObject.transform.position);
+            Debug.Log(this.name);
+        }
     }
 }
