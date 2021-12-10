@@ -12,6 +12,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2800000, guid: 6d6227503e2666842925d94f7b7679d3, type: 3}
     - target: {fileID: 2832159399412950109, guid: 9377f938f398c3a40a01ddaf1ae32eec, type: 3}
+      propertyPath: idCard
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832159399412950109, guid: 9377f938f398c3a40a01ddaf1ae32eec, type: 3}
       propertyPath: taxAmount
       value: 0
       objectReference: {fileID: 0}

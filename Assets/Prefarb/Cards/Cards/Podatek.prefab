@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   costAmount: 15
-  idCard: 0
+  idCard: 21
   populationAmount: 0
   populationMultiplier: 1
   moneyAmount: 0

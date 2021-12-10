@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   costAmount: 50
-  idCard: 0
+  idCard: 31
   populationAmount: 0
   populationMultiplier: 1
   moneyAmount: 0
@@ -126,6 +126,8 @@ MonoBehaviour:
   x: 0
   xCount: 0
   cardDestroyer: {fileID: 0}
+  isThereCardToDestroy: 0
+  amountCardToDiscard: 0
 --- !u!114 &6399892110092105781
 MonoBehaviour:
   m_ObjectHideFlags: 0

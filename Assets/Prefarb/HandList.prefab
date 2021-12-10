@@ -43,9 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61eb5f6f956e4f4478aed1d7d39fb768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card1: {fileID: 2832159399412950109, guid: 9377f938f398c3a40a01ddaf1ae32eec, type: 3}
-  card2: {fileID: 140183452921524279, guid: c48b443832aa0e242a629b1d443607d8, type: 3}
-  card3: {fileID: 5231867659292532014, guid: 81376c482c39e624cb1e1cd4210e3186, type: 3}
-  card4: {fileID: 1761178895754320546, guid: 1159531f653592c419e8c6b6793d06d4, type: 3}
-  card5: {fileID: 28705587557082162, guid: e284b614f8aa4de4e9712f91821207d0, type: 3}
-  cardsInHand: []
+  card1: {fileID: 8049916404222481924, guid: e92174a0779bcb34d9c5569985b321ba, type: 3}
+  card2: {fileID: 8049916404222481924, guid: 433d5f3f559f3044eabf7d35d0fe5ea3, type: 3}
+  card3: {fileID: 8049916404222481924, guid: d39bf7e9919953946918497118381dac, type: 3}
+  card4: {fileID: 8049916404222481924, guid: c2f6275f8cb339c42a81ef48fbc94bb4, type: 3}
+  card5: {fileID: 8049916404222481924, guid: 24e471db9f1a69c46a5b144b8214db99, type: 3}
+  cardsInHand:
+  - {fileID: 8049916404222481924, guid: e92174a0779bcb34d9c5569985b321ba, type: 3}
+  - {fileID: 8049916404222481924, guid: f9c387c761f5eed4e832d006f2691dae, type: 3}
+  - {fileID: 8049916404222481924, guid: d777b79985ea7c14499c0c29fcc16d3e, type: 3}
+  - {fileID: 8049916404222481924, guid: c2f6275f8cb339c42a81ef48fbc94bb4, type: 3}
+  - {fileID: 3062713738999194803, guid: 4e4fb0f4456c69843b705d55d1fd4462, type: 3}

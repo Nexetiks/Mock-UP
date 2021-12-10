@@ -135,7 +135,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnBeginDrag(PointerEventData eventData)
     {
-        if (helpe == 0 && GameManager.Instance.gameplayActive == true && GameManager.Instance.isDragged == false && GameManager.Instance.isBacking == false)
+        if (helpe == 0 && GameManager.Instance.gameplayActive == true   && GameManager.Instance.isBacking == false)
         {
 
             temporaryPosition = transform.position;
@@ -162,8 +162,9 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     virtual public void OnPointerEnter(PointerEventData eventData)
     {
         
-        if (helpe == 0 && GameManager.Instance.gameplayActive == true && GameManager.Instance.isDragged == false)
+        if (helpe == 0 && GameManager.Instance.gameplayActive == true  )
         {
+            Debug.Log("przypisanie poczatkowej pozycji");
             Debug.Log("enter");
             temporaryPosition = transform.position;
             temporaryRotation = transform.rotation;
@@ -173,13 +174,12 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
         if (GameManager.Instance.isDragged == false && rawImage.transform.position == temporaryPosition && GameManager.Instance.gameplayActive == true)
         {
-            
-
+            Debug.Log(" on point enter 2if");
  
             GameManager.Instance.isBacking = false;
             GameManager.Instance.musicManager.PlaySound("cardHover");
 
-            rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 10f, rawImage.transform.position.z - 3f), 0.7f);
+            rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 10f, rawImage.transform.position.z - 1f), 0.7f);
             rawImage.transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.7f);
 
             MouseENTER();  
@@ -189,7 +189,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     virtual public void OnPointerExit(PointerEventData eventData)
     {
         //nadpisywanei pierwotjnej pozycji
-        if (helpe == 0 && GameManager.Instance.gameplayActive == true && GameManager.Instance.isDragged == false && GameManager.Instance.isBacking == false)
+        if (helpe == 0 && GameManager.Instance.gameplayActive == true   && GameManager.Instance.isBacking == false)
         {
  
             temporaryPosition = transform.position;
@@ -197,7 +197,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             helpe = 1;
         }
 
-        if (GameManager.Instance.isDragged == false && GameManager.Instance.gameplayActive == true && GameManager.Instance.isDragged == false)
+        if (GameManager.Instance.isDragged == false && GameManager.Instance.gameplayActive == true  )
         {
             Debug.Log("exit");
             rawImage.transform.DOMove(temporaryPosition, 0.71f);
@@ -209,7 +209,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     virtual public void OnEndDrag(PointerEventData eventData)
     {
       /*  Debug.Log("enddrag + nadpisanie");
-        if (helpe == 0 && GameManager.Instance.gameplayActive == true && GameManager.Instance.isDragged == false)
+        if (helpe == 0 && GameManager.Instance.gameplayActive == true  )
         {
             temporaryPosition = transform.position;
             temporaryRotation = transform.rotation;
@@ -299,13 +299,12 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 GameManager.Instance.positionNumber = GameManager.Instance.HandList.GetIndex(idCard);
 
 
-                GameManager.Instance.discardAmount = amountCardToDiscard;
 
                 CardInvocate();
 
                 Debug.Log("przed wejscie ");
 
-                if (GameManager.Instance.discardAmount > 0)
+                if (GameManager.Instance.discardAmount > 0&&0==2)
                 {
                     Debug.Log("if ");
                     cardDestroyer.DestroyCard();
@@ -323,6 +322,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 {
                     Debug.Log("else ");
                     Debug.Log("nie wszedlem");
+
+                    
 
                    GameManager.Instance.ChangeFillAmount();
 
@@ -461,10 +462,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
 
         }
-    }
-    public virtual void Update()
-    {
-        cardReplacement();
     }
 
     public void OnPointerClick(PointerEventData eventData)
