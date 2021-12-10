@@ -37,6 +37,7 @@ public class CardDestroyer : MonoBehaviour
         if(timeToDestroy < 0)
         {
             Destroy(gameObject);
+
             GameManager.Instance.willBeDestroyed = false;
             GameManager.Instance.gameplayActive = true;
 

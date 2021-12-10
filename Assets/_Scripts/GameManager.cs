@@ -47,8 +47,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
 
     public int positionNumber;
-    
 
+    [SerializeField]
     public HandList HandList;
     public DeckList DeskList;
     
@@ -89,8 +89,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public bool willBeDestroyed = false;
 
+    [SerializeField]
+    public int discardAmount=0;
+    [SerializeField]
+    public int chosenToDiscard=3;
 
-
+    [SerializeField]
+    public bool waitForDiscard = false;
 
     public void ChangeFillAmount()
     {

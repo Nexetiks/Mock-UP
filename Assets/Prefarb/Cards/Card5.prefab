@@ -125,6 +125,8 @@ MonoBehaviour:
   x: 2
   xCount: 4
   cardDestroyer: {fileID: -1790193144028358581}
+  isThereCardToDestroy: 0
+  amountCardToDiscard: 0
 --- !u!114 &-1790193144028358581
 MonoBehaviour:
   m_ObjectHideFlags: 0
