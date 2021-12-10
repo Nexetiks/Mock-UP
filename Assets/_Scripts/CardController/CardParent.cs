@@ -158,8 +158,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 10f, rawImage.transform.position.z - 15f), 0.7f);
             rawImage.transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.7f);
 
-            MouseENTER();
-            
+            MouseENTER();  
         }
     }
 
@@ -242,13 +241,18 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         if (GameManager.Instance.gameplayActive == true)
         {
             viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
-            if (viewPortCardPosition.y > 0.5f)
+            if (viewPortCardPosition.y > 0.4f)
             {
+                temporaryPosition = rawImage.rectTransform.position;
+                startPostion = temporaryPosition;
 
-                
+                temporaryRotation = rawImage.rectTransform.rotation;
+                startRotation = temporaryRotation;
+
                 GameManager.Instance.positionNumber = GameManager.Instance.HandList.GetIndex(idCard);
 
                 CardInvocate();
+
                 GameManager.Instance.ChangeFillAmount();
 
 
@@ -259,7 +263,10 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
                 GameManager.Instance.HandList.UsedCard(idCard);
 
-				GameManager.Instance.HandList.SendCardToHand(GameManager.Instance.DeskList.cards);                
+				GameManager.Instance.HandList.SendCardToHand(GameManager.Instance.DeskList.cards);
+
+                
+
 
                 cardDestroyer.DestroyCard();
                 /// end tutaj!!!
@@ -347,15 +354,5 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         }
 
 
-    }
-    public void Update()
-    {
-        if(xCount == 1)
-        {
-
-            Debug.Log(GameManager.Instance.position[2]);
-            Debug.Log(this.gameObject.transform.position);
-            Debug.Log(this.name);
-        }
     }
 }
