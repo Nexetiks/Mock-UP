@@ -116,6 +116,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     {
         canvas = FindObjectOfType<Canvas>();
 
+
         rectTra = this.GetComponent<RectTransform>();
         rawImage = this.GetComponent<RawImage>();
 
@@ -150,11 +151,12 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnDrag(PointerEventData eventData)
     {
+
         if (GameManager.Instance.gameplayActive == true)
         {
             GameManager.Instance.isDragged = true;
             rawImage.transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.2f);
-            rawImage.transform.DOMove(new Vector3((cam.ScreenToWorldPoint(MousePlace())).x, (cam.ScreenToWorldPoint(MousePlace())).y, (cam.ScreenToWorldPoint(MousePlace())).z - 3f), 0.2f);
+            rawImage.transform.DOMove(new Vector3((cam.ScreenToWorldPoint(MousePlace())).x, (cam.ScreenToWorldPoint(MousePlace())).y, (cam.ScreenToWorldPoint(MousePlace())).z + 45f), 0.2f);
 
         }
     }
@@ -179,7 +181,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             GameManager.Instance.isBacking = false;
             GameManager.Instance.musicManager.PlaySound("cardHover");
 
-            rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 10f, rawImage.transform.position.z - 1f), 0.7f);
+            rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 35f, rawImage.transform.position.z - 650f), 0.5f);
             rawImage.transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.7f);
 
             MouseENTER();  

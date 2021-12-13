@@ -27,6 +27,8 @@ public class RoundManager : MonoBehaviour
     {
 
         GameManager.Instance.gameplayActive = false;
+
+        AtributeRepaier();
        
         Wealth();
 
@@ -54,7 +56,21 @@ public class RoundManager : MonoBehaviour
        
     }
 
+    public void AtributeRepaier()
+    {
 
+        GameManager.Instance.happiness = Mathf.Clamp01(GameManager.Instance.happiness);
+
+        GameManager.Instance.loyalty = Mathf.Clamp01(GameManager.Instance.loyalty);
+
+        GameManager.Instance.fear = Mathf.Clamp01(GameManager.Instance.fear);
+
+        GameManager.Instance.education = Mathf.Clamp01(GameManager.Instance.education);
+
+        GameManager.Instance.crime = Mathf.Clamp01(GameManager.Instance.crime);
+
+        GameManager.Instance.tax = Mathf.Clamp01(GameManager.Instance.tax);
+    }
 
 
 

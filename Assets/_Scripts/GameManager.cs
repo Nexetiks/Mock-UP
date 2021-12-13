@@ -6,6 +6,8 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+
+    
     [SerializeField]
     public MusicManager musicManager;
     [SerializeField]
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public float crime = 0.5f;
     [SerializeField]
-    public float wealth = 0.5f;
+    public float wealth = 30f;
     [SerializeField]
     public float tax = 0.20f;
     [SerializeField]
