@@ -13,4 +13,10 @@ public class CardService : MonoBehaviour
        
         transform.DORotateQuaternion(GameManager.Instance.rotation[GameManager.Instance.indexHelper], 2f);
     }
+
+
+
+
+
+
 }

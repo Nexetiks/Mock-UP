@@ -65,6 +65,15 @@ public class HandList : MonoBehaviour
         GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, -2.1f)));
         GameManager.Instance.rotation.Add(Quaternion.Euler(new Vector3(0, 0, -4.2f)));
 
+
+
+
+        //////////////enterPosition
+        GameManager.Instance.enterPosition.Add(new Vector3(-10f, -4.6f, -585f));
+        GameManager.Instance.enterPosition.Add(new Vector3(-5f, -4.6f, -585f));
+        GameManager.Instance.enterPosition.Add(new Vector3(0f, -4.6f, -585f));
+        GameManager.Instance.enterPosition.Add(new Vector3(5f, -4.6f, -585f));
+        GameManager.Instance.enterPosition.Add(new Vector3(10f, -4.6f, -585f));
     }
 
    

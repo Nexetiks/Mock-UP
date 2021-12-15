@@ -127,8 +127,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     private void Start()
     {
         //  startPostion = GameManager.Instance.indexHelper;
-        startPostion = GameManager.Instance.position[GameManager.Instance.indexHelper];
-        startRotation = GameManager.Instance.rotation[GameManager.Instance.indexHelper];
+        transform.position = GameManager.Instance.position[GameManager.Instance.HandList.GetIndex(idCard)];
+        transform.rotation = GameManager.Instance.rotation[GameManager.Instance.HandList.GetIndex(idCard)];
 
         //if(isThereCardToDestroy ==true) 
         //amountCardToDiscard = ((GameManager.Instance.round) % 5);
@@ -136,53 +136,28 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnBeginDrag(PointerEventData eventData)
     {
-        if (helpe == 0 && GameManager.Instance.gameplayActive == true   && GameManager.Instance.isBacking == false)
-        {
-
-            temporaryPosition = transform.position;
-            temporaryRotation = transform.rotation;
-            helpe = 1;
-        }
-
-        Debug.Log("begindrag");
-        if (GameManager.Instance.gameplayActive == true)
-            BeginDRAG();
     }
 
     virtual public void OnDrag(PointerEventData eventData)
     {
-
         if (GameManager.Instance.gameplayActive == true)
         {
             GameManager.Instance.isDragged = true;
             rawImage.transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.2f);
-            rawImage.transform.DOMove(new Vector3((cam.ScreenToWorldPoint(MousePlace())).x, (cam.ScreenToWorldPoint(MousePlace())).y, (cam.ScreenToWorldPoint(MousePlace())).z + 45f), 0.2f);
-
+            rawImage.transform.DOMove(new Vector3((cam.ScreenToWorldPoint(MousePlace())).x, -4.6f, (cam.ScreenToWorldPoint(MousePlace())).z + 45f), 0.2f);
         }
     }
 
     virtual public void OnPointerEnter(PointerEventData eventData)
     {
-        
-        if (helpe == 0 && GameManager.Instance.gameplayActive == true  )
+        Debug.Log("enter");
+        if (GameManager.Instance.isDragged == false && rawImage.transform.position == GameManager.Instance.position[GameManager.Instance.HandList.GetIndex(idCard)] && GameManager.Instance.gameplayActive == true)
         {
-            Debug.Log("przypisanie poczatkowej pozycji");
-            Debug.Log("enter");
-            temporaryPosition = transform.position;
-            temporaryRotation = transform.rotation;
-            helpe = 1;
-        }
-
-
-        if (GameManager.Instance.isDragged == false && rawImage.transform.position == temporaryPosition && GameManager.Instance.gameplayActive == true)
-        {
-            Debug.Log(" on point enter 2if");
- 
+            Debug.Log("enter if");
             GameManager.Instance.isBacking = false;
             GameManager.Instance.musicManager.PlaySound("cardHover");
 
-            rawImage.transform.DOMove(new Vector3(rawImage.transform.position.x, rawImage.transform.position.y + 35f, rawImage.transform.position.z - 650f), 0.5f);
-            rawImage.transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.7f);
+            enterCard(GameManager.Instance.HandList.GetIndex(idCard));
 
             MouseENTER();  
         }
@@ -190,33 +165,17 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnPointerExit(PointerEventData eventData)
     {
-        //nadpisywanei pierwotjnej pozycji
-        if (helpe == 0 && GameManager.Instance.gameplayActive == true   && GameManager.Instance.isBacking == false)
-        {
- 
-            temporaryPosition = transform.position;
-            temporaryRotation = transform.rotation;
-            helpe = 1;
-        }
 
         if (GameManager.Instance.isDragged == false && GameManager.Instance.gameplayActive == true  )
         {
             Debug.Log("exit");
-            rawImage.transform.DOMove(temporaryPosition, 0.71f);
-            rawImage.transform.DORotateQuaternion(temporaryRotation, 0.71f);
+            exitCard(GameManager.Instance.HandList.GetIndex(idCard));
             MouseEXIT();
         }
     }
 
     virtual public void OnEndDrag(PointerEventData eventData)
     {
-      /*  Debug.Log("enddrag + nadpisanie");
-        if (helpe == 0 && GameManager.Instance.gameplayActive == true  )
-        {
-            temporaryPosition = transform.position;
-            temporaryRotation = transform.rotation;
-            helpe = 1;
-        }*/
 
         Debug.Log("enddrag");
         if (IsCardPlaced() != true&& GameManager.Instance.isBacking == false)
@@ -225,8 +184,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             GameManager.Instance.isDragged = false;
             GameManager.Instance.isBacking = true;
 
-            rawImage.transform.DOMove(temporaryPosition, 0.71f);
-            rawImage.transform.DORotateQuaternion(temporaryRotation, 0.71f);
+            exitCard(GameManager.Instance.HandList.GetIndex(idCard));
             MouseUP();
         }
     }
@@ -387,7 +345,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
     virtual public void cardReplacement()
     {
 
-        if (GameManager.Instance.DeskList.cards.Count == 0&& GameManager.Instance.willBeDestroyed ==false)
+        if (GameManager.Instance.DeskList.cards.Count == 0 && GameManager.Instance.willBeDestroyed == false)
         {
             xCount = GameManager.Instance.HandList.cardsInHand.Count;
 
@@ -407,8 +365,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
             if (xCount == 1)
             {
-               // startPostion = GameManager.Instance.position[2];
-               // temporaryPosition = GameManager.Instance.position[2];
+                // startPostion = GameManager.Instance.position[2];
+                // temporaryPosition = GameManager.Instance.position[2];
 
                 startRotation = GameManager.Instance.rotation[2];
                 temporaryRotation = GameManager.Instance.rotation[2];
@@ -421,7 +379,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             {
                 if (x == 0)
                 {
-                   // startPostion = GameManager.Instance.position[1];
+                    // startPostion = GameManager.Instance.position[1];
                     //temporaryPosition = GameManager.Instance.position[1];
 
                     startRotation = GameManager.Instance.rotation[1];
@@ -432,8 +390,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
                 }
                 if (x == 1)
                 {
-                   // startPostion = GameManager.Instance.position[2];
-                   // temporaryPosition = GameManager.Instance.position[2];
+                    // startPostion = GameManager.Instance.position[2];
+                    // temporaryPosition = GameManager.Instance.position[2];
 
                     startRotation = GameManager.Instance.rotation[2];
                     temporaryRotation = GameManager.Instance.rotation[2];
@@ -468,6 +426,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log(transform.position);
         if (GameManager.Instance.waitForDiscard == true)
         {
 
@@ -503,5 +462,15 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             Debug.Log("else  z funkcji");
         }
        GameManager.Instance.isDragged = false;
+    }
+    virtual public void enterCard(int x)
+    {
+        rawImage.transform.DOMove(GameManager.Instance.enterPosition[x], 0.7f);
+        rawImage.transform.DORotateQuaternion(Quaternion.Euler(new Vector3(0,0,0)), 0.7f);
+    }
+    virtual public void exitCard(int x)
+    {
+        rawImage.transform.DOMove(GameManager.Instance.position[x], 0.7f);
+        rawImage.transform.DORotateQuaternion(GameManager.Instance.rotation[x], 0.7f);
     }
 }
