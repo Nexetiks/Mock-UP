@@ -150,10 +150,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("enter");
         if (GameManager.Instance.isDragged == false && rawImage.transform.position == GameManager.Instance.position[GameManager.Instance.HandList.GetIndex(idCard)] && GameManager.Instance.gameplayActive == true)
         {
-            Debug.Log("enter if");
             GameManager.Instance.isBacking = false;
             GameManager.Instance.musicManager.PlaySound("cardHover");
 
@@ -165,10 +163,8 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnPointerExit(PointerEventData eventData)
     {
-
         if (GameManager.Instance.isDragged == false && GameManager.Instance.gameplayActive == true  )
         {
-            Debug.Log("exit");
             exitCard(GameManager.Instance.HandList.GetIndex(idCard));
             MouseEXIT();
         }
@@ -176,8 +172,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     virtual public void OnEndDrag(PointerEventData eventData)
     {
-
-        Debug.Log("enddrag");
         if (IsCardPlaced() != true&& GameManager.Instance.isBacking == false)
         {
 
@@ -262,11 +256,9 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
                 CardInvocate();
 
-                Debug.Log("przed wejscie ");
 
                 if (GameManager.Instance.discardAmount > 0&&0==2)
                 {
-                    Debug.Log("if ");
                     cardDestroyer.DestroyCard();
 
                     GameManager.Instance.HandList.UsedCard(idCard);
@@ -280,8 +272,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
                 else
                 {
-                    Debug.Log("else ");
-                    Debug.Log("nie wszedlem");
+
 
                     
 
@@ -290,7 +281,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
                     GameManager.Instance.musicManager.PlaySound("throw");
 
-                    Debug.Log(GameManager.Instance.HandList.GetIndex(idCard));
 
                     GameManager.Instance.isDragged = false;
 
@@ -354,7 +344,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             {
                 if (startPostion == GameManager.Instance.position[i])
                 {
-                    Debug.Log(this.name + " " + i);
                     x = i;
                 }
             }
@@ -416,7 +405,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
               {
                   startPostion = GameManager.Instance.position[x];
                   temporaryPosition = GameManager.Instance.position[x];
-                  Debug.Log("5");
               }
               */
 
@@ -426,7 +414,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log(transform.position);
         if (GameManager.Instance.waitForDiscard == true)
         {
 
@@ -436,8 +423,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
             GameManager.Instance.HandList.SendCardToHand(GameManager.Instance.DeskList.cards);
 
             cardDestroyer.DestroyCard();
-
-            Debug.Log(this.idCard);
 
             GameManager.Instance.waitForDiscard = false;
 
@@ -459,7 +444,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         else
         {
             GameManager.Instance.waitForDiscard = false;
-            Debug.Log("else  z funkcji");
         }
        GameManager.Instance.isDragged = false;
     }
