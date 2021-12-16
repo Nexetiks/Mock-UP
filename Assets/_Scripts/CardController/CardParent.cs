@@ -126,7 +126,6 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     private void Start()
     {
-        //  startPostion = GameManager.Instance.indexHelper;
         transform.position = GameManager.Instance.position[GameManager.Instance.HandList.GetIndex(idCard)];
         transform.rotation = GameManager.Instance.rotation[GameManager.Instance.HandList.GetIndex(idCard)];
 
@@ -144,7 +143,7 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         {
             GameManager.Instance.isDragged = true;
             rawImage.transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), 0.2f);
-            rawImage.transform.DOMove(new Vector3((cam.ScreenToWorldPoint(MousePlace())).x, -4.6f, (cam.ScreenToWorldPoint(MousePlace())).z + 45f), 0.2f);
+            rawImage.transform.DOMove(new Vector3((cam.ScreenToWorldPoint(MousePlace())).x, cam.ScreenToWorldPoint(MousePlace()).y, -585f), 0.2f);
         }
     }
 
@@ -238,15 +237,9 @@ abstract public class CardParent : MonoBehaviour, IBeginDragHandler, IEndDragHan
         {
             viewPortCardPosition = cam.WorldToViewportPoint(rawImage.rectTransform.position);
 
-            if (viewPortCardPosition.y > 0.1f )
+            if (viewPortCardPosition.y > 0.51 )
             {
                 GameManager.Instance.gameplayActive = false;
-
-                temporaryPosition = rawImage.rectTransform.position;
-                startPostion = temporaryPosition;
-
-                temporaryRotation = rawImage.rectTransform.rotation;
-                startRotation = temporaryRotation;
 
                 GameManager.Instance.willBeDestroyed = true;
 
